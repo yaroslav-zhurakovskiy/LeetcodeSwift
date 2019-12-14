@@ -19,6 +19,7 @@ struct ContentType: ExpressibleByStringLiteral {
 
 extension ContentType {
     static let applicationJSON: ContentType = "application/json"
+    static let multipartFormData: ContentType = "multipart/form-data"
 }
 
 extension URLRequest {
@@ -55,16 +56,20 @@ extension URLRequest {
     }
     
     mutating func setContentType(_ type: ContentType) {
-        var temp = allHTTPHeaderFields ?? [:]
-        temp["Content-type"] = type.value
-        allHTTPHeaderFields = temp
+        setValue("Content-type", forHTTPHeaderField: type.value)
     }
     
     mutating func setConnectionKeepAlive() {
-        var temp = allHTTPHeaderFields ?? [:]
-        temp["Connection"] = "keep-alive"
-        allHTTPHeaderFields = temp
+        setValue("keep-alive", forHTTPHeaderField: "Connection")
     }
+    
+    mutating func setFormData(_ values: [String: String]) {
+        let str = values.keys
+            .map { "\($0)=\(values[$0]!)" }
+            .joined(separator: ",")
+        httpBody = str.data(using: .utf8)
+    }
+    
 }
 
 extension URL {

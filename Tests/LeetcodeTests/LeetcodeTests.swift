@@ -147,9 +147,22 @@ final class LeetcodeTests: XCTestCase {
         }
     }
     
-    func testDetailsForProblem() {
+    func __testDetailsForProblem() {
         runTest { exp in
             leetcode.details(forProblem: "two-sum") { result in
+                assertSuccess(result)
+                exp.fulfill()
+            }
+        }
+    }
+    
+    func testLogin() {
+        runTest { exp in
+            let credentials = LoginGredenetials(
+                login: "yaroslav@gmail.com",
+                password: "123456"
+            )
+            leetcode.login(using: credentials) { result in
                 assertSuccess(result)
                 exp.fulfill()
             }

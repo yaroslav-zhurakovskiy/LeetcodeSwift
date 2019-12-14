@@ -58,7 +58,6 @@ extension Optional: TestCaseInputParamConvertible where Wrapped: TestCaseInputPa
     }
 }
 
-
 extension NSNumber: TestCaseInputParamConvertible {
     public var testCaseInputParamValue: String {
         return "\(self)"

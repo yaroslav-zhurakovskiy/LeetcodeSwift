@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct CheckIntepretationStateWrapper: Decodable {
     public enum State: String {
         case pending = "PENDING"
