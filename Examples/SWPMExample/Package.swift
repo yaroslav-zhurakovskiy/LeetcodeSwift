@@ -4,14 +4,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "Leetcode",
+    name: "SWPMExample",
+    platforms: [.iOS(.v8)],
     products: [
-        .library(name: "Leetcode", targets: ["Leetcode"])
+        .executable(name: "SWPMExample", targets: ["SWPMExample"])
     ],
-    dependencies: [],
+    dependencies: [
+        .package(path: "../../")
+    ],
     targets: [
-        .target(name: "Leetcode", dependencies: []),
-        .testTarget(name: "LeetcodeTests", dependencies: ["Leetcode"])
+        .target(name: "SWPMExample",  dependencies: ["Leetcode"])
     ],
     swiftLanguageVersions: [.v4]
 )
