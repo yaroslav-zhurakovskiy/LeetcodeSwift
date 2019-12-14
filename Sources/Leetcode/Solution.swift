@@ -1,0 +1,47 @@
+//
+//  File 2.swift
+//  
+//
+//  Created by Yaroslav Zhurakovskiy on 14.12.2019.
+//
+
+import Foundation
+
+public struct Solution {
+    public let question_id: Int
+    public let input: TestCaseInput
+    public let judge: Judge
+    public let code: Code
+    
+    public init(
+        for question_id: Int,
+        code: Code,
+        input: TestCaseInput,
+        judge: Judge
+    ) {
+        self.question_id = question_id
+        self.code = code
+        self.input = input
+        self.judge = judge
+    }
+}
+
+extension Solution: Encodable {
+    public enum SolutionKey: String, CodingKey {
+        case question_id
+        case judge_type
+        case data_input
+        case lang
+        case typed_code
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SolutionKey.self)
+        
+        try container.encode(question_id, forKey: .question_id)
+        try container.encode(input.rawValue, forKey: .data_input)
+        try container.encode(code.text, forKey: .typed_code)
+        try container.encode(code.lang.value, forKey: .lang)
+        try container.encode(judge.value, forKey: .judge_type)
+    }
+}

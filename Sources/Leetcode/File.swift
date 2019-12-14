@@ -128,6 +128,8 @@ public extension Leetcode {
                     completion(.success(wrapper.data.question))
                 case .decodingFailure(let error):
                     completion(.failure(error))
+                case .graphqlError(let error):
+                    completion(.failure(error))
                 case .networkFailure(let error):
                     completion(.failure(error))
                 }

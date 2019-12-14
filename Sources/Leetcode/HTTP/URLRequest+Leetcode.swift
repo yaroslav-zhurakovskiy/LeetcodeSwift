@@ -73,7 +73,7 @@ extension URL {
     }
 }
 
-extension String {
+public extension String {
     init(leetcodePath path: String) {
         let base = "https://leetcode.com"
         self = "\(base)\(normalizedPath(path))"
