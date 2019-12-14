@@ -1,3 +1,406 @@
-struct Leetcode {
-    var text = "Hello, World!"
+import Foundation
+
+public enum GraphqlRequestResult<Value: Decodable> {
+    case success(Value)
+    case decodingFailure(HTTPURLResponseDecodingError)
+    case networkFailure(Error)
+}
+
+public class Leetcode {
+    // TODO: Fix internal
+    internal let requestBuilder = LeetcodeRequestBuilder()
+    internal var urlSession: LeetcodeURLSession
+    
+    public init() {
+        self.urlSession = LeetcodeURLSessionImpl()
+    }
+    
+    public func graphqlRequest<Response: Decodable>(
+        using params: LeetcodeGraphqlRequestParams,
+        method: LeetcodeHttpMethod = .post,
+        origin: String = "https://leetcode.com",
+        referer: String,
+        responseType: Response.Type,
+        completion: @escaping (GraphqlRequestResult<Response>) -> Void
+    ) {
+        let request = requestBuilder.buildGraphql(
+           from: params,
+           method: method,
+           origin: origin,
+           referer: referer
+        )
+
+        urlSession.request(request, responseType: responseType) { result in
+            switch result {
+            case let .success(value):
+                completion(.success(value))
+            case .decodingFailure(let error):
+                completion(.decodingFailure(error))
+            case .networkFailure(let error):
+                completion(.networkFailure(error))
+            }
+        }
+    }
+        
+    public func getUserInfo(
+        completion: @escaping (GetUserInfoResult) -> Void
+    ) {
+        let query = """
+        {
+            user {
+                username
+                isCurrentUserPremium
+            }
+        }
+        """
+        graphqlRequest(
+            using: .init(query: query),
+            referer: "https://leetcode.com/problems/two-sum/description/",
+            responseType: UserInfoData.self,
+            completion: { result in
+                switch result {
+                case .success(let info):
+                    completion(.success(info.data.user))
+                case .decodingFailure(let error):
+                    completion(.failure(error))
+                case .networkFailure(let error):
+                    completion(.failure(error))
+                }
+            }
+        )
+    }
+        
+    public func getFavorites(completion: @escaping (GetFavouritesResult) -> Void) {
+        let request = requestBuilder.build(
+            path: "/list/api/questions",
+            method: .get,
+            origin: "https://leetcode.com",
+            referer: "https://leetcode.com/problems/two-sum/description/"
+        )
+        urlSession.request(request, responseType: Favorites.self) { result in
+            switch result {
+            case let .success(value):
+                completion(.success(value))
+            case .decodingFailure(let error):
+                completion(.failure(error))
+            case .networkFailure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    public func deleteFavoriteQuestion(
+        by id: FavoriteQuestionID,
+        completion: @escaping (DeleteFavoriteResult) -> Void
+    ) {
+        let request = requestBuilder.build(
+            path: "/list/api/questions/\(id.favoriteIDHash)/\(id.questionID)",
+            method: .delete,
+            origin: "https://leetcode.com",
+            referer: "https://leetcode.com/list/"
+        ) { request in
+            request.setContentType(.applicationJSON)
+        }
+        
+        urlSession.request(request) { result in
+            switch result {
+            case let .success(data, response):
+                if response.statusCode == 204 {
+                    completion(.success)
+                } else {
+                    completion(.someFailure)
+                }
+            case .failure(let error):
+                completion(.networkFailure(error))
+            }
+        }
+    }
+    
+    public func addQuestion(
+        withID questionID: Int,
+        toFavorite idHash: String,
+        completion: @escaping (AddQuestionToFavoriteResult) -> Void
+    ) {
+        let query = """
+        mutation addQuestionToFavorite($favoriteIdHash: String!, $questionId: String!)
+        {
+            addQuestionToFavorite(favoriteIdHash: $favoriteIdHash, questionId: $questionId)
+            {
+                ok
+                error
+            }
+        }
+        """
+        let params = LeetcodeGraphqlRequestParams(
+            query: query,
+            variables: [
+                "favoriteIdHash": "\(idHash)",
+                "questionId": "\(questionID)"
+            ],
+            operationName: "addQuestionToFavorite"
+        )
+        
+        graphqlRequest(
+            using: params,
+            referer: "https://leetcode.com/problems/zigzag-conversion/",
+            responseType: AddQuestionToFavoriteDataWrapper.self,
+            completion: { result in
+                switch result {
+                case .success(let wrapper):
+                    let info = wrapper.data.addQuestionToFavorite
+                    if info.ok {
+                        completion(.success)
+                    } else if let error = info.error {
+                        let error = SomeLeetcodeError(localizedDescription: error)
+                        completion(.someFailure(error))
+                    }
+                case .decodingFailure(let error):
+                    completion(.someFailure(error))
+                case .networkFailure(let error):
+                    completion(.networkFailure(error))
+                }
+            }
+        )
+    }
+    
+    public func addQuestion(
+        withID questionID: Int,
+        toNewFavoriteNamed name: String,
+        isPublic: Bool,
+        completion: @escaping (AddQuestionToNewFavoriteResult) -> Void
+    ) {
+        let query = """
+        mutation addQuestionToNewFavorite($name: String!, $isPublicFavorite: Boolean!, $questionId: String!)
+        {
+            addQuestionToNewFavorite(name: $name, isPublicFavorite: $isPublicFavorite, questionId: $questionId)
+                {
+                    ok
+                    error
+                    favoriteIdHash
+                }
+        }
+        """
+        let params = LeetcodeGraphqlRequestParams(
+            query: query,
+            variables: [
+                "questionId": "\(questionID)",
+                "isPublicFavorite": isPublic ? "true" : "false",
+                "name": name
+            ],
+            operationName: "addQuestionToNewFavorite"
+        )
+        graphqlRequest(
+            using: params,
+            referer: "https://leetcode.com/problems/zigzag-conversion/",
+            responseType: AddQuestionToNewFavoriteDataWrapper.self,
+            completion: { result in
+                switch result {
+                case .success(let wrapper):
+                    let info = wrapper.data.addQuestionToNewFavorite
+                    if info.ok, let id = info.favoriteIdHash {
+                        completion(.success(favoriteIdHash: id))
+                    } else if let error = info.error {
+                        let error = SomeLeetcodeError(localizedDescription: error)
+                        completion(.someFailure(error))
+                    }
+                case .decodingFailure(let error):
+                    completion(.someFailure(error))
+                case .networkFailure(let error):
+                    completion(.networkFailure(error))
+                }
+            }
+        )
+    }
+    
+    public func getProblems(
+        forCategory category: String,
+        completion: @escaping (LeetcodeResult<GetProblemsResponse, Error>) -> Void
+    ) {
+        var request = requestBuilder.build(
+            path: "/api/problems/\(category)/",
+            method: .get,
+            origin: String(leetcodePath: "/api/problems/\(category)/"),
+            referer: String(leetcodePath: "/api/problems/\(category)/")
+        )
+        request.setContentType(.applicationJSON)
+        
+        urlSession.request(request, responseType: GetProblemsResponse.self) { result in
+            switch result {
+            case .success(let value):
+                completion(.success(value))
+            case .decodingFailure(let error):
+                completion(.failure(error))
+            case .networkFailure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func interpretSolution(
+        _ solution: Solution,
+        forProblem slug: String,
+        completion: @escaping (LeetcodeResult<InterpretSolutionResponse, Error>) -> Void
+    ) {
+       let request = requestBuilder.build(
+           path: "/problems/\(slug)/interpret_solution/",
+           method: .post,
+           origin: "https://leetcode.com",
+           referer: "https://leetcode.com/problems/\(slug)/description/"
+       ) { request in
+            try? request.setJSONBody(solution)
+        }
+        
+        urlSession.request(
+            request,
+            responseType: InterpretSolutionResponse.self,
+            completion: { result in
+                switch result {
+                case let .success(value):
+                    completion(.success(value))
+                case .decodingFailure(let error):
+                    completion(.failure(error))
+                case .networkFailure(let error):
+                    completion(.failure(error))
+                }
+            }
+        )
+    }
+    
+    public func checkIntepretation(
+        _ id: String,
+        problemSlug: String,
+        completion: @escaping (LeetcodeResult<VerificationInfo, Error>) -> Void
+    ) {
+        let request = requestBuilder.build(
+            path: "/submissions/detail/\(id)/check",
+            method: .get,
+            origin: String(leetcodePath: ""),
+            referer: String(leetcodePath: "/problems/\(problemSlug)/description")
+        )
+        urlSession.request(request, completion: { [weak self] result in
+                switch result {
+                case let .success(data, response):
+                    let decoder = JSONDecoder()
+                    do {
+                        let wrapper = try decoder.decode(
+                            CheckIntepretationStateWrapper.self,
+                            from: data
+                        )
+                        print(wrapper.state.rawValue)
+                        if wrapper.state == .success {
+                            do {
+                                let decoder = JSONDecoder()
+                                let info = try decoder.decode(
+                                    VerificationInfo.self,
+                                    from: data
+                                )
+                                completion(.success(info))
+                            } catch let error {
+                                let decodingError = HTTPURLResponseDecodingError(
+                                    data: data,
+                                    response: response,
+                                    decodingError: error as! DecodingError
+                                )
+                                completion(.failure(decodingError))
+                            }
+                        } else {
+                            self?.checkIntepretation(
+                                id,
+                                problemSlug: problemSlug,
+                                completion: completion
+                            )
+                        }
+                    } catch let error {
+                        let decodingError = HTTPURLResponseDecodingError(
+                            data: data,
+                            response: response,
+                            decodingError: error as! DecodingError
+                        )
+                        completion(.failure(decodingError))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        )
+    }
+    
+    public func testSolution(
+        _ solution: Solution,
+        forProblem slug: String,
+        completion: @escaping (LeetcodeResult<VerificationInfo, Error>) -> Void
+    ) {
+        interpretSolution(
+            solution,
+            forProblem: slug,
+            completion: { [weak self] result  in
+                switch result {
+                case .success(let response):
+                    self?.checkIntepretation(
+                        response.interpret_id,
+                        problemSlug: slug,
+                        completion: completion
+                    )
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        )
+    }
+    
+    public func deleteFavoriteList(
+        byHashID hasID: String,
+        completion: @escaping (LeetcodeResult<Void, Error>) -> Void
+    ) {
+        let request = requestBuilder.build(
+            path: "/list/api/\(hasID)",
+            method: .delete,
+            origin: String(leetcodePath: "/list/"),
+            referer: String(leetcodePath: "/list/")
+        )
+        urlSession.request(request, completion: { result in
+            switch result {
+            case let .success(data, response):
+                if response.statusCode == 204 {
+                    completion(.success(()))
+                } else {
+                    let error = SomeLeetcodeError(
+                        localizedDescription: String(
+                            data: data,
+                            encoding: .utf8
+                        ) ?? ""
+                    )
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
+    }
+}
+
+public struct InterpretSolutionResponse: Decodable {
+    public let interpret_id: String
+    public let test_case: String
+}
+
+public struct CheckIntepretationStateWrapper: Decodable {
+    public enum State: String {
+        case pending = "PENDING"
+        case started = "STARTED"
+        case success = "SUCCESS"
+        case undefined = ""
+    }
+    
+    public enum Key: String, CodingKey {
+        case state
+    }
+    
+    public let state: State
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        let value = try container.decode(String.self, forKey: .state)
+        state = State(rawValue: value) ?? .undefined
+    }
 }

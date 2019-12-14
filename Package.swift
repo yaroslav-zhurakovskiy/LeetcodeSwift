@@ -20,5 +20,6 @@ let package = Package(
             name: "LeetcodeTests",
             dependencies: ["Leetcode"]
         )
-    ]
+    ],
+    swiftLanguageVersions: [.v4, .v4_2, .v5]
 )
