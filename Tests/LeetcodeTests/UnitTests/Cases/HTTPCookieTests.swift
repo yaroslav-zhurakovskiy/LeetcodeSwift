@@ -2,14 +2,32 @@ import XCTest
 import Foundation
 
 class HTTPCookieTests: XCTestCase {
+    override func setUp() {
+        super.setUp()
+        
+        continueAfterFailure = false
+    }
+    
     func testCreateFromString() {
-        let cookie = HTTPCookie(
-            fromString: """
-            LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMjQ3NjQxOCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNGFlZTFhMGQ1NDlhNWRjN2YzMjg2ZmExNmE4MGNhODI1NjVhNmY1MSIsImlkIjoyNDc2NDE4LCJlbWFpbCI6Inlhcm9zbGF2LnpodXJha292c2tpeUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Inlhcm9zbGF2eiIsInVzZXJfc2x1ZyI6Inlhcm9zbGF2eiIsImF2YXRhciI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNThkMTdmNzVkNGMxZDk5NWRjNzVkOWY0YmYxMDkyOTMucG5nP3M9MjAwIiwidGltZXN0YW1wIjoiMjAxOS0xMi0xNSAyMDoxMzoyNi4xMjA5NzMrMDA6MDAiLCJJUCI6IjE3Ni4zNi4xNzkuMTg3IiwiSURFTlRJVFkiOiJlOTJmMjA0MTBmOGFiZTg2ZjA5ZGNiYWM4Mzc0NmQyMCIsIl9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMH0.HQArY8RPpaeXYeAKv7eomoFoXNxhKEf4pr66wHV-o6g; Domain=.leetcode.com; expires=Sun, 29 Dec 2019 20:13:26 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax; Secure
-            """
+        let cookie: HTTPCookie! = HTTPCookie(
+            fromString: "name=value" +
+                "; Domain=.leetcode.com" +
+                "; expires=Sun, 29 Dec 2019 20:13:26 GMT" +
+                "; HttpOnly" +
+                "; Max-Age=1209600" +
+                "; Path=/" +
+                "; SameSite=Lax" +
+                "; Secure"
         )
         
         XCTAssertNotNil(cookie)
+        
+        XCTAssertEqual(cookie.name, "name")
+        XCTAssertEqual(cookie.value, "value")
+        XCTAssertNotNil(cookie.expiresDate)
+        XCTAssertTrue(cookie.isHTTPOnly)
+        XCTAssertEqual(cookie.path, "/")
+        XCTAssertTrue(cookie.isSecure)
     }
 }
 
@@ -17,25 +35,20 @@ extension HTTPCookie {
     convenience init?(fromString string: String) {
         var properties: [HTTPCookiePropertyKey: Any] = [:]
         
-        var map: [String: HTTPCookiePropertyKey] = [
+        let map: [String: HTTPCookiePropertyKey] = [
             "Max-Age": .maximumAge,
             "Path": .path,
             "Secure": .secure,
             "Domain": .domain,
-            "Expires": .expires
+            "Expires": .expires,
+            "HttpOnly": HTTPCookiePropertyKey("HttpOnly")
         ]
-        
-        if #available(OSX 10.15, *) {
-            map["SameSite"] = .sameSitePolicy
-        } else {
-            map["SameSite"] = HTTPCookiePropertyKey("SameSite")
-        }
         
         let items = string.split(separator: ";").map { String($0)}
         
         for (index, item) in items.enumerated() {
             let normalizedItem = item.trimmingCharacters(in: .whitespacesAndNewlines)
-            let pair = normalizedItem.split(separator: "=")
+            let pair = normalizedItem.split(separator: "=").map { String($0)}
             
             if index == 0 {
                 properties[.name] = pair[0]
