@@ -2,14 +2,11 @@ import XCTest
 import Leetcode
 import Foundation
 
-private let defaultHTTPCookieStorageFactory = HTTPCookieStorageFactoryHolder.current
 private let twoSumQuestionID = 1
 private let twoSumProblemSlug = "two-sum"
 private let twoSumProblemID = ProblemID(questionID: twoSumQuestionID, slug: twoSumProblemSlug)
 private let algorithmsCategory = "algorithms"
 private let defaultLeetcodeRegion = LeetcodeConfiguration.region
-
-
 
 final class LeetcodeIntegrationTests: XCTestCase {
     private var leetcode: Leetcode!
@@ -30,8 +27,9 @@ final class LeetcodeIntegrationTests: XCTestCase {
     }
     
     override func tearDown() {
-        HTTPCookieStorageFactoryHolder.current = defaultHTTPCookieStorageFactory
         LeetcodeConfiguration.region = defaultLeetcodeRegion
+        logout()
+        removeAllCookies()
         
         super.tearDown()
     }
