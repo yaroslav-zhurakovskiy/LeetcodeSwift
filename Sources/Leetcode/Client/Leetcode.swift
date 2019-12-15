@@ -3,8 +3,8 @@ import Foundation
 public class Leetcode {
     // TODO: Fix internal
     internal let requestBuilder = LeetcodeRequestBuilder()
-    internal var urlSession: LeetcodeURLSession
-    internal var cookieStorage: HTTPCookieStorage = HTTPCookieStorage()
+    
+    public var urlSession: LeetcodeURLSession
     
     public init() {
         self.urlSession = LeetcodeURLSessionImpl()

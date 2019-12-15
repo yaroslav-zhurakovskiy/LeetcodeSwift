@@ -1,16 +1,16 @@
 import Foundation
 
-struct ContentType: ExpressibleByStringLiteral {
-    typealias StringLiteralType = String
+public struct ContentType: ExpressibleByStringLiteral {
+    public typealias StringLiteralType = String
     
     public let value: String
     
-    init(stringLiteral value: Self.StringLiteralType) {
+    public init(stringLiteral value: Self.StringLiteralType) {
         self.value = value
     }
 }
 
-extension ContentType {
+public extension ContentType {
     static let applicationJSON: ContentType = "application/json"
     static let multipartFormData: ContentType = "multipart/form-data"
 }

@@ -6,7 +6,7 @@ extension URL {
     }
 }
 
-public extension String {
+extension String {
     init(leetcodePath path: String) {
         let base = "https://\(LeetcodeConfiguration.region.rawValue).com"
         self = "\(base)\(normalizedPath(path))"
