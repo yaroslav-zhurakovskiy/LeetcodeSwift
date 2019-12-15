@@ -11,7 +11,7 @@ class HTTPCookieTests: XCTestCase {
     func testCreateFromString() {
         let cookie: HTTPCookie! = HTTPCookie(
             fromString: "name=value" +
-                "; Domain=.leetcode.com" +
+                "; Domain=.test.com" +
                 "; expires=Sun, 29 Dec 2019 20:13:26 GMT" +
                 "; HttpOnly" +
                 "; Max-Age=1209600" +
@@ -28,6 +28,7 @@ class HTTPCookieTests: XCTestCase {
         XCTAssertTrue(cookie.isHTTPOnly)
         XCTAssertEqual(cookie.path, "/")
         XCTAssertTrue(cookie.isSecure)
+        XCTAssertTrue(cookie.domain, ".test.com")
     }
 }
 
