@@ -16,7 +16,7 @@ class GetUserInfoTest: XCTestCase {
     }
     
     func testSucessGetUserInfo() throws {
-        var result: GetUserInfoResult!
+        var result: Result<UserInfo, Error>!
         try urlSessionSpy.setSuccessResult(bodyStub: .getUserInfoSuccess, statusCode: 200)
         
         leetcode.getUserInfo { result = $0 }
@@ -48,7 +48,7 @@ class GetUserInfoTest: XCTestCase {
     }
     
     func testTestFailureUserInfo() {
-        var result: GetUserInfoResult!
+        var result: Result<UserInfo, Error>!
         urlSessionSpy.setFailureResult(error: TestError.shared)
         
         leetcode.getUserInfo { result = $0 }

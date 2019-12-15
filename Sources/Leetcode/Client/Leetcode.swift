@@ -10,7 +10,7 @@ public class Leetcode {
         self.urlSession = LeetcodeURLSessionImpl()
     }
     
-    public func getUserInfo(completion: @escaping (GetUserInfoResult) -> Void) {
+    public func getUserInfo(completion: @escaping (Result<UserInfo, Error>) -> Void) {
         let query = """
         {
             user {
@@ -52,7 +52,14 @@ public class Leetcode {
             case let .success(value):
                 completion(.success(value))
             case .decodingFailure(let error):
-                completion(.failure(error))
+                if error.response.statusCode == 401 {
+                    completion(.failure(LeetcodeUnauthorized(
+                        responseBody: error.data,
+                        response: error.response
+                    )))
+                } else {
+                    completion(.failure(error))
+                }
             case .networkFailure(let error):
                 completion(.failure(error))
             }

@@ -1,3 +1,5 @@
+import Foundation
+
 public struct LoginGredenetials {
     public let login: String
     public let password: String
@@ -9,7 +11,34 @@ public struct LoginGredenetials {
 }
 
 public extension Leetcode {
+    func login(usingSessionCookie cookie: HTTPCookie, completion: @escaping (Result<Void, Error>) -> Void) {
+        fetchCookies { result in
+            switch result {
+            case .success(let cookies):
+                let storage = HTTPCookieStorageFactoryHolder.current.create()
+                (cookies + [cookie]).forEach(storage.setCookie(_:))
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func login(
+        using credentials: LoginGredenetials,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        fetchAndSaveCookies { [weak self] result in
+            switch result {
+            case .success:
+                self?.actualLogin(using: credentials, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func actualLogin(
         using credentials: LoginGredenetials,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
@@ -23,19 +52,43 @@ public extension Leetcode {
                 "login": credentials.login,
                 "password": credentials.password
             ])
-            request.setValue(
-                "Cookie",
-                forHTTPHeaderField: "__cfduid=d7a00350357943f1f3b88475f591bb3901575997816; _ga=GA1.2.1812663345.1575997823; _gid=GA1.2.1498272129.1576317709; csrftoken=fiIBcq1DS9OFXRy6qyBRWvsANhqn1beEkdEJsU8AulVrNjJlFl8knIHJSYIJ1orF; _gat=1"
-            )
         }
         urlSession.request(request) { result in
             switch result {
             case let .success(data, response):
-                let text = String(data: data, encoding: .utf8)
+                if response.statusCode == 200 {
+                    completion(.success(()))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func fetchAndSaveCookies(completion: @escaping (Result<Void, Error>) -> Void) {
+        fetchCookies { result in
+            switch result {
+            case .success(let cookies):
+                let storage = HTTPCookieStorageFactoryHolder.current.create()
+                cookies.forEach(storage.setCookie(_:))
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    
+    private func fetchCookies(completion: @escaping (Result<[HTTPCookie], Error>) -> Void) {
+        fetchCookies(for: "/accounts/login/", completion: completion)
+    }
+}
+
+public extension Leetcode {
+    func logout() {
+        let storage = HTTPCookieStorageFactoryHolder.current.create()
+        if let cookies = storage.cookies {
+            cookies.forEach(storage.deleteCookie(_:))
         }
     }
 }

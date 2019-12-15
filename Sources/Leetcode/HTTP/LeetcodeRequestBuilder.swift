@@ -47,35 +47,6 @@ struct LeetcodeRequestBuilder {
         
     }
     
-    func build(
-        path: String,
-        method: LeetcodeHttpMethod,
-        origin: String,
-        referer: String,
-        code: (inout URLRequest) throws -> Void
-    ) throws -> URLRequest {
-        var request =  URLRequest(leetcodePath: path)
-        
-        if let cookies = cookieStorage.cookies(for: request.url!) {
-            request.setCookie(cookies)
-        } else if let cookies = cookieStorage.cookies {
-            request.setCookie(cookies)
-        }
-        
-        request.setValue(
-            "dIFzjY7FnTGCDiMiKaPmqSseZlm2JG19YajDzyBer0hpdBrk7R1bAT1W5AJMltDs",
-            forHTTPHeaderField: .XCSRFTokenHeader
-        )
-        request.setValue(String(leetcodePath: origin), forHTTPHeaderField: .origin)
-        request.setValue(String(leetcodePath: referer), forHTTPHeaderField: .referer)
-        
-        request.httpMethod = method.rawValue
-        
-        try code(&request)
-        
-        return request
-    }
-    
     func buildGraphql(
         from params: LeetcodeGraphqlRequestParams,
         method: LeetcodeHttpMethod,
@@ -100,20 +71,40 @@ struct LeetcodeRequestBuilder {
             try? request.setJSONBody(json)
         }
     }
-}
-
-public struct LeetcodeGraphqlRequestParams: Codable {
-    public let operationName: String?
-    public let variables: [String: String]
-    public let query: String
     
-    public init(
-        query: String,
-        variables: [String: String] = [:],
-        operationName: String? = nil
-    ) {
-        self.query = query
-        self.variables = variables
-        self.operationName = operationName
+    func build(
+        path: String,
+        method: LeetcodeHttpMethod,
+        origin: String,
+        referer: String,
+        code: (inout URLRequest) throws -> Void
+    ) throws -> URLRequest {
+        var request =  URLRequest(leetcodePath: path)
+        
+        if let cookies = self.cookies(for: request) {
+            request.setCookie(cookies)
+            if let cookie = cookies.first(where: { $0.name == "csrftoken" }) {
+                request.setValue(cookie.value, forHTTPHeaderField: .XCSRFTokenHeader)
+            }
+        }
+        
+        request.setValue(String(leetcodePath: origin), forHTTPHeaderField: .origin)
+        request.setValue(String(leetcodePath: referer), forHTTPHeaderField: .referer)
+        
+        request.httpMethod = method.rawValue
+        
+        try code(&request)
+        
+        return request
+    }
+    
+    private func cookies(for request: URLRequest) -> [HTTPCookie]? {
+        if let cookies = cookieStorage.cookies(for: request.url!) {
+            return cookies
+        } else if let cookies = cookieStorage.cookies {
+            return cookies
+        } else {
+            return nil
+        }
     }
 }

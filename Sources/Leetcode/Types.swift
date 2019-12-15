@@ -7,8 +7,6 @@ struct UserInfoData: Decodable {
     let data: Data
 }
 
-public typealias GetUserInfoResult = Result<UserInfo, Error>
-
 public typealias VerificationResult = Result<VerificationInfo, Error>
 
 public typealias GetFavouritesResult = Result<Favorites, Error>

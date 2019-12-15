@@ -1,8 +1,15 @@
-//
-//  File.swift
-//  
-//
-//  Created by Yaroslav Zhurakovskiy on 15.12.2019.
-//
-
-import Foundation
+public struct LeetcodeGraphqlRequestParams: Codable {
+    public let operationName: String?
+    public let variables: [String: String]
+    public let query: String
+    
+    public init(
+        query: String,
+        variables: [String: String] = [:],
+        operationName: String? = nil
+    ) {
+        self.query = query
+        self.variables = variables
+        self.operationName = operationName
+    }
+}

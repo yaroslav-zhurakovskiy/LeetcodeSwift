@@ -1,5 +1,6 @@
 import XCTest
 import Leetcode
+import Foundation
 
 private let defaultHTTPCookieStorageFactory = HTTPCookieStorageFactoryHolder.current
 private let twoSumQuestionID = 1
@@ -8,6 +9,8 @@ private let twoSumProblemID = ProblemID(questionID: twoSumQuestionID, slug: twoS
 private let algorithmsCategory = "algorithms"
 private let defaultLeetcodeRegion = LeetcodeConfiguration.region
 
+
+
 final class LeetcodeIntegrationTests: XCTestCase {
     private var leetcode: Leetcode!
     
@@ -15,8 +18,15 @@ final class LeetcodeIntegrationTests: XCTestCase {
         super.setUp()
         
         LeetcodeConfiguration.region = TestEnvironemt.region
-        HTTPCookieStorageFactoryHolder.current = FakeHttpCookieStorageFactory()
+        
+        removeAllCookies()
         leetcode = Leetcode()
+        loginUsingCookie()
+    }
+    
+    private func removeAllCookies( ){
+        let storage = HTTPCookieStorageFactoryHolder.current.create()
+        storage.removeCookies(since: Date(timeIntervalSince1970: 0))
     }
     
     override func tearDown() {
@@ -322,5 +332,29 @@ private extension LeetcodeIntegrationTests {
             toNewFavoriteList: NewFavoriteList(name: name, isPublic: false),
             completion: completion
         )
+    }
+}
+
+
+extension LeetcodeIntegrationTests {
+    private func loginUsingCookie() {
+        let exp = expectation(description: #function)
+        
+        let cookie = HTTPCookie(
+            fromString: """
+            LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMjQ3NjQxOCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNGFlZTFhMGQ1NDlhNWRjN2YzMjg2ZmExNmE4MGNhODI1NjVhNmY1MSIsImlkIjoyNDc2NDE4LCJlbWFpbCI6Inlhcm9zbGF2LnpodXJha292c2tpeUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Inlhcm9zbGF2eiIsInVzZXJfc2x1ZyI6Inlhcm9zbGF2eiIsImF2YXRhciI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNThkMTdmNzVkNGMxZDk5NWRjNzVkOWY0YmYxMDkyOTMucG5nP3M9MjAwIiwidGltZXN0YW1wIjoiMjAxOS0xMi0xNSAyMDoxMzoyNi4xMjA5NzMrMDA6MDAiLCJJUCI6IjE3Ni4zNi4xNzkuMTg3IiwiSURFTlRJVFkiOiJlOTJmMjA0MTBmOGFiZTg2ZjA5ZGNiYWM4Mzc0NmQyMCIsIl9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMH0.HQArY8RPpaeXYeAKv7eomoFoXNxhKEf4pr66wHV-o6g; Domain=.leetcode.com; expires=Sun, 29 Dec 2019 20:13:26 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax; Secure
+            """
+        )!
+        
+        leetcode.login(usingSessionCookie: cookie) { result in
+            assertSuccess(result)
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 120, handler: nil)
+    }
+    
+    private func logout() {
+        leetcode.logout()
     }
 }
