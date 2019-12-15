@@ -17,3 +17,17 @@ public struct HTTPURLResponseDecodingError: Error {
         self.decodingError = decodingError
     }
 }
+
+
+extension HTTPURLResponseDecodingError {
+    public var localizedDescription: String {
+        return decodingError.localizedDescription
+    }
+}
+
+
+extension HTTPURLResponseDecodingError: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return (decodingError as CustomDebugStringConvertible).debugDescription
+    }
+}

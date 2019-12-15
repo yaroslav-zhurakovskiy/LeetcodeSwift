@@ -1,9 +1,10 @@
 import XCTest
-@testable import Leetcode
+import Leetcode
 
 private let defaultHTTPCookieStorageFactory = HTTPCookieStorageFactoryHolder.current
 private let twoSumQuestionID = 1
-private let twoSumProblem = "two-sum"
+private let twoSumProblemSlug = "two-sum"
+private let twoSumProblemID = ProblemID(questionID: twoSumQuestionID, slug: twoSumProblemSlug)
 private let algorithmsCategory = "algorithms"
 
 final class LeetcodeTests: XCTestCase {
@@ -43,7 +44,7 @@ final class LeetcodeTests: XCTestCase {
     func testDeleteFavoriteQuestion() {
         runTestFavoriteList { [weak self] id, fulfill in
             let id = FavoriteQuestionID(favoriteIDHash: id, questionID: twoSumQuestionID)
-            self?.leetcode.deleteFavoriteQuestion(by: id) { result in
+            self?.leetcode.deleteFavoriteQuestion(byID: id) { result in
                 assertSuccess(result)
                 fulfill()
             }
@@ -52,7 +53,7 @@ final class LeetcodeTests: XCTestCase {
     
     func testAddQuestionToFavorite() {
         runTestFavoriteList { [weak self] id, fullfil in
-            self?.leetcode.addQuestion(withID: 6, toFavorite: id) { result in
+            self?.leetcode.addQuestion(withID: 6, toFavoriteListWithIDHash: id) { result in
                 assertSuccess(result)
                 fullfil()
             }
@@ -63,8 +64,7 @@ final class LeetcodeTests: XCTestCase {
         runAsyncTest { exp in
             leetcode.addQuestion(
                 withID: twoSumQuestionID,
-                toNewFavoriteNamed: "AddQuestionToNewFavorite",
-                isPublic: false,
+                toNewFavoriteList: NewFavoriteList(name: "AddQuestionToNewFavorite", isPublic: false),
                 completion: { [weak self] result in
                     assertSuccess(result)
                     
@@ -123,19 +123,15 @@ final class LeetcodeTests: XCTestCase {
             """
             let input = TestCaseInput(from: [[2,7,11,15], 9])
             let solution = Solution(
-                for: twoSumQuestionID,
+                forProblemWithID: twoSumProblemID,
                 code: Code(text: code, lang: .cpp),
                 input: input,
                 judge: .small
             )
-            leetcode.interpretSolution(
-                solution,
-                forProblem: twoSumProblem,
-                completion: { result in
-                    assertSuccess(result)
-                    exp.fulfill()
-                }
-            )
+            leetcode.interpretSolution(solution, completion: { result in
+                assertSuccess(result)
+                exp.fulfill()
+            })
         }
     }
     
@@ -151,25 +147,21 @@ final class LeetcodeTests: XCTestCase {
             """
             let input = TestCaseInput(from: [[2,7,11,15], 9])
             let solution = Solution(
-                for: twoSumQuestionID,
+                forProblemWithID: twoSumProblemID,
                 code: Code(text: code, lang: .cpp),
                 input: input,
                 judge: .small
             )
-            leetcode.testSolution(
-                solution,
-                forProblem: twoSumProblem,
-                completion: { result in
-                    assertSuccess(result)
-                    exp.fulfill()
-                }
-            )
+            leetcode.testSolution(solution, completion: { result in
+                assertSuccess(result)
+                exp.fulfill()
+            })
         }
     }
     
     func testDetailsForProblem() {
         runAsyncTest { exp in
-            leetcode.details(forProblem: twoSumProblem) { result in
+            leetcode.details(forProblemWithSlug: twoSumProblemSlug) { result in
                 assertSuccess(result)
                 exp.fulfill()
             }
@@ -184,9 +176,112 @@ final class LeetcodeTests: XCTestCase {
             })
         }
     }
+    
+    func testCreateSession() {
+        let testSessionName = "testcase"
+        
+        runAsyncTest { exp in
+            leetcode.createSessionWithName(testSessionName) { [weak self] result in
+                assertSuccess(result)
+                if case let .success(info) = result {
+                    if let session = info.sessions.first(where: { $0.name == testSessionName }) {
+                        self?.leetcode.deleteSession(byID: session.id, completion: { result in
+                            assertSuccess(result)
+                            exp.fulfill()
+                        })
+                    } else {
+                        XCTFail("Could not find a session named \(testSessionName)")
+                        exp.fulfill()
+                    }
+                } else {
+                    exp.fulfill()
+                }
+            }
+        }
+    }
+    
+    func testRenameSession() {
+        let testSessionName = "testcase"
+        let newTestSessionName = "new-name-testcase"
+        
+        runTestForSession(testSessionName: testSessionName) { [weak self] session, fulfill in
+            self?.leetcode.renameSessionWithID(session.id, into: newTestSessionName, completion: { result in
+                assertSuccess(result)
+                fulfill()
+            })
+        }
+    }
+    
+    func testDeleteSession() {
+        let testSessionName = "testcase"
+        runTestForSession(testSessionName: testSessionName) { [weak self] session, fulfill in
+            self?.leetcode.deleteSession(byID: session.id, completion: { result in
+                assertSuccess(result)
+                fulfill()
+            })
+        }
+    }
+    
+    func testSubmitCode() {
+        runAsyncTest { exp in
+            let code = Code(
+                text: """
+                class Solution {
+                public:
+                    vector<int> twoSum(vector<int>& nums, int target) {
+                        return {};
+                    }
+                };
+                """,
+                lang: .cpp
+            )
+            leetcode.submitCode(code, forProblemWithID: twoSumProblemID) { result in
+                assertSuccess(result)
+                exp.fulfill()
+            }
+        }
+    }
+    
+    func testListSubmissions() {
+        runAsyncTest { exp in
+            leetcode.listSubmissions(forProblemWithSlug: twoSumProblemSlug) { result in
+                assertSuccess(result)
+                exp.fulfill()
+            }
+        }
+    }
 }
 
 private extension LeetcodeTests {
+    func runTestForSession(
+        testSessionName: String ,
+        description: String = #function,
+        file: StaticString = #file,
+        line: UInt = #line,
+        test: @escaping (_ session: Session, _ callback: @escaping () -> Void) -> Void
+    ) {
+        runAsyncTest(description: description) { exp in
+            leetcode.createSessionWithName(testSessionName) { [weak self] result in
+                assertSuccess(result)
+                if case let .success(info) = result {
+                    if let session = info.sessions.first(where: { $0.name == testSessionName }) {
+                        test(session, {
+                            self?.leetcode.deleteSession(byID: session.id, completion: { result in
+                                assertSuccess(result)
+                                exp.fulfill()
+                            })
+                        })
+                    } else {
+                        XCTFail("Could not find a session named \(testSessionName)", file: file, line: line)
+                        exp.fulfill()
+                    }
+                } else {
+                    exp.fulfill()
+                }
+            }
+        }
+    }
+    
     func runTestFavoriteList(
         testFavoriteListsName: String = #function,
         description: String = #function,
@@ -194,7 +289,7 @@ private extension LeetcodeTests {
         line: UInt = #line,
         test: @escaping (_ favoriteIdHash: String, _ callback: @escaping () -> Void) -> Void
     ) {
-        runTest(description: description) { exp in
+        runAsyncTest(description: description) { exp in
             let normalizedName = testFavoriteListsName
                 .replacingOccurrences(of: "()", with: "")
                 .replacingOccurrences(of: "test", with: "")
@@ -221,8 +316,7 @@ private extension LeetcodeTests {
     func createTestFavoriteList(name: String, completion: @escaping (AddQuestionToNewFavoriteResult) -> Void) {
         leetcode.addQuestion(
             withID: twoSumQuestionID,
-            toNewFavoriteNamed: name,
-            isPublic: false,
+            toNewFavoriteList: NewFavoriteList(name: name, isPublic: false),
             completion: completion
         )
     }

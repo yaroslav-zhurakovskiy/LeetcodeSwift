@@ -1,18 +1,19 @@
 import Foundation
 
+
 public struct Solution {
-    public let question_id: Int
+    public let problemID: ProblemID
     public let input: TestCaseInput
     public let judge: Judge
     public let code: Code
     
     public init(
-        for question_id: Int,
+        forProblemWithID problemID: ProblemID,
         code: Code,
         input: TestCaseInput,
         judge: Judge
     ) {
-        self.question_id = question_id
+        self.problemID = problemID
         self.code = code
         self.input = input
         self.judge = judge
@@ -31,7 +32,7 @@ extension Solution: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: SolutionKey.self)
         
-        try container.encode(question_id, forKey: .question_id)
+        try container.encode(problemID.questionID, forKey: .question_id)
         try container.encode(input.rawValue, forKey: .data_input)
         try container.encode(code.text, forKey: .typed_code)
         try container.encode(code.lang.value, forKey: .lang)

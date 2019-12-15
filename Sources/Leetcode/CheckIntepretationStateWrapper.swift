@@ -6,7 +6,7 @@ struct CheckIntepretationStateWrapper: Decodable {
         case undefined = ""
     }
     
-    enum Key: String, CodingKey {
+    private enum Key: String, CodingKey {
         case state
     }
     

@@ -13,3 +13,7 @@ public struct TestCaseInput {
             .joined(separator: "\n")
     }
 }
+
+public extension TestCaseInput {
+    static let empty = TestCaseInput(from: [])
+}

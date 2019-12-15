@@ -1,8 +1,5 @@
 public extension Leetcode {
-    func createSession(
-        name: String,
-        completion: @escaping (Result<CreateSessionResponse, Error>) -> Void
-    ) {
+    func createSessionWithName(_ name: String, completion: @escaping (Result<CreateSessionResponse, Error>) -> Void) {
         let request = requestBuilder.build(
             path: "/session",
             method: .put,
@@ -31,8 +28,8 @@ public extension Leetcode {
     }
     
     func renameSessionWithID(
-        id: Int,
-        to name: String,
+        _ id: Int,
+        into name: String,
         completion: @escaping (Result<CreateSessionResponse, Error>) -> Void
     ) {
         let request = requestBuilder.build(

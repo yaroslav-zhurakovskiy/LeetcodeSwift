@@ -8,7 +8,7 @@ extension URL {
 
 public extension String {
     init(leetcodePath path: String) {
-        let base = "https://leetcode.com"
+        let base = "https://\(LeetcodeConfiguration.region.rawValue).com"
         self = "\(base)\(normalizedPath(path))"
     }
 }
@@ -19,4 +19,16 @@ private func normalizedPath(_ path: String) -> String {
     } else {
         return path
     }
+}
+
+public enum LeetcodeRegion: String {
+    case world = "leetcode"
+    case china = "leetcode-ch"
+}
+
+public struct LeetcodeConfiguration {
+    private init() { }
+    
+    public static var region: LeetcodeRegion = .world
+    
 }

@@ -1,15 +1,5 @@
-struct SubmitSolutionResponseWrapper: Decodable {
+public struct SubmitSolutionResponse: Decodable {
     let submission_id: Int
-}
-
-public enum SubmitSolutionResult {
-    case success(submissionID: Int)
-    case failure(Error)
-}
-
-public enum ListSubmissionsResult {
-    case success([SubmissionDumpRecord])
-    case failure(Error)
 }
 
 struct SubmissionDumpWrapper: Decodable {
@@ -24,32 +14,41 @@ struct QuestionDetailsWrapper: Decodable {
     let data: Data
 }
 
+public struct ProblemID {
+    public let questionID: Int
+    public let slug: String
+    
+    public init(questionID: Int, slug: String) {
+        self.questionID = questionID
+        self.slug = slug
+    }
+}
+
 public extension Leetcode {
-    func submitSolution(
-        forProblem sug: String,
-        questionID: Int,
-        code: Code,
-        completion: @escaping (SubmitSolutionResult) -> Void
+    func submitCode(
+        _ code: Code,
+        forProblemWithID problem: ProblemID,
+        completion: @escaping (Result<SubmitSolutionResponse, Error>) -> Void
     ) {
         let request = requestBuilder.build(
-            path: "/problems/\(sug)/submit/",
+            path: "/problems/\(problem.slug)/submit/",
             method: .post,
             origin: "/",
-            referer: "/problems/\(sug)/submissions/"
+            referer: "/problems/\(problem.slug)/submissions/"
         ) { request in
             try? request.setJSONBody([
-                "question_id": "\(questionID)",
+                "question_id": "\(problem.questionID)",
                 "lang": code.lang.value,
                 "typed_code": code.text
             ])
         }
         urlSession.request(
             request,
-            responseType: SubmitSolutionResponseWrapper.self,
+            responseType: SubmitSolutionResponse.self,
             completion: { result in
                 switch result {
                 case .success(let value):
-                    completion(.success(submissionID: value.submission_id))
+                    completion(.success(value))
                 case .decodingFailure(let error):
                     completion(.failure(error))
                 case .networkFailure(let error):
@@ -59,15 +58,17 @@ public extension Leetcode {
         )
     }
     
+    
+    
     func listSubmissions(
-        forProblem sug: String,
-        completion: @escaping (ListSubmissionsResult) -> Void
+        forProblemWithSlug slug: String,
+        completion: @escaping (Result<[SubmissionDumpRecord], Error>) -> Void
     ) {
         let request = requestBuilder.build(
-            path: "/api/submissions/\(sug)",
+            path: "/api/submissions/\(slug)",
             method: .get,
             origin: "/",
-            referer: "/problems/\(sug)/submissions/"
+            referer: "/problems/\(slug)/submissions/"
         )
         
         urlSession.request(
@@ -78,50 +79,6 @@ public extension Leetcode {
                 case .success(let value):
                     completion(.success(value.submissions_dump))
                 case .decodingFailure(let error):
-                    completion(.failure(error))
-                case .networkFailure(let error):
-                    completion(.failure(error))
-                }
-            }
-        )
-    }
-    
-    func details(
-        forProblem slug: String,
-        completion: @escaping (Result<QuestionDetails, Error>) -> Void
-    ) {
-        let query = """
-        query getQuestionDetail($titleSlug: String!) {
-            question(titleSlug: $titleSlug) {
-                content
-                stats
-                likes
-                dislikes
-                codeDefinition
-                sampleTestCase
-                enableRunCode
-                metaData
-                translatedContent
-            }
-        }
-        """
-        graphqlRequest(
-            using: .init(
-                query: query,
-                variables: ["titleSlug": slug],
-                operationName: "getQuestionDetail"
-            ),
-            method: .post,
-            origin: "/",
-            referer: "/",
-            responseType: QuestionDetailsWrapper.self,
-            completion: { result in
-                switch result {
-                case .success(let wrapper):
-                    completion(.success(wrapper.data.question))
-                case .decodingFailure(let error):
-                    completion(.failure(error))
-                case .graphqlError(let error):
                     completion(.failure(error))
                 case .networkFailure(let error):
                     completion(.failure(error))

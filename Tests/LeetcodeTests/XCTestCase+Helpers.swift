@@ -1,7 +1,7 @@
 import XCTest
 
 extension XCTestCase {
-    func runTest(
+    func runAsyncTest(
         description: String,
         timeout: TimeInterval = 120,
         file: StaticString = #file,
@@ -22,7 +22,7 @@ extension XCTestCase {
         line: UInt = #line,
         test: (XCTestExpectation) -> Void
     ) {
-        runTest(
+        runAsyncTest(
             description: "\(normalizedTestName(testName))...",
             timeout: timeout,
             file: file,

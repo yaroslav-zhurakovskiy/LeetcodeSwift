@@ -10,9 +10,7 @@ public class Leetcode {
         self.urlSession = LeetcodeURLSessionImpl()
     }
     
-    public func getUserInfo(
-        completion: @escaping (GetUserInfoResult) -> Void
-    ) {
+    public func getUserInfo(completion: @escaping (GetUserInfoResult) -> Void) {
         let query = """
         {
             user {
@@ -62,7 +60,7 @@ public class Leetcode {
     }
 
     public func deleteFavoriteQuestion(
-        by id: FavoriteQuestionID,
+        byID id: FavoriteQuestionID,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         let request = requestBuilder.build(
@@ -92,9 +90,10 @@ public class Leetcode {
         }
     }
     
+    
     public func addQuestion(
         withID questionID: Int,
-        toFavorite idHash: String,
+        toFavoriteListWithIDHash idHash: String,
         completion: @escaping (AddQuestionToFavoriteResult) -> Void
     ) {
         let query = """
@@ -116,11 +115,12 @@ public class Leetcode {
             operationName: "addQuestionToFavorite"
         )
         
+        // TODO: Fix referer path
         graphqlRequest(
             using: params,
             method: .post,
             origin: "/",
-            referer: "/problems/zigzag-conversion/",
+            referer: "/",
             responseType: AddQuestionToFavoriteDataWrapper.self,
             completion: { result in
                 switch result {
@@ -145,8 +145,7 @@ public class Leetcode {
     
     public func addQuestion(
         withID questionID: Int,
-        toNewFavoriteNamed name: String,
-        isPublic: Bool,
+        toNewFavoriteList list: NewFavoriteList,
         completion: @escaping (AddQuestionToNewFavoriteResult) -> Void
     ) {
         let query = """
@@ -164,8 +163,8 @@ public class Leetcode {
             query: query,
             variables: [
                 "questionId": "\(questionID)",
-                "isPublicFavorite": isPublic ? "true" : "false",
-                "name": name
+                "isPublicFavorite": list.isPublic ? "true" : "false",
+                "name": list.name
             ],
             operationName: "addQuestionToNewFavorite"
         )
@@ -173,7 +172,7 @@ public class Leetcode {
             using: params,
             method: .post,
             origin: "/",
-            referer: "/problems/zigzag-conversion/",
+            referer: "/",
             responseType: AddQuestionToNewFavoriteDataWrapper.self,
             completion: { result in
                 switch result {
@@ -194,6 +193,10 @@ public class Leetcode {
                 }
             }
         )
+    }
+    
+    public func getAllProblems(completion: @escaping (Result<GetProblemsResponse, Error>) -> Void) {
+        getProblems(forCategory: "all", completion: completion)
     }
     
     public func getProblems(
@@ -220,28 +223,42 @@ public class Leetcode {
         }
     }
     
-    public func interpretSolution(
-        _ solution: Solution,
-        forProblem slug: String,
-        completion: @escaping (Result<InterpretSolutionResponse, Error>) -> Void
+    public func details(
+        forProblemWithSlug slug: String,
+        completion: @escaping (Result<QuestionDetails, Error>) -> Void
     ) {
-       let request = requestBuilder.build(
-           path: "/problems/\(slug)/interpret_solution/",
-           method: .post,
-           origin: "/",
-           referer: "/problems/\(slug)/description/"
-       ) { request in
-            try? request.setJSONBody(solution)
+        let query = """
+        query getQuestionDetail($titleSlug: String!) {
+            question(titleSlug: $titleSlug) {
+                content
+                stats
+                likes
+                dislikes
+                codeDefinition
+                sampleTestCase
+                enableRunCode
+                metaData
+                translatedContent
+            }
         }
-        
-        urlSession.request(
-            request,
-            responseType: InterpretSolutionResponse.self,
+        """
+        graphqlRequest(
+            using: .init(
+                query: query,
+                variables: ["titleSlug": slug],
+                operationName: "getQuestionDetail"
+            ),
+            method: .post,
+            origin: "/",
+            referer: "/",
+            responseType: QuestionDetailsWrapper.self,
             completion: { result in
                 switch result {
-                case let .success(value):
-                    completion(.success(value))
+                case .success(let wrapper):
+                    completion(.success(wrapper.data.question))
                 case .decodingFailure(let error):
+                    completion(.failure(error))
+                case .graphqlError(let error):
                     completion(.failure(error))
                 case .networkFailure(let error):
                     completion(.failure(error))
@@ -250,16 +267,55 @@ public class Leetcode {
         )
     }
     
-    public func checkIntepretation(
+    public func interpretSolution(
+        _ solution: Solution,
+        completion: @escaping (Result<InterpretSolutionResponse, InterpreSolutionError>) -> Void
+    ) {
+       let request = requestBuilder.build(
+        path: "/problems/\(solution.problemID.slug)/interpret_solution/",
+           method: .post,
+           origin: "/",
+           referer: "/problems/\(solution.problemID.slug)/description/"
+       ) { request in
+            try? request.setJSONBody(solution)
+        }
+        
+        urlSession.request(request, completion: { result in
+                switch result {
+                case let .success(data, response):
+                    if let url = response.url, url.path.contains("subscribe") {
+                        completion(.failure(.paidResourceAccess))
+                    } else {
+                        let decoder = JSONDecoder()
+                        do {
+                            let value = try decoder.decode(InterpretSolutionResponse.self, from: data)
+                            completion(.success(value))
+                        } catch let error {
+                            let decodingError = HTTPURLResponseDecodingError(
+                                data: data,
+                                response: response,
+                                decodingError: error
+                            )
+                            completion(.failure(.decodingFailure(decodingError)))
+                        }
+                    }
+                case .failure(let error):
+                    completion(.failure(.networkFailure(error)))
+                }
+            }
+        )
+    }
+    
+    public func checkIntepretationWithID(
         _ id: String,
-        problemSlug: String,
+        forProblemWithSlug slug: String,
         completion: @escaping (Result<VerificationInfo, Error>) -> Void
     ) {
         let request = requestBuilder.build(
             path: "/submissions/detail/\(id)/check",
             method: .get,
             origin: "/",
-            referer: "/problems/\(problemSlug)/description"
+            referer: "/problems/\(slug)/description"
         )
         urlSession.request(request, completion: { [weak self] result in
                 switch result {
@@ -270,7 +326,6 @@ public class Leetcode {
                             CheckIntepretationStateWrapper.self,
                             from: data
                         )
-                        print(wrapper.state.rawValue)
                         if wrapper.state == .success {
                             do {
                                 let decoder = JSONDecoder()
@@ -288,9 +343,9 @@ public class Leetcode {
                                 completion(.failure(decodingError))
                             }
                         } else {
-                            self?.checkIntepretation(
+                            self?.checkIntepretationWithID(
                                 id,
-                                problemSlug: problemSlug,
+                                forProblemWithSlug: slug,
                                 completion: completion
                             )
                         }
@@ -311,25 +366,20 @@ public class Leetcode {
     
     public func testSolution(
         _ solution: Solution,
-        forProblem slug: String,
         completion: @escaping (Result<VerificationInfo, Error>) -> Void
     ) {
-        interpretSolution(
-            solution,
-            forProblem: slug,
-            completion: { [weak self] result  in
-                switch result {
-                case .success(let response):
-                    self?.checkIntepretation(
-                        response.interpret_id,
-                        problemSlug: slug,
-                        completion: completion
-                    )
-                case .failure(let error):
-                    completion(.failure(error))
-                }
+        interpretSolution(solution, completion: { [weak self] result  in
+            switch result {
+            case .success(let response):
+                self?.checkIntepretationWithID(
+                    response.interpret_id,
+                    forProblemWithSlug: solution.problemID.slug,
+                    completion: completion
+                )
+            case .failure(let error):
+                completion(.failure(error))
             }
-        )
+        })
     }
     
     public func deleteFavoriteList(

@@ -67,3 +67,15 @@ public struct AddQuestionToNewFavoriteDataWrapper: Decodable {
     
     public let data: Data
 }
+
+
+// TODO: Move out
+public struct NewFavoriteList {
+    public let name: String
+    public let isPublic: Bool
+    
+    public init(name: String, isPublic: Bool) {
+        self.name = name
+        self.isPublic = isPublic
+    }
+}

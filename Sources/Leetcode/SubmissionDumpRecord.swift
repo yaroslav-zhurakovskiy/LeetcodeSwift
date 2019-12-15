@@ -12,5 +12,5 @@ public struct SubmissionDumpRecord: Decodable {
     public let title: String
     public let memory: String
     public let code: String
-    public let compare_result: String
+    public let compare_result: String?
 }
