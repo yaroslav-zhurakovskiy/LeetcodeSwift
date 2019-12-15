@@ -6,19 +6,22 @@ private let twoSumQuestionID = 1
 private let twoSumProblemSlug = "two-sum"
 private let twoSumProblemID = ProblemID(questionID: twoSumQuestionID, slug: twoSumProblemSlug)
 private let algorithmsCategory = "algorithms"
+private let defaultLeetcodeRegion = LeetcodeConfiguration.region
 
-final class LeetcodeTests: XCTestCase {
+final class LeetcodeIntegrationTests: XCTestCase {
     private var leetcode: Leetcode!
     
     override func setUp() {
         super.setUp()
         
+        LeetcodeConfiguration.region = TestEnvironemt.region
         HTTPCookieStorageFactoryHolder.current = FakeHttpCookieStorageFactory()
         leetcode = Leetcode()
     }
     
     override func tearDown() {
         HTTPCookieStorageFactoryHolder.current = defaultHTTPCookieStorageFactory
+        LeetcodeConfiguration.region = defaultLeetcodeRegion
         
         super.tearDown()
     }
@@ -252,7 +255,7 @@ final class LeetcodeTests: XCTestCase {
     }
 }
 
-private extension LeetcodeTests {
+private extension LeetcodeIntegrationTests {
     func runTestForSession(
         testSessionName: String ,
         description: String = #function,
