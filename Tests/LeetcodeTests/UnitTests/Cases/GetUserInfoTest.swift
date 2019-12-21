@@ -1,46 +1,14 @@
 import XCTest
 @testable import Leetcode
 
-class GetUserInfoTest: XCTestCase {
-    var leetcode: Leetcode!
-    var urlSessionSpy: LeetcodeURLSessionSpy!
-    
-    override func setUp() {
-        super.setUp()
-        
-        continueAfterFailure = false
-        
-        urlSessionSpy = LeetcodeURLSessionSpy()
-        leetcode = Leetcode()
-        leetcode.urlSession = urlSessionSpy
-    }
-    
+class GetUserInfoTest: LeetcodeTestCase {
     func testSucessGetUserInfo() throws {
         var result: Result<UserInfo, Error>!
         try urlSessionSpy.setSuccessResult(bodyStub: .getUserInfoSuccess, statusCode: 200)
         
         leetcode.getUserInfo { result = $0 }
         
-        XCTAssertEqual(urlSessionSpy.requests.count, 1)
-        let request = urlSessionSpy.requests[0]
-        
-        assertURL(of: request, isEqualToLeetcodePath: "/graphql")
-        assertMethod(of: request, isEqualTo: "POST")
-        assertOrigin(of: request, isEqualToLeetcodePath: "/")
-        assertReferer(of: request, isEqualToLeetcodePath: "/")
-        assertBody(of: request, isEqualToJSON: [
-            "query": """
-            {
-                user {
-                    username
-                    isCurrentUserPremium
-                }
-            }
-            """,
-            "variables": [:]
-        ])
-        assertContentType(of: request, isEqualTo: .applicationJSON)
-        
+        assertCorrectRequest()
         assertSuccess(result)
         let info = retreiveValue(fromResult: result)
         XCTAssertTrue(info.isCurrentUserPremium)
@@ -53,9 +21,35 @@ class GetUserInfoTest: XCTestCase {
         
         leetcode.getUserInfo { result = $0 }
         
+        assertCorrectRequest()
         XCTAssertEqual(urlSessionSpy.requests.count, 1)
         assertFailure(result)
         let error = retreiveError(fromResult: result, as: TestError.self)
         XCTAssertTrue(error === TestError.shared)
+    }
+    
+    private func assertCorrectRequest(line: UInt = #line) {
+        XCTAssertEqual(urlSessionSpy.requests.count, 1, "Number of requets", line: line)
+        let request = urlSessionSpy.requests[0]
+        assertURL(of: request, isEqualToLeetcodePath: "/graphql", line: line)
+        assertMethod(of: request, isEqualTo: "POST", line: line)
+        assertOrigin(of: request, isEqualToLeetcodePath: "/", line: line)
+        assertReferer(of: request, isEqualToLeetcodePath: "/", line: line)
+        assertBody(
+            of: request,
+            isEqualToJSON: [
+            "query": """
+            {
+                user {
+                    username
+                    isCurrentUserPremium
+                }
+            }
+            """,
+            "variables": [:]
+            ],
+            line: line
+        )
+        assertContentType(of: request, isEqualTo: .applicationJSON, line: line)
     }
 }

@@ -31,7 +31,15 @@ func retreiveError<Value, Error>(fromResult result: Result<Value, Error>) -> Err
 
 func retreiveError<Value, Err: Error, OtherErr: Error>(
     fromResult result: Result<Value, Err>,
-    as type: OtherErr.Type
+    as type: OtherErr.Type,
+    file: StaticString = #file,
+    line: UInt = #line
 ) -> OtherErr {
-    return retreiveError(fromResult: result) as! OtherErr
+    let error = retreiveError(fromResult: result)
+    if let error = error as? OtherErr {
+        return error
+    } else {
+        XCTFail("\(error) is not \(type)", file: file, line: line)
+        exit(-1)
+    }
 }

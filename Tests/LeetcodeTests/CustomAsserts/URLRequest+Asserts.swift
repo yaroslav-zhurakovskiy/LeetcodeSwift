@@ -41,6 +41,14 @@ private func formatValueDontMatch(forKey key: String) -> String {
     return "Values of '\(key)' don't match"
 }
 
+func assertEmptyBody(
+    of request: URLRequest,
+    file: StaticString = #file,
+    line: UInt = #line
+) {
+    XCTAssertNil(request.httpBody, "Body", file: file, line: line)
+}
+
 func assertOrigin(
     of request: URLRequest,
     isEqualToLeetcodePath path: String,
@@ -87,7 +95,7 @@ func assertHeader(
     line: UInt = #line
 ) {
     let headers = request.allHTTPHeaderFields ?? [:]
-    XCTAssertEqual(headers[header] ?? "", value, file: file, line: line)
+    XCTAssertEqual(headers[header] ?? "", value, "\(header) header", file: file, line: line)
 }
 
 // TODO: Move out
@@ -127,7 +135,13 @@ func assertContentType(
     file: StaticString = #file,
     line: UInt = #line
 ) {
-    assertHeader("Content-Type", of: request, isEqualTo: value.value)
+    assertHeader(
+        "Content-Type",
+        of: request,
+        isEqualTo: value.value,
+        file: file,
+        line: line
+    )
 }
 
 extension String {

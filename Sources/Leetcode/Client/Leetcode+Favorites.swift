@@ -12,10 +12,7 @@ extension Leetcode {
                 completion(.success(value))
             case .decodingFailure(let error):
                 if error.response.statusCode == 401 {
-                    completion(.failure(LeetcodeUnauthorized(
-                        responseBody: error.body,
-                        response: error.response
-                    )))
+                    completion(.failure(LeetcodeUnauthorized()))
                 } else {
                     completion(.failure(error))
                 }
@@ -32,8 +29,8 @@ extension Leetcode {
         let request = requestBuilder.build(
             path: "/list/api/questions/\(id.favoriteIDHash)/\(id.questionID)",
             method: .delete,
-            origin: "https://leetcode.com",
-            referer: "https://leetcode.com/list/"
+            origin: "/",
+            referer: "/list"
         ) { request in
             request.setContentType(.applicationJSON)
         }
@@ -72,12 +69,7 @@ extension Leetcode {
                 if response.statusCode == 204 {
                     completion(.success(()))
                 } else {
-                    let error = SomeLeetcodeError(
-                        localizedDescription: String(
-                            data: data,
-                            encoding: .utf8
-                        ) ?? ""
-                    )
+                    let error = LeetcodeHTTPError(responseBody: data, response: response)
                     completion(.failure(error))
                 }
             case .failure(let error):

@@ -16,6 +16,23 @@ public enum LeetcodeURLDecodedResponseResult<Value: Decodable> {
     case networkFailure(Error)
 }
 
+public protocol LeetcodeJSONDecoder {
+    func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T
+}
+
+public class LeetcodeJSONDecoderImpl: LeetcodeJSONDecoder {
+    public func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
+        let decoder = JSONDecoder()
+        return try decoder.decode(type, from: data)
+    }
+}
+
+public struct LeetcodeJSONDecoderHolder {
+    private init() { }
+    
+    public static var current: LeetcodeJSONDecoder = LeetcodeJSONDecoderImpl()
+}
+
 public extension LeetcodeURLSession {
     func request<Response: Decodable>(
         _ request: URLRequest,
@@ -25,9 +42,8 @@ public extension LeetcodeURLSession {
         self.request(request) { result in
             switch result {
             case let .success(data, response):
-                let decoder = JSONDecoder()
                 do {
-                    let value = try decoder.decode(responseType, from: data)
+                    let value = try LeetcodeJSONDecoderHolder.current.decode(responseType, from: data)
                     completion(.success(value))
                 } catch let error {
                     let decodingError = HTTPURLResponseDecodingError(

@@ -6,11 +6,12 @@ public struct LeetcodeHTTPError: Error {
 }
 
 public struct LeetcodeUnauthorized: Error, CustomDebugStringConvertible {
-    public let responseBody: String
-    public let response: HTTPURLResponse
+    public init() {
+        
+    }
     
     public var localizedDescription: String {
-        return "\(response.statusCode) Unauthorized"
+        return "401 Unauthorized"
     }
     
     public var debugDescription: String {

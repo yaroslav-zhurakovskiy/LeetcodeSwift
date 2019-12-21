@@ -1,5 +1,6 @@
 import Foundation
 import Leetcode
+import XCTest
 
 class LeetcodeURLSessionSpy: LeetcodeURLSession {
     private(set) var requests: [URLRequest] = []
@@ -16,7 +17,7 @@ class LeetcodeURLSessionSpy: LeetcodeURLSession {
             statusCode: statusCode,
             httpVersion: nil,
             headerFields: nil
-            )!
+        )!
         setResult(.success((body, response)))
     }
     
@@ -37,6 +38,14 @@ class LeetcodeURLSessionSpy: LeetcodeURLSession {
         completion: @escaping (LeetcodeURLResponseResult) -> Void
     ) {
         requests.append(request)
-        completion(result!)
+        if let result = result {
+            completion(result)
+        }
+    }
+}
+
+class LeetcodeURLSessionMock: LeetcodeURLSessionSpy {
+    func assertOneRequest(file: StaticString = #file, line: UInt = #line) {
+        XCTAssertEqual(requests.count, 1, "One request", file: file, line: line)
     }
 }
