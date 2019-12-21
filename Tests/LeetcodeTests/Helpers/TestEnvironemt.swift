@@ -18,4 +18,8 @@ struct TestEnvironemt {
             fatalError("Unknown value '\(region)' for 'LEETCODE_REGION' envrionemt variable")
         }
     }
+    
+    static var timeout: TimeInterval {
+        return 120
+    }
 }

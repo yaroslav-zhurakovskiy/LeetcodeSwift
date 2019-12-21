@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeetcodeLoginConrollerImpl" customModule="LeetcodeSwiftExample" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="hv4-pu-X5T" id="4BW-66-9ot"/>
+                <outlet property="titleView" destination="gvg-6g-bna" id="qLp-CE-kk1"/>
+                <outlet property="view" destination="DyF-dr-f5R" id="miw-sj-36r"/>
+                <outlet property="webView" destination="X6W-Pr-zll" id="Rt2-mK-HKq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DyF-dr-f5R">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6W-Pr-zll">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hv4-pu-X5T">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="X6W-Pr-zll" firstAttribute="leading" secondItem="aqb-yw-ntM" secondAttribute="leading" id="4lB-BA-DO1"/>
+                <constraint firstItem="X6W-Pr-zll" firstAttribute="top" secondItem="aqb-yw-ntM" secondAttribute="top" id="BJN-1D-y0P"/>
+                <constraint firstItem="hv4-pu-X5T" firstAttribute="centerY" secondItem="DyF-dr-f5R" secondAttribute="centerY" id="RYQ-1c-hf9"/>
+                <constraint firstItem="aqb-yw-ntM" firstAttribute="trailing" secondItem="X6W-Pr-zll" secondAttribute="trailing" id="S64-dq-9Qw"/>
+                <constraint firstItem="aqb-yw-ntM" firstAttribute="bottom" secondItem="X6W-Pr-zll" secondAttribute="bottom" id="U8j-bl-N6j"/>
+                <constraint firstItem="hv4-pu-X5T" firstAttribute="centerX" secondItem="DyF-dr-f5R" secondAttribute="centerX" id="jL2-al-65y"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="aqb-yw-ntM"/>
+            <point key="canvasLocation" x="49" y="-508"/>
+        </view>
+        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="gvg-6g-bna">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leetcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cel-mg-F4a">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="110"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="dWB-3F-Sjq"/>
+            <point key="canvasLocation" x="513" y="-78"/>
+        </stackView>
+    </objects>
+</document>

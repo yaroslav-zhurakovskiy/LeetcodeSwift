@@ -19,7 +19,7 @@ public struct HTTPCookieStorageFactoryImpl: HTTPCookieStorageFactory {
     
     public func create() -> HTTPCookieStorage {
         if #available(OSX 10.11, *), #available(iOS 9.0, *) {
-            return createUsingTonainerIdentifier()
+            return createUsingConainerIdentifier()
         } else {
             return .shared
         }
@@ -27,7 +27,7 @@ public struct HTTPCookieStorageFactoryImpl: HTTPCookieStorageFactory {
     
     @available(OSX 10.11, *)
     @available(iOS 9.0, *)
-    private func createUsingTonainerIdentifier() -> HTTPCookieStorage {
+    private func createUsingConainerIdentifier() -> HTTPCookieStorage {
         if let id = groupContainerIdentifier {
             return .sharedCookieStorage(forGroupContainerIdentifier: id)
         } else {

@@ -3,7 +3,7 @@ import XCTest
 extension XCTestCase {
     func runAsyncTest(
         description: String,
-        timeout: TimeInterval = 120,
+        timeout: TimeInterval = TestEnvironemt.timeout,
         file: StaticString = #file,
         line: UInt = #line,
         test: (XCTestExpectation) -> Void
@@ -17,7 +17,7 @@ extension XCTestCase {
     
     func runAsyncTest(
         testName: String = #function,
-        timeout: TimeInterval = 120,
+        timeout: TimeInterval = TestEnvironemt.timeout,
         file: StaticString = #file,
         line: UInt = #line,
         test: (XCTestExpectation) -> Void

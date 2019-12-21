@@ -1,33 +1,53 @@
 import Foundation
 
-public struct HTTPURLResponseDecodingError: Error {
-    public let data: Data
-    public let body: String
+public protocol LeetcodeError: Error, CustomDebugStringConvertible {
+    
+}
+
+public protocol LeetcodeWrappingError: LeetcodeError {
+    associatedtype ErrorType: Error = Error
+    
+    var originalError: ErrorType { get }
+}
+
+public extension LeetcodeWrappingError {
+    var localizedDescription: String {
+        return originalError.localizedDescription
+    }
+    
+    var debugDescription: String {
+        return (originalError as CustomDebugStringConvertible).debugDescription
+    }
+}
+
+public struct HTTPURLResponseDecodingError: LeetcodeWrappingError {
     public let response: HTTPURLResponse
-    public let decodingError: Error
+    public let body: String
+    public let originalError: Error
     
     init(
         data: Data,
         response: HTTPURLResponse,
         decodingError: Error
     ) {
-        self.data = data
         self.body = String(data: data, encoding: .utf8) ?? ""
         self.response = response
-        self.decodingError = decodingError
+        self.originalError = decodingError
     }
 }
 
-
-extension HTTPURLResponseDecodingError {
-    public var localizedDescription: String {
-        return decodingError.localizedDescription
-    }
-}
-
-
-extension HTTPURLResponseDecodingError: CustomDebugStringConvertible {
-    public var debugDescription: String {
-        return (decodingError as CustomDebugStringConvertible).debugDescription
+public struct GeneralHTTPURLResponseDecodingError: LeetcodeWrappingError {
+    public let body: String
+    public let response: HTTPURLResponse
+    public let originalError: Error
+    
+    init(
+        data: Data,
+        response: HTTPURLResponse,
+        originalError: Error
+    ) {
+        self.body = String(data: data, encoding: .utf8) ?? ""
+        self.response = response
+        self.originalError = originalError
     }
 }

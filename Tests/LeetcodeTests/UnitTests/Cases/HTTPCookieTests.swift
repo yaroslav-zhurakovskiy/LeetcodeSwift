@@ -28,10 +28,11 @@ class HTTPCookieTests: XCTestCase {
         XCTAssertTrue(cookie.isHTTPOnly)
         XCTAssertEqual(cookie.path, "/")
         XCTAssertTrue(cookie.isSecure)
-        XCTAssertTrue(cookie.domain, ".test.com")
+        XCTAssertEqual(cookie.domain, ".test.com")
     }
 }
 
+// TODO: Move out
 extension HTTPCookie {
     convenience init?(fromString string: String) {
         var properties: [HTTPCookiePropertyKey: Any] = [:]

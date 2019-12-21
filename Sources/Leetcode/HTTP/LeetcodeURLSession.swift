@@ -45,9 +45,13 @@ public extension LeetcodeURLSession {
 }
 
 public class LeetcodeURLSessionImpl: LeetcodeURLSession {
-    private let session: URLSession
+    public let session: URLSession
     
-    public init() {
+    public init(cookieStorage: HTTPCookieStorage) {
+// TODO: Fix
+//        let configuration = URLSessionConfiguration()
+//        configuration.httpCookieStorage = cookieStorage
+//        configuration.httpShouldSetCookies = true
         session = .shared
     }
     
@@ -55,15 +59,12 @@ public class LeetcodeURLSessionImpl: LeetcodeURLSession {
         _ request: URLRequest,
         completion: @escaping (LeetcodeURLResponseResult) -> Void
     ) {
-        let task = session.dataTask(with: request) {
-        (data: Data?, response: URLResponse?, error: Error?) in
-
-        if let data = data, let response = response as? HTTPURLResponse {
-           completion(.success((data: data, response: response)))
-        } else if let error = error {
-           completion(.failure(error))
-        }
-
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let data = data, let response = response as? HTTPURLResponse {
+               completion(.success((data: data, response: response)))
+            } else if let error = error {
+               completion(.failure(error))
+            }
         }
         task.resume()
     }

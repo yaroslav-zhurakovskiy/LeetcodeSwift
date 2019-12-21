@@ -1,0 +1,54 @@
+//
+//  CategoriesController.swift
+//  LeetcodeSwiftExample
+//
+//  Created by Yaroslav Zhurakovskiy on 16.12.2019.
+//  Copyright © 2019 yaroslavz. All rights reserved.
+//
+
+import UIKit
+import Leetcode
+import LeetcodeUI
+
+class CategoriesController: UITableViewController {
+    private let leetcode = Leetcode()
+    
+    @IBOutlet weak var loginLogoutButton: UIBarButtonItem!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let cell = sender as? UITableViewCell,
+            let controller = segue.destination as? ProblemsController
+            else {
+                return
+        }
+        
+        
+        controller.category = cell.detailTextLabel?.text
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateUI()
+    }
+    
+    @IBAction func logInLogOut() {
+        if leetcode.isLoggedIn {
+            leetcode.logout()
+            updateUI()
+        } else {
+            let controller = LeetcodeLoginConroller()
+            controller.didLogin = { [weak self] in
+                self?.updateUI()
+            }
+            present(controller, animated: true, completion: { [weak self] in
+                self?.updateUI()
+            })
+        }
+    }
+    
+    private func updateUI() {
+        loginLogoutButton.title = leetcode.isLoggedIn ? "Log Out" : "Log In"
+    }
+}

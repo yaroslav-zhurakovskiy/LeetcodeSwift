@@ -1,5 +1,5 @@
 import XCTest
-import Leetcode
+@testable import Leetcode
 
 class GetUserInfoTest: XCTestCase {
     var leetcode: Leetcode!

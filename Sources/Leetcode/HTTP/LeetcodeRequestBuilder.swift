@@ -11,8 +11,8 @@ public enum LeetcodeHttpMethod: String {
 struct LeetcodeRequestBuilder {
     private let cookieStorage: HTTPCookieStorage
     
-    init() {
-        cookieStorage = HTTPCookieStorageFactoryHolder.current.create()
+    init(cookieStorage: HTTPCookieStorage) {
+        self.cookieStorage = cookieStorage
     }
     
     func build(path: String, method: LeetcodeHttpMethod) -> URLRequest {
@@ -82,7 +82,6 @@ struct LeetcodeRequestBuilder {
         var request =  URLRequest(leetcodePath: path)
         
         if let cookies = self.cookies(for: request) {
-            request.setCookie(cookies)
             if let cookie = cookies.first(where: { $0.name == "csrftoken" }) {
                 request.setValue(cookie.value, forHTTPHeaderField: .XCSRFTokenHeader)
             }

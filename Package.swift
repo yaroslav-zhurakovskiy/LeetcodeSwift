@@ -6,12 +6,15 @@ import PackageDescription
 let package = Package(
     name: "Leetcode",
     products: [
-        .library(name: "Leetcode", targets: ["Leetcode"])
+        .library(name: "Leetcode", targets: ["Leetcode"]),
+        .library(name: "LeetcodeUI", targets: ["LeetcodeUI"])
     ],
     dependencies: [],
     targets: [
         .target(name: "Leetcode", dependencies: []),
-        .testTarget(name: "LeetcodeTests", dependencies: ["Leetcode"])
+        .target(name: "LeetcodeUI", dependencies: ["Leetcode"]),
+        .testTarget(name: "LeetcodeTests", dependencies: ["Leetcode"]),
+        .testTarget(name: "LeetcodeUITests", dependencies: ["LeetcodeUI"])
     ],
     swiftLanguageVersions: [.v4]
 )

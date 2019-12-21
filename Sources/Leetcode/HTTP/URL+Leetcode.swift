@@ -1,6 +1,6 @@
 import Foundation
 
-extension URL {
+public extension URL {
     init(leetcodePath path: String) {
         self.init(string: String(leetcodePath: path))!
     }

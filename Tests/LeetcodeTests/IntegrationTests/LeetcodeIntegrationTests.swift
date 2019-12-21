@@ -11,27 +11,28 @@ private let defaultLeetcodeRegion = LeetcodeConfiguration.region
 final class LeetcodeIntegrationTests: XCTestCase {
     private var leetcode: Leetcode!
     
-    override func setUp() {
+     override class func setUp() {
         super.setUp()
         
         LeetcodeConfiguration.region = TestEnvironemt.region
         
         removeAllCookies()
-        leetcode = Leetcode()
         loginUsingCookie()
     }
     
-    private func removeAllCookies( ){
-        let storage = HTTPCookieStorageFactoryHolder.current.create()
-        storage.removeCookies(since: Date(timeIntervalSince1970: 0))
-    }
-    
-    override func tearDown() {
+    override class func tearDown() {
         LeetcodeConfiguration.region = defaultLeetcodeRegion
         logout()
         removeAllCookies()
         
         super.tearDown()
+    }
+    
+    
+    override func setUp() {
+        super.setUp()
+        
+        leetcode = Leetcode()
     }
     
     func testGetUserInfo() {
@@ -79,9 +80,9 @@ final class LeetcodeIntegrationTests: XCTestCase {
                 completion: { [weak self] result in
                     assertSuccess(result)
                     
-                    if case .success(let favoriteIdHash) = result {
+                    if case .success(let response) = result {
                         self?.leetcode.deleteFavoriteList(
-                            byHashID: favoriteIdHash,
+                            byHashID: response.favoriteIdHash,
                             completion: { result in
                                 assertSuccess(result)
                                 exp.fulfill()
@@ -106,15 +107,12 @@ final class LeetcodeIntegrationTests: XCTestCase {
         runAsyncTest { exp in
             createTestFavoriteList(name: "DeleteFavoriteList") { [weak self] result in
                 switch result {
-                case .success(let favoriteIdHash):
-                    self?.leetcode.deleteFavoriteList(byHashID: favoriteIdHash) { result in
+                case .success(let response):
+                    self?.leetcode.deleteFavoriteList(byHashID: response.favoriteIdHash) { result in
                         assertSuccess(result)
                         exp.fulfill()
                     }
-                case .someFailure(let error):
-                    XCTAssertNil(error)
-                    exp.fulfill()
-                case .networkFailure(let error):
+                case .failure(let error):
                     XCTAssertNil(error)
                     exp.fulfill()
                 }
@@ -192,7 +190,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
         let testSessionName = "testcase"
         
         runAsyncTest { exp in
-            leetcode.createSessionWithName(testSessionName) { [weak self] result in
+            leetcode.createSession(withName: testSessionName) { [weak self] result in
                 assertSuccess(result)
                 if case let .success(info) = result {
                     if let session = info.sessions.first(where: { $0.name == testSessionName }) {
@@ -216,7 +214,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
         let newTestSessionName = "new-name-testcase"
         
         runTestForSession(testSessionName: testSessionName) { [weak self] session, fulfill in
-            self?.leetcode.renameSessionWithID(session.id, into: newTestSessionName, completion: { result in
+            self?.leetcode.renameSession(withID: session.id, to: newTestSessionName, completion: { result in
                 assertSuccess(result)
                 fulfill()
             })
@@ -272,7 +270,7 @@ private extension LeetcodeIntegrationTests {
         test: @escaping (_ session: Session, _ callback: @escaping () -> Void) -> Void
     ) {
         runAsyncTest(description: description) { exp in
-            leetcode.createSessionWithName(testSessionName) { [weak self] result in
+            leetcode.createSession(withName: testSessionName) { [weak self] result in
                 assertSuccess(result)
                 if case let .success(info) = result {
                     if let session = info.sessions.first(where: { $0.name == testSessionName }) {
@@ -306,17 +304,15 @@ private extension LeetcodeIntegrationTests {
                 .replacingOccurrences(of: "test", with: "")
             createTestFavoriteList(name: normalizedName) { [weak self] result in
                 switch result {
-                case .success(let favoriteIdHash):
+                case .success(let response):
+                    let favoriteIdHash = response.favoriteIdHash
                     test(favoriteIdHash, {
                         self?.leetcode.deleteFavoriteList(byHashID: favoriteIdHash, completion: { result in
                             assertSuccess(result, file: file, line: line)
                             exp.fulfill()
                         })
                     })
-                case .someFailure(let error):
-                    XCTAssertNil(error, "CreateTestFavoriteList", file: file, line: line)
-                    exp.fulfill()
-                case .networkFailure(let error):
+                case .failure(let error):
                     XCTAssertNil(error, "CreateTestFavoriteList", file: file, line: line)
                     exp.fulfill()
                 }
@@ -324,7 +320,10 @@ private extension LeetcodeIntegrationTests {
         }
     }
     
-    func createTestFavoriteList(name: String, completion: @escaping (AddQuestionToNewFavoriteResult) -> Void) {
+    func createTestFavoriteList(
+        name: String,
+        completion: @escaping (Result<AddQuestionResponse, Error>) -> Void
+    ) {
         leetcode.addQuestion(
             withID: twoSumQuestionID,
             toNewFavoriteList: NewFavoriteList(name: name, isPublic: false),
@@ -335,24 +334,32 @@ private extension LeetcodeIntegrationTests {
 
 
 extension LeetcodeIntegrationTests {
-    private func loginUsingCookie() {
-        let exp = expectation(description: #function)
-        
-        let cookie = HTTPCookie(
-            fromString: """
-            LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMjQ3NjQxOCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNGFlZTFhMGQ1NDlhNWRjN2YzMjg2ZmExNmE4MGNhODI1NjVhNmY1MSIsImlkIjoyNDc2NDE4LCJlbWFpbCI6Inlhcm9zbGF2LnpodXJha292c2tpeUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Inlhcm9zbGF2eiIsInVzZXJfc2x1ZyI6Inlhcm9zbGF2eiIsImF2YXRhciI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNThkMTdmNzVkNGMxZDk5NWRjNzVkOWY0YmYxMDkyOTMucG5nP3M9MjAwIiwidGltZXN0YW1wIjoiMjAxOS0xMi0xNSAyMDoxMzoyNi4xMjA5NzMrMDA6MDAiLCJJUCI6IjE3Ni4zNi4xNzkuMTg3IiwiSURFTlRJVFkiOiJlOTJmMjA0MTBmOGFiZTg2ZjA5ZGNiYWM4Mzc0NmQyMCIsIl9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMH0.HQArY8RPpaeXYeAKv7eomoFoXNxhKEf4pr66wHV-o6g; Domain=.leetcode.com; expires=Sun, 29 Dec 2019 20:13:26 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax; Secure
-            """
-        )!
-        
-        leetcode.login(usingSessionCookie: cookie) { result in
-            assertSuccess(result)
-            exp.fulfill()
-        }
-        
-        waitForExpectations(timeout: 120, handler: nil)
+    private static let leetcode = Leetcode()
+    private static let waiter = XCTWaiter()
+    
+    private class func removeAllCookies() {
+        let storage = HTTPCookieStorageFactoryHolder.current.create()
+        storage.removeCookies(since: Date(timeIntervalSince1970: 0))
     }
     
-    private func logout() {
+    private class func loginUsingCookie() {
+        let exp = XCTestExpectation(description: #function)
+        
+        leetcode.login(
+            usingSessionCookieValue: """
+            eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMjQ3NjQxOCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNGFlZTFhMGQ1NDlhNWRjN2YzMjg2ZmExNmE4MGNhODI1NjVhNmY1MSIsImlkIjoyNDc2NDE4LCJlbWFpbCI6Inlhcm9zbGF2LnpodXJha292c2tpeUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Inlhcm9zbGF2eiIsInVzZXJfc2x1ZyI6Inlhcm9zbGF2eiIsImF2YXRhciI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNThkMTdmNzVkNGMxZDk5NWRjNzVkOWY0YmYxMDkyOTMucG5nP3M9MjAwIiwidGltZXN0YW1wIjoiMjAxOS0xMi0xNSAyMDoxMzoyNi4xMjA5NzMrMDA6MDAiLCJJUCI6IjE3Ni4zNi4xNzkuMTg3IiwiSURFTlRJVFkiOiJlOTJmMjA0MTBmOGFiZTg2ZjA5ZGNiYWM4Mzc0NmQyMCIsIl9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMH0.HQArY8RPpaeXYeAKv7eomoFoXNxhKEf4pr66wHV-o6g
+            """,
+            expires: Date(timeIntervalSinceNow: 60 * 24 * 365),
+            completion: { result in
+                assertSuccess(result)
+                exp.fulfill()
+            }
+        )
+        
+        waiter.wait(for: [exp], timeout: TestEnvironemt.timeout)
+    }
+    
+    private class func logout() {
         leetcode.logout()
     }
 }

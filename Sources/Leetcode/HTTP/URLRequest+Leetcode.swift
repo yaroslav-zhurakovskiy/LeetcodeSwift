@@ -26,14 +26,6 @@ extension URLRequest {
 }
 
 extension URLRequest {
-    mutating func setCookie(_ cookies: [HTTPCookie]) {
-        // TODO: Fix
-        let value = cookies.map { "\($0.name)=\($0.value)" }.joined(separator: ";")
-        setValue(value, forHTTPHeaderField: .cookie)
-    }
-}
-
-extension URLRequest {
     init(leetcodePath path: String) {
         self.init(url: .init(leetcodePath: path))
         

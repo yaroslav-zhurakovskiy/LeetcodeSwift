@@ -1,15 +1,5 @@
 import Foundation
 
-public struct LoginGredenetials {
-    public let login: String
-    public let password: String
-    
-    public init(login: String, password: String) {
-        self.login = login
-        self.password = password
-    }
-}
-
 public extension Leetcode {
     func login(usingSessionCookie cookie: HTTPCookie, completion: @escaping (Result<Void, Error>) -> Void) {
         fetchCookies { result in
@@ -24,45 +14,18 @@ public extension Leetcode {
         }
     }
     
-    func login(
-        using credentials: LoginGredenetials,
-        completion: @escaping (Result<Void, Error>) -> Void
-    ) {
-        fetchAndSaveCookies { [weak self] result in
-            switch result {
-            case .success:
-                self?.actualLogin(using: credentials, completion: completion)
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func actualLogin(
-        using credentials: LoginGredenetials,
-        completion: @escaping (Result<Void, Error>) -> Void
-    ) {
-        let request = requestBuilder.build(
-            path: "/accounts/login/",
-            method: .post,
-            origin: "/",
-            referer: "/accounts/login/"
-        ) { request in
-            request.setFormData([
-                "login": credentials.login,
-                "password": credentials.password
-            ])
-        }
-        urlSession.request(request) { result in
-            switch result {
-            case let .success(data, response):
-                if response.statusCode == 200 {
-                    completion(.success(()))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+    func login(usingSessionCookieValue value: String, expires: Date, completion: @escaping (Result<Void, Error>) -> Void) {
+        let cookie = HTTPCookie(properties: [
+            .name: LeetcodeConstants.sessionCookieName,
+            .value: value,
+            .expires: expires,
+            .domain: ".leetcode.com",
+            .path: "/",
+            .secure: true,
+            HTTPCookiePropertyKey("SameSite"): "Lax",
+            HTTPCookiePropertyKey("HttpOnly"): true,
+        ])!
+        login(usingSessionCookie: cookie, completion: completion)
     }
     
     private func fetchAndSaveCookies(completion: @escaping (Result<Void, Error>) -> Void) {
@@ -86,9 +49,20 @@ public extension Leetcode {
 
 public extension Leetcode {
     func logout() {
-        let storage = HTTPCookieStorageFactoryHolder.current.create()
-        if let cookies = storage.cookies {
-            cookies.forEach(storage.deleteCookie(_:))
+        if let cookie = findSessionCookie() {
+            cookieStorage.deleteCookie(cookie)
+        }
+    }
+    
+    var isLoggedIn: Bool {
+        return findSessionCookie() != nil
+    }
+    
+    private func findSessionCookie() -> HTTPCookie? {
+        if let cookies = cookieStorage.cookies {
+            return cookies.first(where: { $0.name == LeetcodeConstants.sessionCookieName })
+        } else {
+            return nil
         }
     }
 }
