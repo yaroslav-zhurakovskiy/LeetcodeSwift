@@ -7,6 +7,10 @@ class TestCaseInputTests: XCTestCase {
         assert(input, isEqualTo: "2\n2")
     }
     
+    func testEmpty() {
+        assert(.empty, isEqualTo: "")
+    }
+    
     func testCreateFromConvertibles() {
         let input = TestCaseInput(from: [
             FakeTestCaseInputParamConvertible(value: "v1"),

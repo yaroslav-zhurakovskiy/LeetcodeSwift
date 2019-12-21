@@ -105,7 +105,7 @@ func assertMethod(
     file: StaticString = #file,
     line: UInt = #line
 ) {
-    XCTAssertEqual(request.httpMethod ?? "", method, file: file, line: line)
+    XCTAssertEqual(request.httpMethod ?? "", method, "Method", file: file, line: line)
 }
 
 // TODO: Move out
@@ -125,8 +125,8 @@ func assertURL(
     file: StaticString = #file,
     line: UInt = #line
 ) {
-    XCTAssertNotNil(request.url, file: file, line: line)
-    XCTAssertEqual(request.url!.absoluteString, url, file: file, line: line)
+    XCTAssertNotNil(request.url, "URL", file: file, line: line)
+    XCTAssertEqual(request.url!.absoluteString, url, "URL path", file: file, line: line)
 }
 
 func assertContentType(

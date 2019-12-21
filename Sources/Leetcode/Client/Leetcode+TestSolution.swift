@@ -30,18 +30,18 @@ extension Leetcode {
                             response: response,
                             decodingError: error
                         )
-                        completion(.failure(.decodingFailure(decodingError)))
+                        completion(.failure(.generic(decodingError)))
                     }
                 }
             case .failure(let error):
-                completion(.failure(.networkFailure(error)))
+                completion(.failure(.generic(error)))
             }
         }
         )
     }
     
-    public func checkIntepretationWithID(
-        _ id: String,
+    public func checkIntepretation(
+        withID id: String,
         forProblemWithSlug slug: String,
         completion: @escaping (Result<VerificationInfo, Error>) -> Void
     ) {
@@ -77,8 +77,8 @@ extension Leetcode {
                             completion(.failure(decodingError))
                         }
                     } else {
-                        self?.checkIntepretationWithID(
-                            id,
+                        self?.checkIntepretation(
+                            withID: id,
                             forProblemWithSlug: slug,
                             completion: completion
                         )
@@ -94,8 +94,7 @@ extension Leetcode {
             case .failure(let error):
                 completion(.failure(error))
             }
-            }
-        )
+        })
     }
     
     public func testSolution(
@@ -105,8 +104,8 @@ extension Leetcode {
         interpretSolution(solution, completion: { [weak self] result  in
             switch result {
             case .success(let response):
-                self?.checkIntepretationWithID(
-                    response.interpret_id,
+                self?.checkIntepretation(
+                    withID: response.interpret_id,
                     forProblemWithSlug: solution.problemID.slug,
                     completion: completion
                 )

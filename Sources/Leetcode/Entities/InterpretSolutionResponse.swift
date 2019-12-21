@@ -5,6 +5,5 @@ public struct InterpretSolutionResponse: Decodable {
 
 public enum InterpretSolutionError: Error {
     case paidResourceAccess
-    case decodingFailure(HTTPURLResponseDecodingError)
-    case networkFailure(Error)
+    case generic(Error)
 }
