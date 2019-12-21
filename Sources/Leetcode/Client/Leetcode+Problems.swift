@@ -67,7 +67,7 @@ extension Leetcode {
                 case .networkFailure(let error):
                     completion(.failure(error))
                 }
-        }
+            }
         )
     }
     
