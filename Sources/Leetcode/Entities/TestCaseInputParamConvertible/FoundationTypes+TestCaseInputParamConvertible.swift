@@ -8,7 +8,7 @@ extension NSNumber: TestCaseInputParamConvertible {
 
 extension NSString: TestCaseInputParamConvertible {
     public var testCaseInputParamValue: String {
-        return "\(self)"
+        return "\"\(self)\""
     }
 }
 
