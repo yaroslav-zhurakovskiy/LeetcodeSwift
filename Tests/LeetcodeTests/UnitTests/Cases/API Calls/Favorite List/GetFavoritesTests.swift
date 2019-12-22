@@ -136,10 +136,6 @@ class GetFavoritesTests: LeetcodeTestCase {
         let _ = retreiveError(fromResult: result, as: LeetcodeUnauthorized.self)
     }
     
-    func testDecodingError() {
-        XCTFail("Implement")
-    }
-    
     func testFailure() {
         let testError = TestError.shared
         urlSessionSpy.setFailureResult(error: testError)
