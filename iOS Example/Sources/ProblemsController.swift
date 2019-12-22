@@ -15,8 +15,10 @@ class ProblemsController: UITableViewController {
     var category: String!
     private var problems: GetProblemsResponse?
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = category.capitalized
         
         client.getProblems(forCategory: category) { [weak self] result in
             switch result {
