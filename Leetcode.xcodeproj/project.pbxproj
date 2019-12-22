@@ -448,7 +448,7 @@
 			path = TestCaseInputParamConvertible;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -459,14 +459,13 @@
 				OBJ_142 /* Scripts */,
 				OBJ_143 /* LICENSE */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_52 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_53 /* ContentType.swift */,
 				OBJ_54 /* Errors */,
+				OBJ_53 /* ContentType.swift */,
 				OBJ_59 /* HTTPCookie+HTTPURLResponse.swift */,
 				OBJ_60 /* HttpHeaderField.swift */,
 				OBJ_61 /* LeetcodeRequestBuilder.swift */,
@@ -555,10 +554,10 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* Client */,
-				OBJ_22 /* Constants.swift */,
-				OBJ_23 /* DateProvider.swift */,
 				OBJ_24 /* Entities */,
 				OBJ_52 /* HTTP */,
+				OBJ_22 /* Constants.swift */,
+				OBJ_23 /* DateProvider.swift */,
 			);
 			name = Leetcode;
 			path = Sources/Leetcode;
@@ -586,8 +585,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_85 /* API Calls */,
-				OBJ_109 /* DateProviderTests.swift */,
 				OBJ_110 /* Entities */,
+				OBJ_109 /* DateProviderTests.swift */,
 				OBJ_115 /* HTTPCookieTests.swift */,
 				OBJ_116 /* LeetcodeConstantsTests.swift */,
 			);
@@ -757,7 +756,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_136 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

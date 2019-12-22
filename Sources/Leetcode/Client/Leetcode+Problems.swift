@@ -1,3 +1,8 @@
+//
+//  Created by Yaroslav Zhurakovskiy
+//  Copyright © 2019-2020 Yaroslav Zhurakovskiy. All rights reserved.
+//
+
 extension Leetcode {
     public func getAllProblems(completion: @escaping (Result<GetProblemsResponse, Error>) -> Void) {
         getProblems(forCategory: "all", completion: completion)

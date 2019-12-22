@@ -1,3 +1,8 @@
+//
+//  Created by Yaroslav Zhurakovskiy
+//  Copyright © 2019-2020 Yaroslav Zhurakovskiy. All rights reserved.
+//
+
 public struct IntepretSolutionResponse: Decodable {
     public let compile_error: String?
     public let elapsed_time: Int

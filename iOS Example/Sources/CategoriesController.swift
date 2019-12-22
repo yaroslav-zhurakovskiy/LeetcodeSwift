@@ -1,9 +1,6 @@
 //
-//  CategoriesController.swift
-//  LeetcodeSwiftExample
-//
-//  Created by Yaroslav Zhurakovskiy on 16.12.2019.
-//  Copyright © 2019 yaroslavz. All rights reserved.
+//  Created by Yaroslav Zhurakovskiy
+//  Copyright © 2019-2020 Yaroslav Zhurakovskiy. All rights reserved.
 //
 
 import UIKit

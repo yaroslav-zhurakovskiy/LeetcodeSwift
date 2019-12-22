@@ -1,3 +1,8 @@
+//
+//  Created by Yaroslav Zhurakovskiy
+//  Copyright © 2019-2020 Yaroslav Zhurakovskiy. All rights reserved.
+//
+
 extension String: TestCaseInputParamConvertible {
     public var testCaseInputParamValue: String {
         return "\"\(self)\""

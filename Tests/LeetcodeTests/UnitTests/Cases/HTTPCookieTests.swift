@@ -1,5 +1,11 @@
+//
+//  Created by Yaroslav Zhurakovskiy
+//  Copyright © 2019-2020 Yaroslav Zhurakovskiy. All rights reserved.
+//
+
 import XCTest
 import Foundation
+import Leetcode
 
 class HTTPCookieTests: XCTestCase {
     override func setUp() {
@@ -29,5 +35,19 @@ class HTTPCookieTests: XCTestCase {
         XCTAssertEqual(cookie.path, "/")
         XCTAssertTrue(cookie.isSecure)
         XCTAssertEqual(cookie.domain, ".test.com")
+    }
+    
+    func testCreateFromLeetcodeSession() {
+        let expires = Date(timeIntervalSince1970: 0)
+        let value = "VALUE"
+        let cookie = HTTPCookie(leetcodeSessionValue: value, expires: expires)
+        
+        XCTAssertEqual(cookie.name, LeetcodeConstants.sessionCookieName)
+        XCTAssertEqual(cookie.value, value)
+        XCTAssertEqual(cookie.expiresDate, expires)
+        XCTAssertEqual(cookie.domain, ".leetcode.com")
+        XCTAssertEqual(cookie.path, "/")
+        XCTAssertTrue(cookie.isSecure)
+        XCTAssertTrue(cookie.isHTTPOnly)
     }
 }
