@@ -26,14 +26,22 @@ public extension Leetcode {
     }
     
     var isLoggedIn: Bool {
-        return findSessionCookie() != nil
+        guard let cookie = findSessionCookie() else {
+            return false
+        }
+        
+        guard let expiresDate = cookie.expiresDate else {
+            return true
+        }
+        
+        return expiresDate > DateProviderHolder.current.now
     }
     
     private func findSessionCookie() -> HTTPCookie? {
-        if let cookies = cookieStorage.cookies {
-            return cookies.first(where: { $0.name == LeetcodeConstants.sessionCookieName })
-        } else {
+        guard let cookies = cookieStorage.cookies else {
             return nil
         }
+        
+        return cookies.first(where: { $0.name == LeetcodeConstants.sessionCookieName })
     }
 }

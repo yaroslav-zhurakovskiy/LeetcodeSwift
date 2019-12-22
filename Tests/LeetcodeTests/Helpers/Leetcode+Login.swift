@@ -3,17 +3,20 @@ import Foundation
 
 // TODO: Add tests
 extension HTTPCookie {
-    convenience init(leetcodeSessionValue value: String, expires: Date) {
-        self.init(properties: [
+    convenience init(leetcodeSessionValue value: String, expires: Date?) {
+        var properties: [HTTPCookiePropertyKey: Any] = [
             .name: LeetcodeConstants.sessionCookieName,
             .value: value,
-            .expires: expires,
             .domain: ".leetcode.com",
             .path: "/",
             .secure: true,
             HTTPCookiePropertyKey("SameSite"): "Lax",
             HTTPCookiePropertyKey("HttpOnly"): true
-        ])!
+        ]
+        if let expires = expires {
+            properties[.expires] = expires
+        }
+        self.init(properties: properties)!
     }
 }
 
