@@ -170,7 +170,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
     
     func testDetailsForProblem() {
         runAsyncTest { exp in
-            leetcode.details(forProblemWithSlug: twoSumProblemSlug) { result in
+            leetcode.getDetails(forProblemWithSlug: twoSumProblemSlug) { result in
                 assertSuccess(result)
                 exp.fulfill()
             }

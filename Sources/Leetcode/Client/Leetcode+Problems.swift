@@ -27,7 +27,7 @@ extension Leetcode {
         }
     }
     
-    public func details(
+    public func getDetails(
         forProblemWithSlug slug: String,
         completion: @escaping (Result<QuestionDetails, Error>) -> Void
     ) {
@@ -70,5 +70,4 @@ extension Leetcode {
             }
         )
     }
-    
 }

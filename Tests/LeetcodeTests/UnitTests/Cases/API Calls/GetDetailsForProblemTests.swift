@@ -9,7 +9,7 @@ class GetDetailsForProblemTests: LeetcodeTestCase {
         try urlSessionSpy.setSuccessResult(bodyStub: .getQuestiondetails, statusCode: .any)
         
         var result: Result<QuestionDetails, Error>!
-        leetcode.details(forProblemWithSlug: problemSlug) { result = $0 }
+        leetcode.getDetails(forProblemWithSlug: problemSlug) { result = $0 }
         
         assertCorrectRequest()
         XCTAssertNotNil(result)
@@ -28,7 +28,7 @@ class GetDetailsForProblemTests: LeetcodeTestCase {
         urlSessionSpy.setFailureResult(error: TestError.shared)
         
         var result: Result<QuestionDetails, Error>!
-        leetcode.details(forProblemWithSlug: problemSlug) { result = $0 }
+        leetcode.getDetails(forProblemWithSlug: problemSlug) { result = $0 }
         
         assertCorrectRequest()
         assertFailure(result)
