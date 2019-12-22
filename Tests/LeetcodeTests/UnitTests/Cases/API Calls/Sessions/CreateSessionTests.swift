@@ -26,6 +26,19 @@ class CreateSessionTests: LeetcodeTestCase {
         XCTAssertEqual(sesion.total_submitted, 1)
     }
     
+    func testNameAlreadyExists() throws {
+        try urlSessionSpy.setSuccessResult(bodyStub: .empty, statusCode: 400)
+        
+        var result: Result<CreateSessionResponse, Error>!
+        leetcode.createSession(withName: sesssionName) { result = $0 }
+
+        assertCorrectRequest()
+        XCTAssertNotNil(result)
+        assertFailure(result)
+        let error = retreiveError(fromResult: result, as: SessionNameAlreadyExists.self)
+        XCTAssertEqual(error.name, sesssionName)
+    }
+    
     func testFailure() {
         let testError = TestError.shared
         urlSessionSpy.setFailureResult(error: testError)

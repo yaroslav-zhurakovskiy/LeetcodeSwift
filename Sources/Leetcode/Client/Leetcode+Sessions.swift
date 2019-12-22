@@ -1,3 +1,11 @@
+public struct SessionNameAlreadyExists: LeetcodeError {
+    public let name: String
+    
+    public var localizedDescription: String {
+        return "\"name\" already exists"
+    }
+}
+
 public extension Leetcode {
     func createSession(
         withName name: String,
@@ -14,20 +22,24 @@ public extension Leetcode {
                 "name": name
             ])
         }
-        urlSession.request(
-            request,
-            responseType: CreateSessionResponse.self,
-            completion: { result in
-                switch result {
-                case .success(let response):
-                    completion(.success(response))
-                case .decodingFailure(let error):
-                    completion(.failure(error))
-                case .networkFailure(let error):
-                    completion(.failure(error))
+        urlSession.request(request, completion: { result in
+            switch result {
+            case let .success(data, response):
+                if response.statusCode == 400 {
+                    completion(.failure(SessionNameAlreadyExists(name: name)))
+                } else {
+                    let decoder = LeetcodeJSONDecoderImpl()
+                    do {
+                        let value = try decoder.decode(CreateSessionResponse.self, from: data)
+                        completion(.success(value))
+                    } catch let error {
+                        completion(.failure(error))
+                    }
                 }
+            case .failure(let error):
+                completion(.failure(error))
             }
-        )
+        })
     }
     
     func renameSession(

@@ -3,7 +3,11 @@ import XCTest
 
 func assertSuccess<V, E>(_ result : Result<V, E>, file: StaticString = #file, line: UInt = #line) {
     if case .failure = result {
-        XCTFail("\(result) is not equal to .success", file: file, line: line)
+        XCTFail(
+            "\(result) is not equal to .success",
+            file: file,
+            line: line
+        )
     }
 }
 
