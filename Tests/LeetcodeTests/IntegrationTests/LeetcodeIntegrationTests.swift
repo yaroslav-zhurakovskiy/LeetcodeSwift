@@ -176,16 +176,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
             }
         }
     }
-    
-    func testFetchCookies() {
-        runAsyncTest { exp in
-            leetcode.fetchCookies(for: "/", completion: { result in
-                assertSuccess(result)
-                exp.fulfill()
-            })
-        }
-    }
-    
+     
     func testCreateSession() {
         let testSessionName = "testcase"
         

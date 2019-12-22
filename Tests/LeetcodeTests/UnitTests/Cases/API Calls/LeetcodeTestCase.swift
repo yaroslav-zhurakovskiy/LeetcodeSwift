@@ -5,13 +5,15 @@ import Foundation
 class LeetcodeTestCase: XCTestCase {
     var leetcode: Leetcode!
     var urlSessionSpy: LeetcodeURLSessionMock!
+    var httpCookieStorageMock: HTTPCookieStorageMock!
     
     override func setUp() {
         super.setUp()
         
         continueAfterFailure = false
         
-        leetcode = Leetcode()
+        httpCookieStorageMock = HTTPCookieStorageMock()
+        leetcode = Leetcode(cookieStorage: httpCookieStorageMock)
         urlSessionSpy = LeetcodeURLSessionMock()
         leetcode.urlSession = urlSessionSpy
     }
