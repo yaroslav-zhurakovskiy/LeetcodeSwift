@@ -12,7 +12,7 @@ public protocol LeetcodeURLSession: class {
 
 public enum LeetcodeURLDecodedResponseResult<Value: Decodable> {
     case success(Value)
-    case decodingFailure(HTTPURLResponseDecodingError)
+    case decodingFailure(LeetcoeJSONDecodingError)
     case networkFailure(Error)
 }
 
@@ -46,7 +46,7 @@ public extension LeetcodeURLSession {
                     let value = try LeetcodeJSONDecoderHolder.current.decode(responseType, from: data)
                     completion(.success(value))
                 } catch let error {
-                    let decodingError = HTTPURLResponseDecodingError(
+                    let decodingError = LeetcoeJSONDecodingError(
                         data: data,
                         response: response,
                         decodingError: error

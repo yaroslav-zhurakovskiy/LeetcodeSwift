@@ -25,7 +25,7 @@ extension Leetcode {
                         let value = try decoder.decode(InterpretSolutionResponse.self, from: data)
                         completion(.success(value))
                     } catch let error {
-                        let decodingError = HTTPURLResponseDecodingError(
+                        let decodingError = LeetcoeJSONDecodingError(
                             data: data,
                             response: response,
                             decodingError: error
@@ -75,7 +75,7 @@ extension Leetcode {
                             )
                             completion(.success(info))
                         } catch let error {
-                            let decodingError = HTTPURLResponseDecodingError(
+                            let decodingError = LeetcoeJSONDecodingError(
                                 data: data,
                                 response: response,
                                 decodingError: error
@@ -90,7 +90,7 @@ extension Leetcode {
                         )
                     }
                 } catch let error {
-                    let decodingError = HTTPURLResponseDecodingError(
+                    let decodingError = LeetcoeJSONDecodingError(
                         data: data,
                         response: response,
                         decodingError: error

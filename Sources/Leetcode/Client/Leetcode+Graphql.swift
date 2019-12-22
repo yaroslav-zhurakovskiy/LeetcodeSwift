@@ -16,7 +16,7 @@ public struct GraphqlInternalError: Error, Decodable {
 
 public enum GraphqlRequestResult<Value: Decodable> {
     case success(Value)
-    case decodingFailure(HTTPURLResponseDecodingError)
+    case decodingFailure(LeetcoeJSONDecodingError)
     case graphqlError(GraphqlInternalError)
     case networkFailure(Error)
 }
@@ -56,7 +56,7 @@ extension Leetcode {
                         completion(.success(value))
                     }
                 } catch let error {
-                    completion(.decodingFailure(HTTPURLResponseDecodingError(
+                    completion(.decodingFailure(LeetcoeJSONDecodingError(
                         data: data,
                         response: response,
                         decodingError: error

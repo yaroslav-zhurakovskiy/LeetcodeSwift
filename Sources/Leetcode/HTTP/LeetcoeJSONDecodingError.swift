@@ -16,7 +16,7 @@ public extension LeetcodeWrappingError {
     }
 }
 
-public struct HTTPURLResponseDecodingError: LeetcodeWrappingError {
+public struct LeetcoeJSONDecodingError: LeetcodeWrappingError {
     public let response: HTTPURLResponse
     public let body: String
     public let originalError: Error
