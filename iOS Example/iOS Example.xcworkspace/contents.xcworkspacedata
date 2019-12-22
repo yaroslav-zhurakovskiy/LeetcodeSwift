@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:/Users/yaroslav/Documents/work/freelance/MAX EAS/Leetcode framework/iOS Example/iOS Example.xcodeproj">
+      location = "container:iOS Example.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:..">
    </FileRef>
 </Workspace>
