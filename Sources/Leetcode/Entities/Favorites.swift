@@ -5,7 +5,7 @@ public struct Favorites: Decodable {
         public let title_slug: String
     }
     
-    public struct Favorite: Decodable {
+    public struct FavoriteList: Decodable {
         public let id_hash: String
         public let name: String
         public let description: String
@@ -18,9 +18,9 @@ public struct Favorites: Decodable {
     }
     
     public struct Favorites: Decodable {
-        public let private_favorites: [Favorite]
-        public let public_favorites: [Favorite]
-        public let leetcode_favorites: [Favorite]
+        public let private_favorites: [FavoriteList]
+        public let public_favorites: [FavoriteList]
+        public let leetcode_favorites: [FavoriteList]
     }
     
     public let user_name: String

@@ -46,7 +46,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
     
     func testGetFavorites() {
         runAsyncTest { exp in
-            leetcode.getFavorites { result in
+            leetcode.getFavoriteLists { result in
                 assertSuccess(result)
                 exp.fulfill()
             }
