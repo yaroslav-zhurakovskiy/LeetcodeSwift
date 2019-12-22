@@ -35,19 +35,3 @@ public struct HTTPURLResponseDecodingError: LeetcodeWrappingError {
         self.originalError = decodingError
     }
 }
-
-public struct GeneralHTTPURLResponseDecodingError: LeetcodeWrappingError {
-    public let body: String
-    public let response: HTTPURLResponse
-    public let originalError: Error
-    
-    init(
-        data: Data,
-        response: HTTPURLResponse,
-        originalError: Error
-    ) {
-        self.body = String(data: data, encoding: .utf8) ?? ""
-        self.response = response
-        self.originalError = originalError
-    }
-}

@@ -30,14 +30,13 @@ class TestCaseInputTests: XCTestCase {
     
     func testSwiftTypesConvertbiles() {
         assert(Int(1), isEqualTo: "1")
-        assert(Int(2), isEqualTo: "2")
+        assert(UInt(2), isEqualTo: "2")
         assert(Float(10.10), isEqualTo: "10.1")
         assert(Double(10.10), isEqualTo: "10.1")
         assert(true, isEqualTo: "true")
         assert(false, isEqualTo: "false")
         assert("text", isEqualTo: "\"text\"")
         assert([1, 2, 3], isEqualTo: "[1,2,3]")
-        assert(Optional<Int>.none, isEqualTo: "null")
     }
     
     func testFoundationTypesConvertbiles() {

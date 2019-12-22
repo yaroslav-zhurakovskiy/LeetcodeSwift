@@ -39,14 +39,3 @@ extension Double: TestCaseInputParamConvertible {
         return "\(self)"
     }
 }
-
-extension Optional: TestCaseInputParamConvertible where Wrapped: TestCaseInputParamConvertible {
-    public var testCaseInputParamValue: String {
-        switch self {
-        case .some(let value):
-            return value.testCaseInputParamValue
-        case .none:
-            return "null"
-        }
-    }
-}

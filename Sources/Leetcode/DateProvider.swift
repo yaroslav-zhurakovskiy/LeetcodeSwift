@@ -5,6 +5,10 @@ public protocol DateProvider {
 }
 
 public struct SystemDateProvider: DateProvider {
+    public init() {
+        
+    }
+    
     public var now: Date {
         return Date()
     }

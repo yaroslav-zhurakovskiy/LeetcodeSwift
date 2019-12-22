@@ -3,7 +3,8 @@ import Leetcode
 
 class JudgeTests: XCTestCase {
     func testSmoke() {
-        assert(Judge("xxx"), isEqualTo: "xxx")
+        let judge = Judge("xxx")
+        assert(judge, isEqualTo: "xxx")
     }
     
     func testExpressibleByStringLiteral() {

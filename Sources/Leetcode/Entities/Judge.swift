@@ -6,10 +6,6 @@ public struct Judge: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {
         self.value = value
     }
-    
-    public init(_ value: String) {
-        self.value = value
-    }
 }
 
 public extension Judge {
