@@ -63,11 +63,7 @@ public extension LeetcodeURLSession {
 public class LeetcodeURLSessionImpl: LeetcodeURLSession {
     public let session: URLSession
     
-    public init(cookieStorage: HTTPCookieStorage) {
-// TODO: Fix
-//        let configuration = URLSessionConfiguration()
-//        configuration.httpCookieStorage = cookieStorage
-//        configuration.httpShouldSetCookies = true
+    public init() {
         session = .shared
     }
     
@@ -77,11 +73,44 @@ public class LeetcodeURLSessionImpl: LeetcodeURLSession {
     ) {
         let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
             if let data = data, let response = response as? HTTPURLResponse {
-               completion(.success((data: data, response: response)))
+                if let error = checkResponseForErrors(response, data: data) {
+                    completion(.failure(error))
+                } else {
+                    completion(.success((data: data, response: response)))
+                }
             } else if let error = error {
                completion(.failure(error))
             }
         }
         task.resume()
     }
+}
+
+private func checkResponseForErrors(_ response: HTTPURLResponse, data: Data) -> Error? {
+    if isTooManyRequests(response) {
+        return LeetcodeTooManyRequests(body: data, response: response)
+    } else if isUnauthorized(response) {
+        return LeetcodeUnauthorized()
+    } else if isPaidUserUserOnly(response) {
+        return LeetcodePaidUserOnly(body: data, response: response)
+    } else {
+        return nil
+    }
+}
+
+
+private func isPaidUserUserOnly(_ response: HTTPURLResponse) -> Bool {
+    guard let url = response.url, url.path.contains("subscribe") else {
+        return false
+    }
+    
+    return true
+}
+    
+private func isUnauthorized(_ response: HTTPURLResponse) -> Bool {
+    return response.statusCode == 401
+}
+
+private func isTooManyRequests(_ response: HTTPURLResponse) -> Bool {
+    return response.statusCode == 429
 }

@@ -1,9 +1,5 @@
 import Foundation
 
-public protocol LeetcodeError: Error, CustomDebugStringConvertible {
-    
-}
-
 public protocol LeetcodeWrappingError: LeetcodeError {
     associatedtype ErrorType: Error = Error
     

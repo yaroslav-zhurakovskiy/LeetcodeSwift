@@ -263,7 +263,7 @@ private extension LeetcodeIntegrationTests {
     ) {
         runAsyncTest(description: description) { exp in
             leetcode.createSession(withName: testSessionName) { [weak self] result in
-                assertSuccess(result)
+                assertSuccess(result, file: file, line: line)
                 if case let .success(info) = result {
                     if let session = info.sessions.first(where: { $0.name == testSessionName }) {
                         test(session, {

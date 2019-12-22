@@ -8,7 +8,7 @@ public class Leetcode {
     public init(cookieStorage: HTTPCookieStorage = .shared) {
         self.cookieStorage = cookieStorage
         self.requestBuilder = LeetcodeRequestBuilder(cookieStorage: cookieStorage)
-        self.urlSession = LeetcodeURLSessionImpl(cookieStorage: cookieStorage)
+        self.urlSession = LeetcodeURLSessionImpl()
     }
     
     public convenience init() {
