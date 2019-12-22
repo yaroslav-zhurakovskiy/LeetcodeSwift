@@ -68,7 +68,6 @@ func assertReferer(
     assertReferer(of: request, isEqualTo: String(leetcodePath: path), file: file, line: line)
 }
 
-
 func assertOrigin(
     of request: URLRequest,
     isEqualTo origin: String,

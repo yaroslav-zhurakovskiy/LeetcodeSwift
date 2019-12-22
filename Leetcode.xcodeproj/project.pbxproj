@@ -1,0 +1,1353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"Leetcode::LeetcodePackageTests::ProductTarget" /* LeetcodePackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_208 /* Build configuration list for PBXAggregateTarget "LeetcodePackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_211 /* PBXTargetDependency */,
+				OBJ_213 /* PBXTargetDependency */,
+			);
+			name = LeetcodePackageTests;
+			productName = LeetcodePackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		OBJ_149 /* Leetcode+Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Leetcode+Favorites.swift */; };
+		OBJ_150 /* Leetcode+FetchCookies.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Leetcode+FetchCookies.swift */; };
+		OBJ_151 /* Leetcode+Graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Leetcode+Graphql.swift */; };
+		OBJ_152 /* Leetcode+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Leetcode+Login.swift */; };
+		OBJ_153 /* Leetcode+Problems.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Leetcode+Problems.swift */; };
+		OBJ_154 /* Leetcode+Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Leetcode+Questions.swift */; };
+		OBJ_155 /* Leetcode+Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Leetcode+Sessions.swift */; };
+		OBJ_156 /* Leetcode+Submissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Leetcode+Submissions.swift */; };
+		OBJ_157 /* Leetcode+TestSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Leetcode+TestSolution.swift */; };
+		OBJ_158 /* Leetcode+UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Leetcode+UserInfo.swift */; };
+		OBJ_159 /* Leetcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Leetcode.swift */; };
+		OBJ_160 /* Wrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Wrappers.swift */; };
+		OBJ_161 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Constants.swift */; };
+		OBJ_162 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* DateProvider.swift */; };
+		OBJ_163 /* AddQuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* AddQuestionResponse.swift */; };
+		OBJ_164 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Code.swift */; };
+		OBJ_165 /* CreateSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* CreateSessionResponse.swift */; };
+		OBJ_166 /* LeetcodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* LeetcodeError.swift */; };
+		OBJ_167 /* SomeLeetcodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* SomeLeetcodeError.swift */; };
+		OBJ_168 /* FavoriteQuestionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* FavoriteQuestionID.swift */; };
+		OBJ_169 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* Favorites.swift */; };
+		OBJ_170 /* GetProblemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* GetProblemsResponse.swift */; };
+		OBJ_171 /* IntepretSolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* IntepretSolutionResponse.swift */; };
+		OBJ_172 /* InterpretSolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* InterpretSolutionResponse.swift */; };
+		OBJ_173 /* Judge.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* Judge.swift */; };
+		OBJ_174 /* NewFavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* NewFavoriteList.swift */; };
+		OBJ_175 /* ProblemID.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* ProblemID.swift */; };
+		OBJ_176 /* ProgrammingLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* ProgrammingLanguage.swift */; };
+		OBJ_177 /* QuestionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* QuestionDetails.swift */; };
+		OBJ_178 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* Session.swift */; };
+		OBJ_179 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* Solution.swift */; };
+		OBJ_180 /* SubmissionDumpRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* SubmissionDumpRecord.swift */; };
+		OBJ_181 /* SubmitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* SubmitInfo.swift */; };
+		OBJ_182 /* SubmitSolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* SubmitSolutionResponse.swift */; };
+		OBJ_183 /* FoundationTypes+TestCaseInputParamConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* FoundationTypes+TestCaseInputParamConvertible.swift */; };
+		OBJ_184 /* SwiftTypes+TestCaseInputParamConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* SwiftTypes+TestCaseInputParamConvertible.swift */; };
+		OBJ_185 /* TestCaseInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* TestCaseInput.swift */; };
+		OBJ_186 /* TestCaseInputParamConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* TestCaseInputParamConvertible.swift */; };
+		OBJ_187 /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* UserInfoData.swift */; };
+		OBJ_188 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* ContentType.swift */; };
+		OBJ_189 /* LeetcodeHTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* LeetcodeHTTPError.swift */; };
+		OBJ_190 /* LeetcodePaidUserOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* LeetcodePaidUserOnly.swift */; };
+		OBJ_191 /* LeetcodeTooManyRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* LeetcodeTooManyRequests.swift */; };
+		OBJ_192 /* LeetcodeUnauthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* LeetcodeUnauthorized.swift */; };
+		OBJ_193 /* HTTPCookie+HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* HTTPCookie+HTTPURLResponse.swift */; };
+		OBJ_194 /* HttpHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* HttpHeaderField.swift */; };
+		OBJ_195 /* LeetcodeRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* LeetcodeRequestBuilder.swift */; };
+		OBJ_196 /* LeetcodeURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* LeetcodeURLSession.swift */; };
+		OBJ_197 /* LeetcoeJSONDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* LeetcoeJSONDecodingError.swift */; };
+		OBJ_198 /* URL+Leetcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* URL+Leetcode.swift */; };
+		OBJ_199 /* URLRequest+Leetcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* URLRequest+Leetcode.swift */; };
+		OBJ_206 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_219 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* Other.swift */; };
+		OBJ_220 /* Result+Asserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* Result+Asserts.swift */; };
+		OBJ_221 /* URLRequest+Asserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* URLRequest+Asserts.swift */; };
+		OBJ_222 /* HTPCookie+InitFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* HTPCookie+InitFromString.swift */; };
+		OBJ_223 /* Leetcode+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* Leetcode+Login.swift */; };
+		OBJ_224 /* TestEnvironemt.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* TestEnvironemt.swift */; };
+		OBJ_225 /* XCTestCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* XCTestCase+Helpers.swift */; };
+		OBJ_226 /* LeetcodeIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* LeetcodeIntegrationTests.swift */; };
+		OBJ_227 /* AddQuestionToFavoriteListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* AddQuestionToFavoriteListTests.swift */; };
+		OBJ_228 /* AddQuestionToNewFavoriteListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* AddQuestionToNewFavoriteListTests.swift */; };
+		OBJ_229 /* DeleteFavoriteListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* DeleteFavoriteListTest.swift */; };
+		OBJ_230 /* DeleteFavoriteQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* DeleteFavoriteQuestionTests.swift */; };
+		OBJ_231 /* GetFavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* GetFavoritesTests.swift */; };
+		OBJ_232 /* GetAllProblemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* GetAllProblemsTests.swift */; };
+		OBJ_233 /* GetDetailsForProblemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* GetDetailsForProblemTests.swift */; };
+		OBJ_234 /* GetProblemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* GetProblemsTests.swift */; };
+		OBJ_235 /* GetUserInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* GetUserInfoTest.swift */; };
+		OBJ_236 /* LeetcodeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* LeetcodeTestCase.swift */; };
+		OBJ_237 /* ListSubmissionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* ListSubmissionsTests.swift */; };
+		OBJ_238 /* IsLoggedInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* IsLoggedInTests.swift */; };
+		OBJ_239 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* LoginTests.swift */; };
+		OBJ_240 /* LogoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* LogoutTests.swift */; };
+		OBJ_241 /* CreateSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* CreateSessionTests.swift */; };
+		OBJ_242 /* DeleteSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* DeleteSessionTests.swift */; };
+		OBJ_243 /* RenameSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* RenameSessionTests.swift */; };
+		OBJ_244 /* SubmitCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* SubmitCodeTests.swift */; };
+		OBJ_245 /* TestInterpretationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* TestInterpretationTests.swift */; };
+		OBJ_246 /* TestSoulutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* TestSoulutionTests.swift */; };
+		OBJ_247 /* DateProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* DateProviderTests.swift */; };
+		OBJ_248 /* JudgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* JudgeTests.swift */; };
+		OBJ_249 /* LeetcodeUnauthorizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* LeetcodeUnauthorizedTests.swift */; };
+		OBJ_250 /* ProgrammingLanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* ProgrammingLanguageTests.swift */; };
+		OBJ_251 /* TestCaseInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* TestCaseInputTests.swift */; };
+		OBJ_252 /* HTTPCookieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* HTTPCookieTests.swift */; };
+		OBJ_253 /* LeetcodeConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* LeetcodeConstantsTests.swift */; };
+		OBJ_254 /* HTTPCookieStorageDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* HTTPCookieStorageDoubles.swift */; };
+		OBJ_255 /* LeetcodeURLSessionSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* LeetcodeURLSessionSpy.swift */; };
+		OBJ_256 /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* TestError.swift */; };
+		OBJ_257 /* AddQuestionToFavoriteListSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* AddQuestionToFavoriteListSuccess.swift */; };
+		OBJ_258 /* AddQuestionToNewFavoriteListSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* AddQuestionToNewFavoriteListSuccess.swift */; };
+		OBJ_259 /* CheckIntepretSolutionSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* CheckIntepretSolutionSuccess.swift */; };
+		OBJ_260 /* CreateSessionSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* CreateSessionSuccess.swift */; };
+		OBJ_261 /* GetFavoritesSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* GetFavoritesSuccess.swift */; };
+		OBJ_262 /* GetProblemsSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* GetProblemsSuccess.swift */; };
+		OBJ_263 /* GetQuestionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* GetQuestionDetails.swift */; };
+		OBJ_264 /* GetUserInfoSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* GetUserInfoSuccess.swift */; };
+		OBJ_265 /* InterpretSolutionSucces.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* InterpretSolutionSucces.swift */; };
+		OBJ_266 /* ListSubmissionsSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* ListSubmissionsSuccess.swift */; };
+		OBJ_267 /* ResponseBodyStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* ResponseBodyStub.swift */; };
+		OBJ_268 /* SubmitCodeSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* SubmitCodeSuccess.swift */; };
+		OBJ_270 /* Leetcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::Leetcode::Product" /* Leetcode.framework */; };
+		OBJ_277 /* LeetcodeLoginConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* LeetcodeLoginConroller.swift */; };
+		OBJ_278 /* LeetcodeLoginConrollerImpl+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* LeetcodeLoginConrollerImpl+Nib.swift */; };
+		OBJ_280 /* Leetcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::Leetcode::Product" /* Leetcode.framework */; };
+		OBJ_286 /* LeetcodeLoginConrollerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* LeetcodeLoginConrollerTests.swift */; };
+		OBJ_288 /* LeetcodeUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */; };
+		OBJ_289 /* Leetcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::Leetcode::Product" /* Leetcode.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C42580E523AFA71900B8EB24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Leetcode::Leetcode";
+			remoteInfo = Leetcode;
+		};
+		C42580E623AFA71900B8EB24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Leetcode::LeetcodeUI";
+			remoteInfo = LeetcodeUI;
+		};
+		C42580E723AFA71900B8EB24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Leetcode::Leetcode";
+			remoteInfo = Leetcode;
+		};
+		C42580E823AFA71900B8EB24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Leetcode::Leetcode";
+			remoteInfo = Leetcode;
+		};
+		C42580E923AFA71A00B8EB24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Leetcode::LeetcodeTests";
+			remoteInfo = LeetcodeTests;
+		};
+		C42580EA23AFA71A00B8EB24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Leetcode::LeetcodeUITests";
+			remoteInfo = LeetcodeUITests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		"Leetcode::Leetcode::Product" /* Leetcode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Leetcode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Leetcode::LeetcodeTests::Product" /* LeetcodeTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeetcodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LeetcodeUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Leetcode::LeetcodeUITests::Product" /* LeetcodeUITests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeetcodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* Leetcode+Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Favorites.swift"; sourceTree = "<group>"; };
+		OBJ_100 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		OBJ_101 /* LogoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTests.swift; sourceTree = "<group>"; };
+		OBJ_103 /* CreateSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionTests.swift; sourceTree = "<group>"; };
+		OBJ_104 /* DeleteSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSessionTests.swift; sourceTree = "<group>"; };
+		OBJ_105 /* RenameSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameSessionTests.swift; sourceTree = "<group>"; };
+		OBJ_106 /* SubmitCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCodeTests.swift; sourceTree = "<group>"; };
+		OBJ_107 /* TestInterpretationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInterpretationTests.swift; sourceTree = "<group>"; };
+		OBJ_108 /* TestSoulutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSoulutionTests.swift; sourceTree = "<group>"; };
+		OBJ_109 /* DateProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProviderTests.swift; sourceTree = "<group>"; };
+		OBJ_11 /* Leetcode+FetchCookies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+FetchCookies.swift"; sourceTree = "<group>"; };
+		OBJ_111 /* JudgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgeTests.swift; sourceTree = "<group>"; };
+		OBJ_112 /* LeetcodeUnauthorizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeUnauthorizedTests.swift; sourceTree = "<group>"; };
+		OBJ_113 /* ProgrammingLanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingLanguageTests.swift; sourceTree = "<group>"; };
+		OBJ_114 /* TestCaseInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseInputTests.swift; sourceTree = "<group>"; };
+		OBJ_115 /* HTTPCookieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCookieTests.swift; sourceTree = "<group>"; };
+		OBJ_116 /* LeetcodeConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeConstantsTests.swift; sourceTree = "<group>"; };
+		OBJ_118 /* HTTPCookieStorageDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCookieStorageDoubles.swift; sourceTree = "<group>"; };
+		OBJ_119 /* LeetcodeURLSessionSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeURLSessionSpy.swift; sourceTree = "<group>"; };
+		OBJ_12 /* Leetcode+Graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Graphql.swift"; sourceTree = "<group>"; };
+		OBJ_120 /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
+		OBJ_122 /* AddQuestionToFavoriteListSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionToFavoriteListSuccess.swift; sourceTree = "<group>"; };
+		OBJ_123 /* AddQuestionToNewFavoriteListSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionToNewFavoriteListSuccess.swift; sourceTree = "<group>"; };
+		OBJ_124 /* CheckIntepretSolutionSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIntepretSolutionSuccess.swift; sourceTree = "<group>"; };
+		OBJ_125 /* CreateSessionSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionSuccess.swift; sourceTree = "<group>"; };
+		OBJ_126 /* GetFavoritesSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoritesSuccess.swift; sourceTree = "<group>"; };
+		OBJ_127 /* GetProblemsSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProblemsSuccess.swift; sourceTree = "<group>"; };
+		OBJ_128 /* GetQuestionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionDetails.swift; sourceTree = "<group>"; };
+		OBJ_129 /* GetUserInfoSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoSuccess.swift; sourceTree = "<group>"; };
+		OBJ_13 /* Leetcode+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Login.swift"; sourceTree = "<group>"; };
+		OBJ_130 /* InterpretSolutionSucces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterpretSolutionSucces.swift; sourceTree = "<group>"; };
+		OBJ_131 /* ListSubmissionsSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSubmissionsSuccess.swift; sourceTree = "<group>"; };
+		OBJ_132 /* ResponseBodyStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBodyStub.swift; sourceTree = "<group>"; };
+		OBJ_133 /* SubmitCodeSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCodeSuccess.swift; sourceTree = "<group>"; };
+		OBJ_135 /* LeetcodeLoginConrollerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeLoginConrollerTests.swift; sourceTree = "<group>"; };
+		OBJ_14 /* Leetcode+Problems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Problems.swift"; sourceTree = "<group>"; };
+		OBJ_141 /* iOS Example */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iOS Example"; sourceTree = SOURCE_ROOT; };
+		OBJ_142 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = SOURCE_ROOT; };
+		OBJ_143 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_15 /* Leetcode+Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Questions.swift"; sourceTree = "<group>"; };
+		OBJ_16 /* Leetcode+Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Sessions.swift"; sourceTree = "<group>"; };
+		OBJ_17 /* Leetcode+Submissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Submissions.swift"; sourceTree = "<group>"; };
+		OBJ_18 /* Leetcode+TestSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+TestSolution.swift"; sourceTree = "<group>"; };
+		OBJ_19 /* Leetcode+UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+UserInfo.swift"; sourceTree = "<group>"; };
+		OBJ_20 /* Leetcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leetcode.swift; sourceTree = "<group>"; };
+		OBJ_21 /* Wrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrappers.swift; sourceTree = "<group>"; };
+		OBJ_22 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		OBJ_23 /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
+		OBJ_25 /* AddQuestionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionResponse.swift; sourceTree = "<group>"; };
+		OBJ_26 /* Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
+		OBJ_27 /* CreateSessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionResponse.swift; sourceTree = "<group>"; };
+		OBJ_29 /* LeetcodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeError.swift; sourceTree = "<group>"; };
+		OBJ_30 /* SomeLeetcodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeLeetcodeError.swift; sourceTree = "<group>"; };
+		OBJ_31 /* FavoriteQuestionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteQuestionID.swift; sourceTree = "<group>"; };
+		OBJ_32 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		OBJ_33 /* GetProblemsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProblemsResponse.swift; sourceTree = "<group>"; };
+		OBJ_34 /* IntepretSolutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntepretSolutionResponse.swift; sourceTree = "<group>"; };
+		OBJ_35 /* InterpretSolutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterpretSolutionResponse.swift; sourceTree = "<group>"; };
+		OBJ_36 /* Judge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Judge.swift; sourceTree = "<group>"; };
+		OBJ_37 /* NewFavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavoriteList.swift; sourceTree = "<group>"; };
+		OBJ_38 /* ProblemID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemID.swift; sourceTree = "<group>"; };
+		OBJ_39 /* ProgrammingLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingLanguage.swift; sourceTree = "<group>"; };
+		OBJ_40 /* QuestionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetails.swift; sourceTree = "<group>"; };
+		OBJ_41 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		OBJ_42 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
+		OBJ_43 /* SubmissionDumpRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionDumpRecord.swift; sourceTree = "<group>"; };
+		OBJ_44 /* SubmitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitInfo.swift; sourceTree = "<group>"; };
+		OBJ_45 /* SubmitSolutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitSolutionResponse.swift; sourceTree = "<group>"; };
+		OBJ_47 /* FoundationTypes+TestCaseInputParamConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationTypes+TestCaseInputParamConvertible.swift"; sourceTree = "<group>"; };
+		OBJ_48 /* SwiftTypes+TestCaseInputParamConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftTypes+TestCaseInputParamConvertible.swift"; sourceTree = "<group>"; };
+		OBJ_49 /* TestCaseInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseInput.swift; sourceTree = "<group>"; };
+		OBJ_50 /* TestCaseInputParamConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseInputParamConvertible.swift; sourceTree = "<group>"; };
+		OBJ_51 /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
+		OBJ_53 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		OBJ_55 /* LeetcodeHTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeHTTPError.swift; sourceTree = "<group>"; };
+		OBJ_56 /* LeetcodePaidUserOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodePaidUserOnly.swift; sourceTree = "<group>"; };
+		OBJ_57 /* LeetcodeTooManyRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeTooManyRequests.swift; sourceTree = "<group>"; };
+		OBJ_58 /* LeetcodeUnauthorized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeUnauthorized.swift; sourceTree = "<group>"; };
+		OBJ_59 /* HTTPCookie+HTTPURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPCookie+HTTPURLResponse.swift"; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_60 /* HttpHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpHeaderField.swift; sourceTree = "<group>"; };
+		OBJ_61 /* LeetcodeRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeRequestBuilder.swift; sourceTree = "<group>"; };
+		OBJ_62 /* LeetcodeURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeURLSession.swift; sourceTree = "<group>"; };
+		OBJ_63 /* LeetcoeJSONDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcoeJSONDecodingError.swift; sourceTree = "<group>"; };
+		OBJ_64 /* URL+Leetcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Leetcode.swift"; sourceTree = "<group>"; };
+		OBJ_65 /* URLRequest+Leetcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Leetcode.swift"; sourceTree = "<group>"; };
+		OBJ_67 /* LeetcodeLoginConrollerImpl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeetcodeLoginConrollerImpl.xib; sourceTree = "<group>"; };
+		OBJ_68 /* LeetcodeLoginConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeLoginConroller.swift; sourceTree = "<group>"; };
+		OBJ_69 /* LeetcodeLoginConrollerImpl+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeetcodeLoginConrollerImpl+Nib.swift"; sourceTree = "<group>"; };
+		OBJ_73 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
+		OBJ_74 /* Result+Asserts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Asserts.swift"; sourceTree = "<group>"; };
+		OBJ_75 /* URLRequest+Asserts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Asserts.swift"; sourceTree = "<group>"; };
+		OBJ_77 /* HTPCookie+InitFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTPCookie+InitFromString.swift"; sourceTree = "<group>"; };
+		OBJ_78 /* Leetcode+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Login.swift"; sourceTree = "<group>"; };
+		OBJ_79 /* TestEnvironemt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnvironemt.swift; sourceTree = "<group>"; };
+		OBJ_80 /* XCTestCase+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helpers.swift"; sourceTree = "<group>"; };
+		OBJ_82 /* LeetcodeIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeIntegrationTests.swift; sourceTree = "<group>"; };
+		OBJ_87 /* AddQuestionToFavoriteListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionToFavoriteListTests.swift; sourceTree = "<group>"; };
+		OBJ_88 /* AddQuestionToNewFavoriteListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionToNewFavoriteListTests.swift; sourceTree = "<group>"; };
+		OBJ_89 /* DeleteFavoriteListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavoriteListTest.swift; sourceTree = "<group>"; };
+		OBJ_90 /* DeleteFavoriteQuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavoriteQuestionTests.swift; sourceTree = "<group>"; };
+		OBJ_91 /* GetFavoritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoritesTests.swift; sourceTree = "<group>"; };
+		OBJ_92 /* GetAllProblemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllProblemsTests.swift; sourceTree = "<group>"; };
+		OBJ_93 /* GetDetailsForProblemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetailsForProblemTests.swift; sourceTree = "<group>"; };
+		OBJ_94 /* GetProblemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProblemsTests.swift; sourceTree = "<group>"; };
+		OBJ_95 /* GetUserInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoTest.swift; sourceTree = "<group>"; };
+		OBJ_96 /* LeetcodeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeTestCase.swift; sourceTree = "<group>"; };
+		OBJ_97 /* ListSubmissionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSubmissionsTests.swift; sourceTree = "<group>"; };
+		OBJ_99 /* IsLoggedInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsLoggedInTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_200 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_269 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_270 /* Leetcode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_279 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_280 /* Leetcode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_287 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_288 /* LeetcodeUI.framework in Frameworks */,
+				OBJ_289 /* Leetcode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_102 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_103 /* CreateSessionTests.swift */,
+				OBJ_104 /* DeleteSessionTests.swift */,
+				OBJ_105 /* RenameSessionTests.swift */,
+			);
+			path = Sessions;
+			sourceTree = "<group>";
+		};
+		OBJ_110 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_111 /* JudgeTests.swift */,
+				OBJ_112 /* LeetcodeUnauthorizedTests.swift */,
+				OBJ_113 /* ProgrammingLanguageTests.swift */,
+				OBJ_114 /* TestCaseInputTests.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		OBJ_117 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_118 /* HTTPCookieStorageDoubles.swift */,
+				OBJ_119 /* LeetcodeURLSessionSpy.swift */,
+				OBJ_120 /* TestError.swift */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		OBJ_121 /* ResponseBodyStubs */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_122 /* AddQuestionToFavoriteListSuccess.swift */,
+				OBJ_123 /* AddQuestionToNewFavoriteListSuccess.swift */,
+				OBJ_124 /* CheckIntepretSolutionSuccess.swift */,
+				OBJ_125 /* CreateSessionSuccess.swift */,
+				OBJ_126 /* GetFavoritesSuccess.swift */,
+				OBJ_127 /* GetProblemsSuccess.swift */,
+				OBJ_128 /* GetQuestionDetails.swift */,
+				OBJ_129 /* GetUserInfoSuccess.swift */,
+				OBJ_130 /* InterpretSolutionSucces.swift */,
+				OBJ_131 /* ListSubmissionsSuccess.swift */,
+				OBJ_132 /* ResponseBodyStub.swift */,
+				OBJ_133 /* SubmitCodeSuccess.swift */,
+			);
+			path = ResponseBodyStubs;
+			sourceTree = "<group>";
+		};
+		OBJ_134 /* LeetcodeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_135 /* LeetcodeLoginConrollerTests.swift */,
+			);
+			name = LeetcodeUITests;
+			path = Tests/LeetcodeUITests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_136 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"Leetcode::LeetcodeTests::Product" /* LeetcodeTests.xctest */,
+				"Leetcode::Leetcode::Product" /* Leetcode.framework */,
+				"Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */,
+				"Leetcode::LeetcodeUITests::Product" /* LeetcodeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_24 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_25 /* AddQuestionResponse.swift */,
+				OBJ_26 /* Code.swift */,
+				OBJ_27 /* CreateSessionResponse.swift */,
+				OBJ_28 /* Errors */,
+				OBJ_31 /* FavoriteQuestionID.swift */,
+				OBJ_32 /* Favorites.swift */,
+				OBJ_33 /* GetProblemsResponse.swift */,
+				OBJ_34 /* IntepretSolutionResponse.swift */,
+				OBJ_35 /* InterpretSolutionResponse.swift */,
+				OBJ_36 /* Judge.swift */,
+				OBJ_37 /* NewFavoriteList.swift */,
+				OBJ_38 /* ProblemID.swift */,
+				OBJ_39 /* ProgrammingLanguage.swift */,
+				OBJ_40 /* QuestionDetails.swift */,
+				OBJ_41 /* Session.swift */,
+				OBJ_42 /* Solution.swift */,
+				OBJ_43 /* SubmissionDumpRecord.swift */,
+				OBJ_44 /* SubmitInfo.swift */,
+				OBJ_45 /* SubmitSolutionResponse.swift */,
+				OBJ_46 /* TestCaseInputParamConvertible */,
+				OBJ_51 /* UserInfoData.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		OBJ_28 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_29 /* LeetcodeError.swift */,
+				OBJ_30 /* SomeLeetcodeError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		OBJ_46 /* TestCaseInputParamConvertible */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_47 /* FoundationTypes+TestCaseInputParamConvertible.swift */,
+				OBJ_48 /* SwiftTypes+TestCaseInputParamConvertible.swift */,
+				OBJ_49 /* TestCaseInput.swift */,
+				OBJ_50 /* TestCaseInputParamConvertible.swift */,
+			);
+			path = TestCaseInputParamConvertible;
+			sourceTree = "<group>";
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_70 /* Tests */,
+				OBJ_136 /* Products */,
+				OBJ_141 /* iOS Example */,
+				OBJ_142 /* Scripts */,
+				OBJ_143 /* LICENSE */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_52 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_53 /* ContentType.swift */,
+				OBJ_54 /* Errors */,
+				OBJ_59 /* HTTPCookie+HTTPURLResponse.swift */,
+				OBJ_60 /* HttpHeaderField.swift */,
+				OBJ_61 /* LeetcodeRequestBuilder.swift */,
+				OBJ_62 /* LeetcodeURLSession.swift */,
+				OBJ_63 /* LeetcoeJSONDecodingError.swift */,
+				OBJ_64 /* URL+Leetcode.swift */,
+				OBJ_65 /* URLRequest+Leetcode.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		OBJ_54 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_55 /* LeetcodeHTTPError.swift */,
+				OBJ_56 /* LeetcodePaidUserOnly.swift */,
+				OBJ_57 /* LeetcodeTooManyRequests.swift */,
+				OBJ_58 /* LeetcodeUnauthorized.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		OBJ_66 /* LeetcodeUI */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_67 /* LeetcodeLoginConrollerImpl.xib */,
+				OBJ_68 /* LeetcodeLoginConroller.swift */,
+				OBJ_69 /* LeetcodeLoginConrollerImpl+Nib.swift */,
+			);
+			name = LeetcodeUI;
+			path = Sources/LeetcodeUI;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* Leetcode */,
+				OBJ_66 /* LeetcodeUI */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_70 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_71 /* LeetcodeTests */,
+				OBJ_134 /* LeetcodeUITests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_71 /* LeetcodeTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_72 /* CustomAsserts */,
+				OBJ_76 /* Helpers */,
+				OBJ_81 /* IntegrationTests */,
+				OBJ_83 /* UnitTests */,
+			);
+			name = LeetcodeTests;
+			path = Tests/LeetcodeTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_72 /* CustomAsserts */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_73 /* Other.swift */,
+				OBJ_74 /* Result+Asserts.swift */,
+				OBJ_75 /* URLRequest+Asserts.swift */,
+			);
+			path = CustomAsserts;
+			sourceTree = "<group>";
+		};
+		OBJ_76 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_77 /* HTPCookie+InitFromString.swift */,
+				OBJ_78 /* Leetcode+Login.swift */,
+				OBJ_79 /* TestEnvironemt.swift */,
+				OBJ_80 /* XCTestCase+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		OBJ_8 /* Leetcode */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Client */,
+				OBJ_22 /* Constants.swift */,
+				OBJ_23 /* DateProvider.swift */,
+				OBJ_24 /* Entities */,
+				OBJ_52 /* HTTP */,
+			);
+			name = Leetcode;
+			path = Sources/Leetcode;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_81 /* IntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_82 /* LeetcodeIntegrationTests.swift */,
+			);
+			path = IntegrationTests;
+			sourceTree = "<group>";
+		};
+		OBJ_83 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_84 /* Cases */,
+				OBJ_117 /* Doubles */,
+				OBJ_121 /* ResponseBodyStubs */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		OBJ_84 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_85 /* API Calls */,
+				OBJ_109 /* DateProviderTests.swift */,
+				OBJ_110 /* Entities */,
+				OBJ_115 /* HTTPCookieTests.swift */,
+				OBJ_116 /* LeetcodeConstantsTests.swift */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		OBJ_85 /* API Calls */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_86 /* Favorite List */,
+				OBJ_92 /* GetAllProblemsTests.swift */,
+				OBJ_93 /* GetDetailsForProblemTests.swift */,
+				OBJ_94 /* GetProblemsTests.swift */,
+				OBJ_95 /* GetUserInfoTest.swift */,
+				OBJ_96 /* LeetcodeTestCase.swift */,
+				OBJ_97 /* ListSubmissionsTests.swift */,
+				OBJ_98 /* Login */,
+				OBJ_102 /* Sessions */,
+				OBJ_106 /* SubmitCodeTests.swift */,
+				OBJ_107 /* TestInterpretationTests.swift */,
+				OBJ_108 /* TestSoulutionTests.swift */,
+			);
+			path = "API Calls";
+			sourceTree = "<group>";
+		};
+		OBJ_86 /* Favorite List */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_87 /* AddQuestionToFavoriteListTests.swift */,
+				OBJ_88 /* AddQuestionToNewFavoriteListTests.swift */,
+				OBJ_89 /* DeleteFavoriteListTest.swift */,
+				OBJ_90 /* DeleteFavoriteQuestionTests.swift */,
+				OBJ_91 /* GetFavoritesTests.swift */,
+			);
+			path = "Favorite List";
+			sourceTree = "<group>";
+		};
+		OBJ_9 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_10 /* Leetcode+Favorites.swift */,
+				OBJ_11 /* Leetcode+FetchCookies.swift */,
+				OBJ_12 /* Leetcode+Graphql.swift */,
+				OBJ_13 /* Leetcode+Login.swift */,
+				OBJ_14 /* Leetcode+Problems.swift */,
+				OBJ_15 /* Leetcode+Questions.swift */,
+				OBJ_16 /* Leetcode+Sessions.swift */,
+				OBJ_17 /* Leetcode+Submissions.swift */,
+				OBJ_18 /* Leetcode+TestSolution.swift */,
+				OBJ_19 /* Leetcode+UserInfo.swift */,
+				OBJ_20 /* Leetcode.swift */,
+				OBJ_21 /* Wrappers.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		OBJ_98 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_99 /* IsLoggedInTests.swift */,
+				OBJ_100 /* LoginTests.swift */,
+				OBJ_101 /* LogoutTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"Leetcode::Leetcode" /* Leetcode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_145 /* Build configuration list for PBXNativeTarget "Leetcode" */;
+			buildPhases = (
+				OBJ_148 /* Sources */,
+				OBJ_200 /* Frameworks */,
+				C42580EB23AFA7DF00B8EB24 /* Swift LInt */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Leetcode;
+			productName = Leetcode;
+			productReference = "Leetcode::Leetcode::Product" /* Leetcode.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Leetcode::LeetcodeTests" /* LeetcodeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_215 /* Build configuration list for PBXNativeTarget "LeetcodeTests" */;
+			buildPhases = (
+				OBJ_218 /* Sources */,
+				OBJ_269 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_271 /* PBXTargetDependency */,
+			);
+			name = LeetcodeTests;
+			productName = LeetcodeTests;
+			productReference = "Leetcode::LeetcodeTests::Product" /* LeetcodeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"Leetcode::LeetcodeUI" /* LeetcodeUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_273 /* Build configuration list for PBXNativeTarget "LeetcodeUI" */;
+			buildPhases = (
+				OBJ_276 /* Sources */,
+				OBJ_279 /* Frameworks */,
+				C42580EC23AFAD6800B8EB24 /* Swift Lint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_281 /* PBXTargetDependency */,
+			);
+			name = LeetcodeUI;
+			productName = LeetcodeUI;
+			productReference = "Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Leetcode::LeetcodeUITests" /* LeetcodeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_282 /* Build configuration list for PBXNativeTarget "LeetcodeUITests" */;
+			buildPhases = (
+				OBJ_285 /* Sources */,
+				OBJ_287 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_290 /* PBXTargetDependency */,
+				OBJ_291 /* PBXTargetDependency */,
+			);
+			name = LeetcodeUITests;
+			productName = LeetcodeUITests;
+			productReference = "Leetcode::LeetcodeUITests::Product" /* LeetcodeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"Leetcode::SwiftPMPackageDescription" /* LeetcodePackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_202 /* Build configuration list for PBXNativeTarget "LeetcodePackageDescription" */;
+			buildPhases = (
+				OBJ_205 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LeetcodePackageDescription;
+			productName = LeetcodePackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Leetcode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_136 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"Leetcode::Leetcode" /* Leetcode */,
+				"Leetcode::SwiftPMPackageDescription" /* LeetcodePackageDescription */,
+				"Leetcode::LeetcodePackageTests::ProductTarget" /* LeetcodePackageTests */,
+				"Leetcode::LeetcodeTests" /* LeetcodeTests */,
+				"Leetcode::LeetcodeUI" /* LeetcodeUI */,
+				"Leetcode::LeetcodeUITests" /* LeetcodeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C42580EB23AFA7DF00B8EB24 /* Swift LInt */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift LInt";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		C42580EC23AFAD6800B8EB24 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_148 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_149 /* Leetcode+Favorites.swift in Sources */,
+				OBJ_150 /* Leetcode+FetchCookies.swift in Sources */,
+				OBJ_151 /* Leetcode+Graphql.swift in Sources */,
+				OBJ_152 /* Leetcode+Login.swift in Sources */,
+				OBJ_153 /* Leetcode+Problems.swift in Sources */,
+				OBJ_154 /* Leetcode+Questions.swift in Sources */,
+				OBJ_155 /* Leetcode+Sessions.swift in Sources */,
+				OBJ_156 /* Leetcode+Submissions.swift in Sources */,
+				OBJ_157 /* Leetcode+TestSolution.swift in Sources */,
+				OBJ_158 /* Leetcode+UserInfo.swift in Sources */,
+				OBJ_159 /* Leetcode.swift in Sources */,
+				OBJ_160 /* Wrappers.swift in Sources */,
+				OBJ_161 /* Constants.swift in Sources */,
+				OBJ_162 /* DateProvider.swift in Sources */,
+				OBJ_163 /* AddQuestionResponse.swift in Sources */,
+				OBJ_164 /* Code.swift in Sources */,
+				OBJ_165 /* CreateSessionResponse.swift in Sources */,
+				OBJ_166 /* LeetcodeError.swift in Sources */,
+				OBJ_167 /* SomeLeetcodeError.swift in Sources */,
+				OBJ_168 /* FavoriteQuestionID.swift in Sources */,
+				OBJ_169 /* Favorites.swift in Sources */,
+				OBJ_170 /* GetProblemsResponse.swift in Sources */,
+				OBJ_171 /* IntepretSolutionResponse.swift in Sources */,
+				OBJ_172 /* InterpretSolutionResponse.swift in Sources */,
+				OBJ_173 /* Judge.swift in Sources */,
+				OBJ_174 /* NewFavoriteList.swift in Sources */,
+				OBJ_175 /* ProblemID.swift in Sources */,
+				OBJ_176 /* ProgrammingLanguage.swift in Sources */,
+				OBJ_177 /* QuestionDetails.swift in Sources */,
+				OBJ_178 /* Session.swift in Sources */,
+				OBJ_179 /* Solution.swift in Sources */,
+				OBJ_180 /* SubmissionDumpRecord.swift in Sources */,
+				OBJ_181 /* SubmitInfo.swift in Sources */,
+				OBJ_182 /* SubmitSolutionResponse.swift in Sources */,
+				OBJ_183 /* FoundationTypes+TestCaseInputParamConvertible.swift in Sources */,
+				OBJ_184 /* SwiftTypes+TestCaseInputParamConvertible.swift in Sources */,
+				OBJ_185 /* TestCaseInput.swift in Sources */,
+				OBJ_186 /* TestCaseInputParamConvertible.swift in Sources */,
+				OBJ_187 /* UserInfoData.swift in Sources */,
+				OBJ_188 /* ContentType.swift in Sources */,
+				OBJ_189 /* LeetcodeHTTPError.swift in Sources */,
+				OBJ_190 /* LeetcodePaidUserOnly.swift in Sources */,
+				OBJ_191 /* LeetcodeTooManyRequests.swift in Sources */,
+				OBJ_192 /* LeetcodeUnauthorized.swift in Sources */,
+				OBJ_193 /* HTTPCookie+HTTPURLResponse.swift in Sources */,
+				OBJ_194 /* HttpHeaderField.swift in Sources */,
+				OBJ_195 /* LeetcodeRequestBuilder.swift in Sources */,
+				OBJ_196 /* LeetcodeURLSession.swift in Sources */,
+				OBJ_197 /* LeetcoeJSONDecodingError.swift in Sources */,
+				OBJ_198 /* URL+Leetcode.swift in Sources */,
+				OBJ_199 /* URLRequest+Leetcode.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_206 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_219 /* Other.swift in Sources */,
+				OBJ_220 /* Result+Asserts.swift in Sources */,
+				OBJ_221 /* URLRequest+Asserts.swift in Sources */,
+				OBJ_222 /* HTPCookie+InitFromString.swift in Sources */,
+				OBJ_223 /* Leetcode+Login.swift in Sources */,
+				OBJ_224 /* TestEnvironemt.swift in Sources */,
+				OBJ_225 /* XCTestCase+Helpers.swift in Sources */,
+				OBJ_226 /* LeetcodeIntegrationTests.swift in Sources */,
+				OBJ_227 /* AddQuestionToFavoriteListTests.swift in Sources */,
+				OBJ_228 /* AddQuestionToNewFavoriteListTests.swift in Sources */,
+				OBJ_229 /* DeleteFavoriteListTest.swift in Sources */,
+				OBJ_230 /* DeleteFavoriteQuestionTests.swift in Sources */,
+				OBJ_231 /* GetFavoritesTests.swift in Sources */,
+				OBJ_232 /* GetAllProblemsTests.swift in Sources */,
+				OBJ_233 /* GetDetailsForProblemTests.swift in Sources */,
+				OBJ_234 /* GetProblemsTests.swift in Sources */,
+				OBJ_235 /* GetUserInfoTest.swift in Sources */,
+				OBJ_236 /* LeetcodeTestCase.swift in Sources */,
+				OBJ_237 /* ListSubmissionsTests.swift in Sources */,
+				OBJ_238 /* IsLoggedInTests.swift in Sources */,
+				OBJ_239 /* LoginTests.swift in Sources */,
+				OBJ_240 /* LogoutTests.swift in Sources */,
+				OBJ_241 /* CreateSessionTests.swift in Sources */,
+				OBJ_242 /* DeleteSessionTests.swift in Sources */,
+				OBJ_243 /* RenameSessionTests.swift in Sources */,
+				OBJ_244 /* SubmitCodeTests.swift in Sources */,
+				OBJ_245 /* TestInterpretationTests.swift in Sources */,
+				OBJ_246 /* TestSoulutionTests.swift in Sources */,
+				OBJ_247 /* DateProviderTests.swift in Sources */,
+				OBJ_248 /* JudgeTests.swift in Sources */,
+				OBJ_249 /* LeetcodeUnauthorizedTests.swift in Sources */,
+				OBJ_250 /* ProgrammingLanguageTests.swift in Sources */,
+				OBJ_251 /* TestCaseInputTests.swift in Sources */,
+				OBJ_252 /* HTTPCookieTests.swift in Sources */,
+				OBJ_253 /* LeetcodeConstantsTests.swift in Sources */,
+				OBJ_254 /* HTTPCookieStorageDoubles.swift in Sources */,
+				OBJ_255 /* LeetcodeURLSessionSpy.swift in Sources */,
+				OBJ_256 /* TestError.swift in Sources */,
+				OBJ_257 /* AddQuestionToFavoriteListSuccess.swift in Sources */,
+				OBJ_258 /* AddQuestionToNewFavoriteListSuccess.swift in Sources */,
+				OBJ_259 /* CheckIntepretSolutionSuccess.swift in Sources */,
+				OBJ_260 /* CreateSessionSuccess.swift in Sources */,
+				OBJ_261 /* GetFavoritesSuccess.swift in Sources */,
+				OBJ_262 /* GetProblemsSuccess.swift in Sources */,
+				OBJ_263 /* GetQuestionDetails.swift in Sources */,
+				OBJ_264 /* GetUserInfoSuccess.swift in Sources */,
+				OBJ_265 /* InterpretSolutionSucces.swift in Sources */,
+				OBJ_266 /* ListSubmissionsSuccess.swift in Sources */,
+				OBJ_267 /* ResponseBodyStub.swift in Sources */,
+				OBJ_268 /* SubmitCodeSuccess.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_276 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_277 /* LeetcodeLoginConroller.swift in Sources */,
+				OBJ_278 /* LeetcodeLoginConrollerImpl+Nib.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_285 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_286 /* LeetcodeLoginConrollerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Leetcode::LeetcodeTests" /* LeetcodeTests */;
+			targetProxy = C42580E923AFA71A00B8EB24 /* PBXContainerItemProxy */;
+		};
+		OBJ_213 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Leetcode::LeetcodeUITests" /* LeetcodeUITests */;
+			targetProxy = C42580EA23AFA71A00B8EB24 /* PBXContainerItemProxy */;
+		};
+		OBJ_271 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Leetcode::Leetcode" /* Leetcode */;
+			targetProxy = C42580E823AFA71900B8EB24 /* PBXContainerItemProxy */;
+		};
+		OBJ_281 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Leetcode::Leetcode" /* Leetcode */;
+			targetProxy = C42580E523AFA71900B8EB24 /* PBXContainerItemProxy */;
+		};
+		OBJ_290 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Leetcode::LeetcodeUI" /* LeetcodeUI */;
+			targetProxy = C42580E623AFA71900B8EB24 /* PBXContainerItemProxy */;
+		};
+		OBJ_291 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Leetcode::Leetcode" /* Leetcode */;
+			targetProxy = C42580E723AFA71900B8EB24 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_146 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/Leetcode_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Leetcode;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = Leetcode;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_147 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/Leetcode_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Leetcode;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = Leetcode;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_203 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_204 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_209 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_210 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_216 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = LeetcodeTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_217 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = LeetcodeTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_274 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUI_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = LeetcodeUI;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = LeetcodeUI;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUI_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = LeetcodeUI;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = LeetcodeUI;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_283 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUITests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = LeetcodeUITests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_284 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUITests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = LeetcodeUITests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_145 /* Build configuration list for PBXNativeTarget "Leetcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_146 /* Debug */,
+				OBJ_147 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "Leetcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_202 /* Build configuration list for PBXNativeTarget "LeetcodePackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_203 /* Debug */,
+				OBJ_204 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_208 /* Build configuration list for PBXAggregateTarget "LeetcodePackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_209 /* Debug */,
+				OBJ_210 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_215 /* Build configuration list for PBXNativeTarget "LeetcodeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_216 /* Debug */,
+				OBJ_217 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_273 /* Build configuration list for PBXNativeTarget "LeetcodeUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_274 /* Debug */,
+				OBJ_275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_282 /* Build configuration list for PBXNativeTarget "LeetcodeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_283 /* Debug */,
+				OBJ_284 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}

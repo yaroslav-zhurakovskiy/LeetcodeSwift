@@ -22,44 +22,38 @@ class GetFavoritesTests: LeetcodeTestCase {
         
         assertFavorite(
             value.favorites.public_favorites[0],
-            hasIDHash: "xipm41yr",
-            name: "AddQuestionToFavorite",
-            description: "",
-            questions: [
-                (
-                    id: 1,
-                    title: "Two Sum",
-                    titleSlug: "two-sum"
-                )
-            ],
-            is_public_favorite: true,
-            view_count: 1,
-            creator: "yaroslavz",
-            current_user: "",
-            is_watched: false
+            matches: .init(
+                id_hash: "xipm41yr",
+                name: "AddQuestionToFavorite",
+                description: "",
+                questions: [
+                    .init(
+                        id: 1,
+                        title: "Two Sum",
+                        title_slug: "two-sum"
+                    )
+                ],
+                is_public_favorite: true,
+                view_count: 1,
+                creator: "yaroslavz",
+                current_user: "",
+                is_watched: false
+            )
         )
     }
     
     func assertFavorite(
-        _ favorite: Favorites.Favorite,
-        hasIDHash: String,
-        name: String,
-        description: String,
-        questions: [(id: Int, title: String, titleSlug: String)],
-        is_public_favorite: Bool,
-        view_count: Int,
-        creator: String,
-        current_user: String,
-        is_watched: Bool,
+        _ favorite: Favorites.FavoriteList,
+        matches list: Favorites.FavoriteList,
         file: StaticString = #file,
         line: UInt = #line
     ) {
-        XCTAssertEqual(favorite.id_hash, hasIDHash, file: file, line: line)
-        XCTAssertEqual(favorite.name, name, file: file, line: line)
-        XCTAssertEqual(favorite.description, description, file: file, line: line)
-        XCTAssertEqual(favorite.questions.count, questions.count, "Number of questions", file: file, line: line)
-        for index in 0..<questions.count {
-            let expected = questions[index]
+        XCTAssertEqual(favorite.id_hash, list.id_hash, file: file, line: line)
+        XCTAssertEqual(favorite.name, list.name, file: file, line: line)
+        XCTAssertEqual(favorite.description, list.description, file: file, line: line)
+        XCTAssertEqual(favorite.questions.count, list.questions.count, "Number of questions", file: file, line: line)
+        for index in 0..<list.questions.count {
+            let expected = list.questions[index]
             let actual = favorite.questions[index]
             XCTAssertEqual(
                 actual.id,
@@ -77,7 +71,7 @@ class GetFavoritesTests: LeetcodeTestCase {
             )
             XCTAssertEqual(
                 actual.title_slug,
-                expected.titleSlug,
+                expected.title_slug,
                 "question #\(index) - Title slug ",
                 file: file,
                 line: line
@@ -86,35 +80,35 @@ class GetFavoritesTests: LeetcodeTestCase {
         
         XCTAssertEqual(
             favorite.is_public_favorite,
-            is_public_favorite,
+            list.is_public_favorite,
             "is_public_favorite",
             file: file,
             line: line
         )
         XCTAssertEqual(
             favorite.view_count,
-            view_count,
+            list.view_count,
             "view_count",
             file: file,
             line: line
         )
         XCTAssertEqual(
             favorite.creator,
-            creator,
+            list.creator,
             "creator",
             file: file,
             line: line
         )
         XCTAssertEqual(
             favorite.current_user,
-            current_user,
+            list.current_user,
             "current_user",
             file: file,
             line: line
         )
         XCTAssertEqual(
             favorite.is_watched,
-            is_watched,
+            list.is_watched,
             "is_watched",
             file: file,
             line: line
@@ -129,11 +123,12 @@ class GetFavoritesTests: LeetcodeTestCase {
         
         var result: Result<Favorites, Error>!
         leetcode.getFavorites { result = $0 }
-        
-        
+           
         assertCorrectRequest()
         XCTAssertNotNil(result)
-        let _ = retreiveError(fromResult: result, as: LeetcodeUnauthorized.self)
+        assertFailure(result)
+        let error = retreiveError(fromResult: result, as: LeetcodeUnauthorized.self)
+        XCTAssertNotNil(error)
     }
     
     func testFailure() {

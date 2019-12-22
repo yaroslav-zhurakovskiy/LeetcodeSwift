@@ -47,8 +47,7 @@ class TestCaseInputTests: XCTestCase {
         assert(true as NSNumber, isEqualTo: "1")
         assert(false as NSNumber, isEqualTo: "0")
     }
-    
-    
+     
     func assert(
         _ convertible: TestCaseInputParamConvertible,
         isEqualTo value: String,

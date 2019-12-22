@@ -29,8 +29,7 @@ class ProgrammingLanguageTests: XCTestCase {
         assert(.scala, isEqualTo: "scala")
         assert(.swift, isEqualTo: "swift")
     }
-    
-    
+     
     func assert(
         _ language: ProgrammingLanguage,
         isEqualTo value: String,

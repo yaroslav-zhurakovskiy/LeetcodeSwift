@@ -82,7 +82,7 @@ public extension Leetcode {
             origin: "/",
             referer: "/session"
         ) { request in
-            try? request.setJSONBody(["target": id,])
+            try? request.setJSONBody(["target": id])
         }
         urlSession.request(request, completion: { result in
             switch result {

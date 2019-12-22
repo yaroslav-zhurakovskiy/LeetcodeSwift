@@ -6,7 +6,8 @@ struct TestEnvironemt {
     
     static var region: LeetcodeRegion {
         guard let region = ProcessInfo.processInfo.environment["LEETCODE_REGION"] else {
-            fatalError("'LEETCODE_REGION' envrionemt variable is missing")
+            print("'LEETCODE_REGION' envrionemt variable is missing. Using world.")
+            return .world
         }
         
         switch region {
@@ -21,5 +22,14 @@ struct TestEnvironemt {
     
     static var timeout: TimeInterval {
         return 120
+    }
+    
+    static var sessionToken: String {
+        guard let token = ProcessInfo.processInfo.environment["LEETCODE_SESSION_TOKEN"] else {
+            print("'LEETCODE_SESSION_TOKEN' envrionemt variable is missing")
+            return ""
+        }
+        
+        return token
     }
 }

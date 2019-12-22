@@ -71,4 +71,3 @@ class GetAllProblemsTests: LeetcodeTestCase {
         assertEmptyBody(of: request)
     }
 }
-

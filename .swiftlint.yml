@@ -11,7 +11,9 @@ opt_in_rules: # some rules are only opt-in
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
-  - Pomodoro/Common_UI_Elements/MultiSelectSegmentedControl.swift
+  - Tests/LeetcodeTests/UnitTests/ResponseBodyStubs
+  - Sources/Leetcode/Entities
+  - Sources/Leetcode/Client/Wrappers.swift
 
 # configurable rules can be customized from this configuration file
 # binary rules can set their severity level
@@ -70,5 +72,6 @@ identifier_name:
     - y
     - db
     - in
+    - ok
 large_tuple: 3
 reporter: "xcode"

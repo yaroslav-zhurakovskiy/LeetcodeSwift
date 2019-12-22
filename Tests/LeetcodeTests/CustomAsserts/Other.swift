@@ -9,7 +9,6 @@ func assertLocalizedDescription(
     XCTAssertEqual(error.localizedDescription, msg, file: file, line: line)
 }
 
-
 func assertDebugDescription<T: CustomDebugStringConvertible> (
     of object: T,
     isEqualTo msg: String,

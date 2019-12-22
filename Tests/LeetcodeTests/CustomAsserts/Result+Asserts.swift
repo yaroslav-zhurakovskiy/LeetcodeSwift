@@ -1,7 +1,11 @@
 import Leetcode
 import XCTest
 
-func assertSuccess<V, E>(_ result : Result<V, E>, file: StaticString = #file, line: UInt = #line) {
+func assertSuccess<V, E>(
+    _ result: Result<V, E>,
+    file: StaticString = #file,
+    line: UInt = #line
+) {
     if case .failure = result {
         XCTFail(
             "\(result) is not equal to .success",
@@ -11,7 +15,11 @@ func assertSuccess<V, E>(_ result : Result<V, E>, file: StaticString = #file, li
     }
 }
 
-func assertFailure<V, E>(_ result : Result<V, E>, file: StaticString = #file, line: UInt = #line) {
+func assertFailure<V, E>(
+    _ result: Result<V, E>,
+    file: StaticString = #file,
+    line: UInt = #line
+) {
     if case .success = result {
         XCTFail("\(result) is not equal to .failure", file: file, line: line)
     }

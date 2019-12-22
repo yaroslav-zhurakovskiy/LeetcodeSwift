@@ -1,4 +1,4 @@
-struct ResponseBodyStub: ExpressibleByStringLiteral  {
+struct ResponseBodyStub: ExpressibleByStringLiteral {
     typealias StringLiteralType = String
     
     let value: String

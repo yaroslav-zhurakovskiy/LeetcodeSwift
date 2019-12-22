@@ -22,8 +22,7 @@ class CategoriesController: UITableViewController {
             else {
                 return
         }
-        
-        
+          
         controller.category = cell.detailTextLabel?.text
     }
     

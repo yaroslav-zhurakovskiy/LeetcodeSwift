@@ -12,8 +12,7 @@ import Leetcode
 
 class LeetcodeLoginConroller: UINavigationController {
     var didLogin: (() -> Void)?
-
-    
+ 
     convenience init() {
         self.init(rootViewController: LeetcodeLoginConrollerImpl())
     }
@@ -23,7 +22,6 @@ class LeetcodeLoginConrollerImpl: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var titleView: UIView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

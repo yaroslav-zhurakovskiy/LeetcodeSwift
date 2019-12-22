@@ -36,8 +36,8 @@ class TestController: UIViewController {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    if let compile_error  = info.compile_error {
-                        self?.consoleLabel.text = compile_error
+                    if let error = info.compile_error {
+                        self?.consoleLabel.text = error
                     } else {
                         self?.consoleLabel.text = "\(info)"
                     }

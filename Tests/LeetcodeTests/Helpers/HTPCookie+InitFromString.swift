@@ -42,4 +42,3 @@ extension HTTPCookie {
         self.init(properties: properties)
     }
 }
-

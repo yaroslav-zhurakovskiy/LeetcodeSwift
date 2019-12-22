@@ -98,7 +98,6 @@ private func checkResponseForErrors(_ response: HTTPURLResponse, data: Data) -> 
     }
 }
 
-
 private func isPaidUserUserOnly(_ response: HTTPURLResponse) -> Bool {
     guard let url = response.url, url.path.contains("subscribe") else {
         return false

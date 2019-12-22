@@ -41,7 +41,6 @@ class ProblemsController: UITableViewController {
         }
     }
     
-    
     var sortedPairs: [GetProblemsResponse.StatStatusPair] {
         var pairs = problems!.stat_status_pairs
         pairs.sort(by: { $0.stat.question_id < $1.stat.question_id })
@@ -50,8 +49,7 @@ class ProblemsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-        
-        
+         
         let pair = sortedPairs[indexPath.row]
         let stat = pair.stat
         
@@ -80,4 +78,3 @@ class ProblemsController: UITableViewController {
         controller.problem = stat.question__title_slug
     }
 }
-

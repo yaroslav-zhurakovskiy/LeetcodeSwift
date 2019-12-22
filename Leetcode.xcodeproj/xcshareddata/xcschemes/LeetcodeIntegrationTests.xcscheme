@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1130"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Leetcode::LeetcodeTests"
+               BuildableName = "LeetcodeTests.xctest"
+               BlueprintName = "LeetcodeTests"
+               ReferencedContainer = "container:Leetcode.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "AddQuestionToFavoriteListTests">
+               </Test>
+               <Test
+                  Identifier = "AddQuestionToNewFavoriteListTests">
+               </Test>
+               <Test
+                  Identifier = "CheckInterpretationTests">
+               </Test>
+               <Test
+                  Identifier = "CreateSessionTests">
+               </Test>
+               <Test
+                  Identifier = "DateProviderTest">
+               </Test>
+               <Test
+                  Identifier = "DeleteFavoriteListTests">
+               </Test>
+               <Test
+                  Identifier = "DeleteFavoriteQuestionTests">
+               </Test>
+               <Test
+                  Identifier = "DeleteSessionTests">
+               </Test>
+               <Test
+                  Identifier = "GetAllProblemsTests">
+               </Test>
+               <Test
+                  Identifier = "GetDetailsForProblemTests">
+               </Test>
+               <Test
+                  Identifier = "GetFavoritesTests">
+               </Test>
+               <Test
+                  Identifier = "GetProblemsTests">
+               </Test>
+               <Test
+                  Identifier = "GetUserInfoTest">
+               </Test>
+               <Test
+                  Identifier = "HTTPCookieTests">
+               </Test>
+               <Test
+                  Identifier = "InterpretSolutionTests">
+               </Test>
+               <Test
+                  Identifier = "IsLoggedInTests">
+               </Test>
+               <Test
+                  Identifier = "JudgeTests">
+               </Test>
+               <Test
+                  Identifier = "LeetcodeConstantsTests">
+               </Test>
+               <Test
+                  Identifier = "LeetcodeTestCase">
+               </Test>
+               <Test
+                  Identifier = "LeetcodeUnauthorizedTests">
+               </Test>
+               <Test
+                  Identifier = "ListSubmissionsTests">
+               </Test>
+               <Test
+                  Identifier = "LoginTests">
+               </Test>
+               <Test
+                  Identifier = "LogoutTests">
+               </Test>
+               <Test
+                  Identifier = "ProgrammingLanguageTests">
+               </Test>
+               <Test
+                  Identifier = "RenameSessionTests">
+               </Test>
+               <Test
+                  Identifier = "SubmitCodeTests">
+               </Test>
+               <Test
+                  Identifier = "TestCaseInputTests">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "LEETCODE_SESSION_TOKEN"
+            value = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMjQ3NjQxOCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNGFlZTFhMGQ1NDlhNWRjN2YzMjg2ZmExNmE4MGNhODI1NjVhNmY1MSIsImlkIjoyNDc2NDE4LCJlbWFpbCI6Inlhcm9zbGF2LnpodXJha292c2tpeUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Inlhcm9zbGF2eiIsInVzZXJfc2x1ZyI6Inlhcm9zbGF2eiIsImF2YXRhciI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNThkMTdmNzVkNGMxZDk5NWRjNzVkOWY0YmYxMDkyOTMucG5nP3M9MjAwIiwidGltZXN0YW1wIjoiMjAxOS0xMi0xNSAyMDoxMzoyNi4xMjA5NzMrMDA6MDAiLCJJUCI6IjE3Ni4zNi4xNzkuMTg3IiwiSURFTlRJVFkiOiJlOTJmMjA0MTBmOGFiZTg2ZjA5ZGNiYWM4Mzc0NmQyMCIsIl9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMH0.HQArY8RPpaeXYeAKv7eomoFoXNxhKEf4pr66wHV-o6g"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "LEETCODE_REGION"
+            value = "world"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

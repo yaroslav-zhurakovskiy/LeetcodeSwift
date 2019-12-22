@@ -13,7 +13,6 @@ import Leetcode
 @available(iOS 11.0, *)
 public class LeetcodeLoginConroller: UINavigationController {
     public var didLogin: (() -> Void)?
-
     
     public convenience init() {
         self.init(rootViewController: LeetcodeLoginConrollerImpl())
@@ -31,7 +30,6 @@ class LeetcodeLoginConrollerImpl: UIViewController, WKNavigationDelegate {
             guard let data = Data(base64Encoded: Self.nibBase64String, options: .ignoreUnknownCharacters) else {
                 return UIView()
             }
-            
             
             let nib = UINib(data: data, bundle: nil)
             

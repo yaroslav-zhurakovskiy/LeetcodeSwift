@@ -23,7 +23,6 @@ struct LeetcodeRequestBuilder {
         return request
     }
     
-    
     func build(
         path: String,
         method: LeetcodeHttpMethod,
@@ -31,7 +30,7 @@ struct LeetcodeRequestBuilder {
         referer: String,
         code: (inout URLRequest) -> Void = { _ in  }
     ) -> URLRequest {
-        return try! build(
+        return (try? build(
             path: path,
             method: method,
             origin: origin,
@@ -40,7 +39,7 @@ struct LeetcodeRequestBuilder {
                 try simulateError()
                 code(&request)
             }
-        )
+        ))!
     }
     
     private func simulateError() throws {

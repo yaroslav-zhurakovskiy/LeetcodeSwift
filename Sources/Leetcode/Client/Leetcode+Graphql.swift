@@ -61,7 +61,7 @@ extension Leetcode {
                     let obj = try JSONSerialization.jsonObject(with: data, options: [])
                     if
                         let dic = obj as? [String: Any],
-                        let _ = dic["errors"] as? [[String: Any]] {
+                        dic["errors"] is [[String: Any]] {
                         let error = try decoder.decode(
                             GraphqlInternalError.self,
                             from: data

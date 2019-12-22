@@ -28,7 +28,6 @@ final class LeetcodeIntegrationTests: XCTestCase {
         super.tearDown()
     }
     
-    
     override func setUp() {
         super.setUp()
         
@@ -46,7 +45,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
     
     func testGetFavorites() {
         runAsyncTest { exp in
-            leetcode.getFavoriteLists { result in
+            leetcode.getFavorites { result in
                 assertSuccess(result)
                 exp.fulfill()
             }
@@ -130,7 +129,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
                 }
             };
             """
-            let input = TestCaseInput(from: [[2,7,11,15], 9])
+            let input = TestCaseInput(from: [[2, 7, 11, 15], 9])
             let solution = Solution(
                 forProblemWithID: twoSumProblemID,
                 code: Code(text: code, lang: .cpp),
@@ -154,7 +153,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
                 }
             };
             """
-            let input = TestCaseInput(from: [[2,7,11,15], 9])
+            let input = TestCaseInput(from: [[2, 7, 11, 15], 9])
             let solution = Solution(
                 forProblemWithID: twoSumProblemID,
                 code: Code(text: code, lang: .cpp),
@@ -328,7 +327,6 @@ private extension LeetcodeIntegrationTests {
     }
 }
 
-
 extension LeetcodeIntegrationTests {
     private static let leetcode = Leetcode()
     private static let waiter = XCTWaiter()
@@ -342,9 +340,7 @@ extension LeetcodeIntegrationTests {
         let exp = XCTestExpectation(description: #function)
         
         leetcode.login(
-            usingSessionCookieValue: """
-            eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMjQ3NjQxOCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNGFlZTFhMGQ1NDlhNWRjN2YzMjg2ZmExNmE4MGNhODI1NjVhNmY1MSIsImlkIjoyNDc2NDE4LCJlbWFpbCI6Inlhcm9zbGF2LnpodXJha292c2tpeUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Inlhcm9zbGF2eiIsInVzZXJfc2x1ZyI6Inlhcm9zbGF2eiIsImF2YXRhciI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNThkMTdmNzVkNGMxZDk5NWRjNzVkOWY0YmYxMDkyOTMucG5nP3M9MjAwIiwidGltZXN0YW1wIjoiMjAxOS0xMi0xNSAyMDoxMzoyNi4xMjA5NzMrMDA6MDAiLCJJUCI6IjE3Ni4zNi4xNzkuMTg3IiwiSURFTlRJVFkiOiJlOTJmMjA0MTBmOGFiZTg2ZjA5ZGNiYWM4Mzc0NmQyMCIsIl9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMH0.HQArY8RPpaeXYeAKv7eomoFoXNxhKEf4pr66wHV-o6g
-            """,
+            usingSessionCookieValue: TestEnvironemt.sessionToken,
             expires: Date(timeIntervalSinceNow: 60 * 24 * 365),
             completion: { result in
                 assertSuccess(result)

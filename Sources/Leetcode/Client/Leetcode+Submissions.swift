@@ -32,8 +32,6 @@ public extension Leetcode {
         )
     }
     
-    
-    
     func listSubmissions(
         forProblemWithSlug slug: String,
         completion: @escaping (Result<[SubmissionDumpRecord], Error>) -> Void

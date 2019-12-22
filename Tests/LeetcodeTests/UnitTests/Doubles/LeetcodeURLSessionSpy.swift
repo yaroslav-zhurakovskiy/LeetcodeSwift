@@ -10,7 +10,7 @@ class LeetcodeURLSessionSpy: LeetcodeURLSession {
         self.results = [result]
     }
     
-    func setResultSequence<S>(_ sequence: S) where S: Sequence, S.Element == LeetcodeURLResponseResult  {
+    func setResultSequence<S>(_ sequence: S) where S: Sequence, S.Element == LeetcodeURLResponseResult {
         self.currentResultIndex = 0
         self.results = Array(sequence)
     }
@@ -81,7 +81,7 @@ class LeetcodeURLSessionMock: LeetcodeURLSessionSpy {
         assertNumberOfRequests(equalsTo: 1, file: file, line: line)
     }
     
-    func assertNumberOfRequests(equalsTo number: Int,  file: StaticString = #file, line: UInt = #line) {
+    func assertNumberOfRequests(equalsTo number: Int, file: StaticString = #file, line: UInt = #line) {
         XCTAssertEqual(requests.count, number, "Number of requests", file: file, line: line)
     }
 }

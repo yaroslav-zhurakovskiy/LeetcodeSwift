@@ -21,7 +21,10 @@ extension HTTPCookie {
 }
 
 extension Leetcode {
-    func login(usingSessionCookieValue value: String, expires: Date, completion: @escaping (Result<Void, Error>) -> Void) {
+    func login(
+        usingSessionCookieValue value: String,
+        expires: Date, completion: @escaping (Result<Void, Error>) -> Void
+    ) {
         let cookie = HTTPCookie(leetcodeSessionValue: value, expires: expires)
         login(usingSessionCookie: cookie, completion: completion)
     }
