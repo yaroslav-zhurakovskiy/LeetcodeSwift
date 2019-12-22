@@ -2,7 +2,7 @@ import XCTest
 @testable import Leetcode
 import Foundation
 
-class DeleteFavoritesTests: LeetcodeTestCase {
+class DeleteFavoriteListTests: LeetcodeTestCase {
     func testStatus204() throws {
         try urlSessionSpy.setSuccessResult(bodyStub: .empty, statusCode: 204)
         
