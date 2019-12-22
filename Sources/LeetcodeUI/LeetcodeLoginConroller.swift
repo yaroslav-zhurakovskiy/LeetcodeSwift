@@ -73,7 +73,7 @@ class LeetcodeLoginConrollerImpl: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { [weak self] cookies in
             if let url = webView.url {
-                let storage = HTTPCookieStorageFactoryHolder.current.create()
+                let storage = HTTPCookieStorage.shared
                 storage.setCookies(cookies, for: url, mainDocumentURL: nil)
                 if cookies.contains(where: { $0.name == LeetcodeConstants.sessionCookieName }) {
                     self?.dismiss(animated: true, completion: { [weak self] in

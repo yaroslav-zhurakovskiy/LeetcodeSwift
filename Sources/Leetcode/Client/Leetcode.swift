@@ -5,13 +5,13 @@ public class Leetcode {
     internal var cookieStorage: HTTPCookieStorage
     internal var urlSession: LeetcodeURLSession
     
-    public init(cookieStorage: HTTPCookieStorage) {
+    public init(cookieStorage: HTTPCookieStorage = .shared) {
         self.cookieStorage = cookieStorage
         self.requestBuilder = LeetcodeRequestBuilder(cookieStorage: cookieStorage)
         self.urlSession = LeetcodeURLSessionImpl(cookieStorage: cookieStorage)
     }
     
     public convenience init() {
-        self.init(cookieStorage: HTTPCookieStorageFactoryHolder.current.create())
+        self.init(cookieStorage: .shared)
     }
 }

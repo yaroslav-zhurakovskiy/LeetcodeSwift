@@ -1,7 +1,7 @@
 public struct IntepretSolutionResponse: Decodable {
-    public let compile_error: String
+    public let compile_error: String?
     public let elapsed_time: Int
-    public let full_compile_error: String
+    public let full_compile_error: String?
     public let lang: String
     public let memory: Int
     public let memory_percentile: Int?

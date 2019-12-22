@@ -214,7 +214,7 @@ final class LeetcodeIntegrationTests: XCTestCase {
     
     func testDeleteSession() {
         let testSessionName = "testcase"
-        runTestForSession(testSessionName: testSessionName) { [weak self] session, fulfill in
+        runTestForSession(testSessionName: testSessionName, cleanupAfer: false) { [weak self] session, fulfill in
             self?.leetcode.deleteSession(byID: session.id, completion: { result in
                 assertSuccess(result)
                 fulfill()
@@ -256,6 +256,7 @@ private extension LeetcodeIntegrationTests {
     func runTestForSession(
         testSessionName: String ,
         description: String = #function,
+        cleanupAfer: Bool = true,
         file: StaticString = #file,
         line: UInt = #line,
         test: @escaping (_ session: Session, _ callback: @escaping () -> Void) -> Void
@@ -266,10 +267,14 @@ private extension LeetcodeIntegrationTests {
                 if case let .success(info) = result {
                     if let session = info.sessions.first(where: { $0.name == testSessionName }) {
                         test(session, {
-                            self?.leetcode.deleteSession(byID: session.id, completion: { result in
-                                assertSuccess(result)
+                            if cleanupAfer {
+                                self?.leetcode.deleteSession(byID: session.id, completion: { result in
+                                    assertSuccess(result, file: file, line: line)
+                                    exp.fulfill()
+                                })
+                            } else {
                                 exp.fulfill()
-                            })
+                            }
                         })
                     } else {
                         XCTFail("Could not find a session named \(testSessionName)", file: file, line: line)
@@ -329,7 +334,7 @@ extension LeetcodeIntegrationTests {
     private static let waiter = XCTWaiter()
     
     private class func removeAllCookies() {
-        let storage = HTTPCookieStorageFactoryHolder.current.create()
+        let storage = HTTPCookieStorage.shared
         storage.removeCookies(since: Date(timeIntervalSince1970: 0))
     }
     
