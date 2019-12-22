@@ -11,7 +11,7 @@ class InterpretSolutionTests: LeetcodeTestCase {
     )
     
     func testSuccess() throws {
-        try urlSessionSpy.setSuccessResult(bodyStub: .interpretSolutionSucces, statusCode: 200)
+        try urlSessionSpy.setSuccessResult(bodyStub: .interpretSolutionSuccess, statusCode: 200)
         
         var result: Result<InterpretSolutionResponse, InterpretSolutionError>!
         leetcode.interpretSolution(solution) { result = $0 }

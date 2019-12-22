@@ -5,7 +5,7 @@ class DeleteFavoriteQuestionTests: LeetcodeTestCase {
     private let id = FavoriteQuestionID(favoriteIDHash: "id", questionID: 0)
     
     func testSuccss204() throws {
-        try urlSessionSpy.setSuccessResult(body: "", statusCode: 204)
+        try urlSessionSpy.setSuccessResult(bodyStub: .empty, statusCode: 204)
         
         var result: Result<Void, Error>!
         leetcode.deleteFavoriteQuestion(byID: id) { result = $0 }

@@ -36,14 +36,13 @@ extension Leetcode {
             case .failure(let error):
                 completion(.failure(.generic(error)))
             }
-        }
-        )
+        })
     }
     
-    public func checkIntepretation(
+    public func checkInterpretation(
         withID id: String,
         forProblemWithSlug slug: String,
-        completion: @escaping (Result<VerificationInfo, Error>) -> Void
+        completion: @escaping (Result<IntepretSolutionResponse, Error>) -> Void
     ) {
         let request = requestBuilder.build(
             path: "/submissions/detail/\(id)/check",
@@ -56,15 +55,22 @@ extension Leetcode {
             case let .success(data, response):
                 let decoder = JSONDecoder()
                 do {
+                    guard !(String(data: data, encoding: .utf8) ?? "").isEmpty else {
+                        self?.checkInterpretation(
+                            withID: id,
+                            forProblemWithSlug: slug,
+                            completion: completion
+                        )
+                        return
+                    }
                     let wrapper = try decoder.decode(
                         CheckIntepretationStateWrapper.self,
                         from: data
                     )
                     if wrapper.state == .success {
                         do {
-                            let decoder = JSONDecoder()
                             let info = try decoder.decode(
-                                VerificationInfo.self,
+                                IntepretSolutionResponse.self,
                                 from: data
                             )
                             completion(.success(info))
@@ -77,7 +83,7 @@ extension Leetcode {
                             completion(.failure(decodingError))
                         }
                     } else {
-                        self?.checkIntepretation(
+                        self?.checkInterpretation(
                             withID: id,
                             forProblemWithSlug: slug,
                             completion: completion
@@ -99,12 +105,12 @@ extension Leetcode {
     
     public func testSolution(
         _ solution: Solution,
-        completion: @escaping (Result<VerificationInfo, Error>) -> Void
+        completion: @escaping (Result<IntepretSolutionResponse, Error>) -> Void
     ) {
         interpretSolution(solution, completion: { [weak self] result  in
             switch result {
             case .success(let response):
-                self?.checkIntepretation(
+                self?.checkInterpretation(
                     withID: response.interpret_id,
                     forProblemWithSlug: solution.problemID.slug,
                     completion: completion

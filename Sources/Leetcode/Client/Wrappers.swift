@@ -48,8 +48,14 @@ struct CheckIntepretationStateWrapper: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Key.self)
+        guard container.contains(.state) else {
+            state = .undefined
+            return
+        }
+        
         let value = try container.decode(String.self, forKey: .state)
         state = State(rawValue: value) ?? .undefined
+        
     }
 }
 

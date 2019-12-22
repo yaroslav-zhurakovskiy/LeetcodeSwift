@@ -1,5 +1,5 @@
 extension ResponseBodyStub {
-    static let interpretSolutionSucces: ResponseBodyStub =
+    static let interpretSolutionSuccess: ResponseBodyStub =
 """
 {
     "interpret_id": "interpret_id",

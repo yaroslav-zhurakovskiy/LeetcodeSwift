@@ -4,7 +4,7 @@ import Foundation
 
 class DeleteFavoritesTests: LeetcodeTestCase {
     func testStatus204() throws {
-        try urlSessionSpy.setSuccessResult(body: .any, statusCode: 204)
+        try urlSessionSpy.setSuccessResult(bodyStub: .empty, statusCode: 204)
         
         var result: Result<Void, Error>!
         leetcode.deleteFavoriteList(byHashID: .any) { result = $0 }
