@@ -157,3 +157,28 @@ private func normalizedPath(_ path: String) -> String {
         return path
     }
 }
+
+func assertGraphqlRequest(
+    _ request: URLRequest,
+    withMethod method: String,
+    query: String,
+    variables: [String: String],
+    operationName: String,
+    file: StaticString = #file,
+    line: UInt = #line
+) {
+    assertURL(of: request, isEqualToLeetcodePath: "/graphql", file: file, line: line)
+    assertMethod(of: request, isEqualTo: method, file: file, line: line)
+    assertReferer(of: request, isEqualToLeetcodePath: "/", file: file, line: line)
+    assertOrigin(of: request, isEqualToLeetcodePath: "/", file: file, line: line)
+    assertBody(
+        of: request,
+        isEqualToJSON: [
+            "query": query,
+            "variables": variables,
+            "operationName": operationName
+        ],
+        file: file,
+        line: line
+    )
+}
