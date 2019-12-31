@@ -1,6 +1,9 @@
 //
-//  Created by Yaroslav Zhurakovskiy
-//  Copyright © 2019-2020 Yaroslav Zhurakovskiy. All rights reserved.
+//  LeetcodeLoginConrollerImpl.swift
+//  iOS Example
+//
+//  Created by Yaroslav Zhurakovskiy on 31.12.2019.
+//  Copyright © 2019 yaroslavz. All rights reserved.
 //
 
 import UIKit
@@ -8,35 +11,10 @@ import WebKit
 import Leetcode
 
 @available(iOS 11.0, *)
-public class LeetcodeLoginConroller: UINavigationController {
-    public var didLogin: (() -> Void)?
-    
-    public convenience init() {
-        self.init(rootViewController: LeetcodeLoginConrollerImpl())
-    }
-}
-
-@available(iOS 11.0, *)
 class LeetcodeLoginConrollerImpl: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var titleView: UIView!
-    
-    override func loadView() {
-        self.view = {
-            guard let data = Data(base64Encoded: Self.nibBase64String, options: .ignoreUnknownCharacters) else {
-                return UIView()
-            }
-            
-            let nib = UINib(data: data, bundle: nil)
-            
-            guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
-                return UIView()
-            }
-            
-            return view
-        }()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -5,7 +5,6 @@
 
 import UIKit
 import Leetcode
-import LeetcodeUI
 
 class CategoriesController: UITableViewController {
     private let leetcode = Leetcode()

@@ -14,7 +14,6 @@
 			);
 			dependencies = (
 				OBJ_211 /* PBXTargetDependency */,
-				OBJ_213 /* PBXTargetDependency */,
 			);
 			name = LeetcodePackageTests;
 			productName = LeetcodePackageTests;
@@ -125,36 +124,9 @@
 		OBJ_267 /* ResponseBodyStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* ResponseBodyStub.swift */; };
 		OBJ_268 /* SubmitCodeSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* SubmitCodeSuccess.swift */; };
 		OBJ_270 /* Leetcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::Leetcode::Product" /* Leetcode.framework */; };
-		OBJ_277 /* LeetcodeLoginConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* LeetcodeLoginConroller.swift */; };
-		OBJ_278 /* LeetcodeLoginConrollerImpl+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* LeetcodeLoginConrollerImpl+Nib.swift */; };
-		OBJ_280 /* Leetcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::Leetcode::Product" /* Leetcode.framework */; };
-		OBJ_286 /* LeetcodeLoginConrollerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* LeetcodeLoginConrollerTests.swift */; };
-		OBJ_288 /* LeetcodeUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */; };
-		OBJ_289 /* Leetcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Leetcode::Leetcode::Product" /* Leetcode.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C42580E523AFA71900B8EB24 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Leetcode::Leetcode";
-			remoteInfo = Leetcode;
-		};
-		C42580E623AFA71900B8EB24 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Leetcode::LeetcodeUI";
-			remoteInfo = LeetcodeUI;
-		};
-		C42580E723AFA71900B8EB24 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Leetcode::Leetcode";
-			remoteInfo = Leetcode;
-		};
 		C42580E823AFA71900B8EB24 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
@@ -169,20 +141,11 @@
 			remoteGlobalIDString = "Leetcode::LeetcodeTests";
 			remoteInfo = LeetcodeTests;
 		};
-		C42580EA23AFA71A00B8EB24 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Leetcode::LeetcodeUITests";
-			remoteInfo = LeetcodeUITests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		"Leetcode::Leetcode::Product" /* Leetcode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Leetcode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Leetcode::LeetcodeTests::Product" /* LeetcodeTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeetcodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LeetcodeUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Leetcode::LeetcodeUITests::Product" /* LeetcodeUITests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeetcodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Leetcode+Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Favorites.swift"; sourceTree = "<group>"; };
 		OBJ_100 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		OBJ_101 /* LogoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTests.swift; sourceTree = "<group>"; };
@@ -217,7 +180,6 @@
 		OBJ_131 /* ListSubmissionsSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSubmissionsSuccess.swift; sourceTree = "<group>"; };
 		OBJ_132 /* ResponseBodyStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBodyStub.swift; sourceTree = "<group>"; };
 		OBJ_133 /* SubmitCodeSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCodeSuccess.swift; sourceTree = "<group>"; };
-		OBJ_135 /* LeetcodeLoginConrollerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeLoginConrollerTests.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Leetcode+Problems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leetcode+Problems.swift"; sourceTree = "<group>"; };
 		OBJ_141 /* iOS Example */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iOS Example"; sourceTree = SOURCE_ROOT; };
 		OBJ_142 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = SOURCE_ROOT; };
@@ -269,9 +231,6 @@
 		OBJ_63 /* LeetcoeJSONDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcoeJSONDecodingError.swift; sourceTree = "<group>"; };
 		OBJ_64 /* URL+Leetcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Leetcode.swift"; sourceTree = "<group>"; };
 		OBJ_65 /* URLRequest+Leetcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Leetcode.swift"; sourceTree = "<group>"; };
-		OBJ_67 /* LeetcodeLoginConrollerImpl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeetcodeLoginConrollerImpl.xib; sourceTree = "<group>"; };
-		OBJ_68 /* LeetcodeLoginConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetcodeLoginConroller.swift; sourceTree = "<group>"; };
-		OBJ_69 /* LeetcodeLoginConrollerImpl+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeetcodeLoginConrollerImpl+Nib.swift"; sourceTree = "<group>"; };
 		OBJ_73 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		OBJ_74 /* Result+Asserts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Asserts.swift"; sourceTree = "<group>"; };
 		OBJ_75 /* URLRequest+Asserts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Asserts.swift"; sourceTree = "<group>"; };
@@ -307,23 +266,6 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_270 /* Leetcode.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_279 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_280 /* Leetcode.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_287 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_288 /* LeetcodeUI.framework in Frameworks */,
-				OBJ_289 /* Leetcode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,22 +322,11 @@
 			path = ResponseBodyStubs;
 			sourceTree = "<group>";
 		};
-		OBJ_134 /* LeetcodeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_135 /* LeetcodeLoginConrollerTests.swift */,
-			);
-			name = LeetcodeUITests;
-			path = Tests/LeetcodeUITests;
-			sourceTree = SOURCE_ROOT;
-		};
 		OBJ_136 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				"Leetcode::LeetcodeTests::Product" /* LeetcodeTests.xctest */,
 				"Leetcode::Leetcode::Product" /* Leetcode.framework */,
-				"Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */,
-				"Leetcode::LeetcodeUITests::Product" /* LeetcodeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -488,22 +419,10 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		OBJ_66 /* LeetcodeUI */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_67 /* LeetcodeLoginConrollerImpl.xib */,
-				OBJ_68 /* LeetcodeLoginConroller.swift */,
-				OBJ_69 /* LeetcodeLoginConrollerImpl+Nib.swift */,
-			);
-			name = LeetcodeUI;
-			path = Sources/LeetcodeUI;
-			sourceTree = SOURCE_ROOT;
-		};
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* Leetcode */,
-				OBJ_66 /* LeetcodeUI */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -512,7 +431,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_71 /* LeetcodeTests */,
-				OBJ_134 /* LeetcodeUITests */,
 			);
 			name = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -690,42 +608,6 @@
 			productReference = "Leetcode::LeetcodeTests::Product" /* LeetcodeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		"Leetcode::LeetcodeUI" /* LeetcodeUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_273 /* Build configuration list for PBXNativeTarget "LeetcodeUI" */;
-			buildPhases = (
-				OBJ_276 /* Sources */,
-				OBJ_279 /* Frameworks */,
-				C42580EC23AFAD6800B8EB24 /* Swift Lint */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_281 /* PBXTargetDependency */,
-			);
-			name = LeetcodeUI;
-			productName = LeetcodeUI;
-			productReference = "Leetcode::LeetcodeUI::Product" /* LeetcodeUI.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"Leetcode::LeetcodeUITests" /* LeetcodeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_282 /* Build configuration list for PBXNativeTarget "LeetcodeUITests" */;
-			buildPhases = (
-				OBJ_285 /* Sources */,
-				OBJ_287 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_290 /* PBXTargetDependency */,
-				OBJ_291 /* PBXTargetDependency */,
-			);
-			name = LeetcodeUITests;
-			productName = LeetcodeUITests;
-			productReference = "Leetcode::LeetcodeUITests::Product" /* LeetcodeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		"Leetcode::SwiftPMPackageDescription" /* LeetcodePackageDescription */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_202 /* Build configuration list for PBXNativeTarget "LeetcodePackageDescription" */;
@@ -765,8 +647,6 @@
 				"Leetcode::SwiftPMPackageDescription" /* LeetcodePackageDescription */,
 				"Leetcode::LeetcodePackageTests::ProductTarget" /* LeetcodePackageTests */,
 				"Leetcode::LeetcodeTests" /* LeetcodeTests */,
-				"Leetcode::LeetcodeUI" /* LeetcodeUI */,
-				"Leetcode::LeetcodeUITests" /* LeetcodeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -782,24 +662,6 @@
 			inputPaths = (
 			);
 			name = "Swift LInt";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		C42580EC23AFAD6800B8EB24 /* Swift Lint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Swift Lint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -934,23 +796,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_276 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_277 /* LeetcodeLoginConroller.swift in Sources */,
-				OBJ_278 /* LeetcodeLoginConrollerImpl+Nib.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_285 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_286 /* LeetcodeLoginConrollerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -959,30 +804,10 @@
 			target = "Leetcode::LeetcodeTests" /* LeetcodeTests */;
 			targetProxy = C42580E923AFA71A00B8EB24 /* PBXContainerItemProxy */;
 		};
-		OBJ_213 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Leetcode::LeetcodeUITests" /* LeetcodeUITests */;
-			targetProxy = C42580EA23AFA71A00B8EB24 /* PBXContainerItemProxy */;
-		};
 		OBJ_271 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Leetcode::Leetcode" /* Leetcode */;
 			targetProxy = C42580E823AFA71900B8EB24 /* PBXContainerItemProxy */;
-		};
-		OBJ_281 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Leetcode::Leetcode" /* Leetcode */;
-			targetProxy = C42580E523AFA71900B8EB24 /* PBXContainerItemProxy */;
-		};
-		OBJ_290 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Leetcode::LeetcodeUI" /* LeetcodeUI */;
-			targetProxy = C42580E623AFA71900B8EB24 /* PBXContainerItemProxy */;
-		};
-		OBJ_291 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Leetcode::Leetcode" /* Leetcode */;
-			targetProxy = C42580E723AFA71900B8EB24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1123,112 +948,6 @@
 			};
 			name = Release;
 		};
-		OBJ_274 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUI_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = LeetcodeUI;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = LeetcodeUI;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		OBJ_275 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUI_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = LeetcodeUI;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = LeetcodeUI;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		OBJ_283 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUITests_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = LeetcodeUITests;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		OBJ_284 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Leetcode.xcodeproj/LeetcodeUITests_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = LeetcodeUITests;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1324,24 +1043,6 @@
 			buildConfigurations = (
 				OBJ_216 /* Debug */,
 				OBJ_217 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_273 /* Build configuration list for PBXNativeTarget "LeetcodeUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_274 /* Debug */,
-				OBJ_275 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_282 /* Build configuration list for PBXNativeTarget "LeetcodeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_283 /* Debug */,
-				OBJ_284 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
